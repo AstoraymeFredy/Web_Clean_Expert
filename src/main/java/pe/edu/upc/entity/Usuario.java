@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,17 +26,22 @@ private static final long serialVersionUID = 1L;
 	
 	@Column(name="password", nullable=false, length=50)
 	private String password;
+	
+	@OneToOne
+	@JoinColumn(name="idTipoUsuario", nullable=false)
+	private TipoUsuario tipoUsuario;
 
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int id, String username, String password) {
+	public Usuario(int id, String username, String password, TipoUsuario tipoUsuario) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public int getId() {
@@ -60,7 +67,13 @@ private static final long serialVersionUID = 1L;
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 	
 }
