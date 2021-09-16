@@ -22,7 +22,7 @@ public class PropiedadDaoImpl implements IPropiedadDao, Serializable {
 	@Override
 	public List<Propiedad> listar(int idCliente) {
 		List<Propiedad> lista = new ArrayList<Propiedad>();
-		Query q = em.createQuery("select p from Propiedad p");
+		Query q = em.createQuery("select p from Propiedad p where p.id = " + idCliente);
 		lista = (List<Propiedad>) q.getResultList();
 		return lista;
 	}
