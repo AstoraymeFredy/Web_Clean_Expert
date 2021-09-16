@@ -30,7 +30,7 @@ public class ServicioDaoImpl implements IServicioDao, Serializable {
 	@Override
 	public List<Servicio> listarPersonal(int idPersonalLimpieza) {
 		List<Servicio> lista = new ArrayList<Servicio>();
-		Query q =  em.createQuery("select s from Servicio s");
+		Query q =  em.createQuery("select p from Servicio p where p.personalLimpieza.id = " + idPersonalLimpieza);
 		lista = (List<Servicio>) q.getResultList();
 		return lista;
 	}
@@ -39,7 +39,7 @@ public class ServicioDaoImpl implements IServicioDao, Serializable {
 	@Override
 	public List<Servicio> listarCliente(int idCliente) {
 		List<Servicio> lista = new ArrayList<Servicio>();
-		Query q =  em.createQuery("select s from Servicio s");
+		Query q =  em.createQuery("select p from Servicio p where p.cliente.id = " + idCliente);
 		lista = (List<Servicio>) q.getResultList();
 		return lista;
 	}
