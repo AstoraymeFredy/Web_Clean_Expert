@@ -19,7 +19,7 @@ public class Horario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int id_horario;
 	
 	@Column(name="lunes", nullable=false)
 	private boolean lunes;
@@ -51,10 +51,10 @@ public class Horario implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Horario(int id, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes,
+	public Horario(int id_horario, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes,
 			boolean sabado, boolean domingo, PersonalLimpieza personalLimpieza) {
 		super();
-		this.id = id;
+		this.id_horario = id_horario;
 		this.lunes = lunes;
 		this.martes = martes;
 		this.miercoles = miercoles;
@@ -65,12 +65,12 @@ public class Horario implements Serializable {
 		this.personalLimpieza = personalLimpieza;
 	}
 
-	public int getId() {
-		return id;
+	public int getId_horario() {
+		return id_horario;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_horario(int id_horario) {
+		this.id_horario = id_horario;
 	}
 
 	public boolean isLunes() {
