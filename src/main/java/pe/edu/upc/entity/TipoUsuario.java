@@ -16,7 +16,7 @@ public class TipoUsuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int idTipoUsuario;
 	
 	@Column(name="nombre", nullable=false, length=30)
 	private String nombre;
@@ -25,18 +25,18 @@ public class TipoUsuario implements Serializable {
 		super();
 	}
 
-	public TipoUsuario(int id, String nombre) {
+	public TipoUsuario(int idTipoUsuario, String nombre) {
 		super();
-		this.id = id;
+		this.idTipoUsuario = idTipoUsuario;
 		this.nombre = nombre;
 	}
 
 	public int getId() {
-		return id;
+		return idTipoUsuario;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
 	}
 
 	public String getNombre() {

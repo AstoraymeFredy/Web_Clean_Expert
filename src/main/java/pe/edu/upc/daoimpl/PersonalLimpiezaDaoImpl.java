@@ -4,28 +4,27 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IPersonalLimpiezaDao;
+import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.PersonalLimpieza;
 
-public class PersonalLimpiezaDaoImpl implements IPersonalLimpiezaDao, Serializable {
+public class PersonalLimpiezaDaoImpl implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	@Override
-	public PersonalLimpieza obtenerPersonalLimpieza(int idPersonalLimpieza) {
-		PersonalLimpieza ps = new PersonalLimpieza();
-		ps = em.getReference(PersonalLimpieza.class, idPersonalLimpieza);
-		return ps;
+	public PersonalLimpieza obtenerPersonalLimpieza(int idUsuario) throws Exception {
+		Query query = em.createQuery("select pl from PersonalLimpieza pl where pl.tipoUsuario.id_usuario = " + idUsuario, PersonalLimpieza.class);
+		PersonalLimpieza personalLimpieza = (PersonalLimpieza) query.getSingleResult();
+		return personalLimpieza;
 	}
 
 	@Transactional
-	@Override
-	public void registrar(PersonalLimpieza personalLimpieza) {
+	public void registrar(PersonalLimpieza personalLimpieza) throws Exception {
 		em.persist(personalLimpieza);
 	}
 	

@@ -1,3 +1,21 @@
+
+
+
+INSERT INTO tipousuario (nombre) VALUES ('Cliente');
+INSERT INTO tipousuario (nombre) VALUES ('Personal de limpieza');
+
+INSERT INTO usuario (password,username,idtipousuario) VALUES ('us1','AnaT',1);
+INSERT INTO usuario (password,username,idtipousuario) VALUES ('us2','JuanC',1);
+INSERT INTO usuario (password,username,idtipousuario) VALUES ('us3','PedroM',2);
+INSERT INTO usuario (password,username,idtipousuario) VALUES ('us4','MartaP',2);
+
+
+INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Torres Arias',978563412,'torresA@gmail.com','Ana',1);
+INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castillo Flores',975372412,'Juan123@gmail.com','Juan',2);
+
+INSERT INTO personallimpieza (apellidos,celular,descripcion,edad,email,nombre,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado',34,'12345MP@gmail.com','Marta',4);
+INSERT INTO personallimpieza (apellidos,celular,descripcion,edad,email,nombre,id_usuario) VALUES ('Muñoz Acosta',912433412,'10 años de experiencia en limpieza',39,'pedro123@gmail.com','Pedro',3);
+
 INSERT INTO ambiente (nombre,precio) VALUES ('Sala',25);
 INSERT INTO ambiente (nombre,precio) VALUES ('Comedor',20);
 INSERT INTO ambiente (nombre,precio) VALUES ('Cocina',30);
