@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+		<ui:define name="pageTitle">
+	        Listado de servicios - Clean Expert
+	    </ui:define>
+		<ui:define name="content-body">
+			<p:panel styleClass="ui-panel">
+				<div class="p-2">
+					<h:form id="frm">
+						<h3 class="principal-title text-dark fw-bold mb-5">Listado de
+								servicios</h3>										
+						<p:growl id="men" />
+						<p:dataTable id="datTabReservations"
+							emptyMessage="No existen reservas registradas"
+							paginatorPosition="bottom" paginator="true" rows="10">
+							<p:column headerText="#">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Fecha">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Hora">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Dirección">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Distrito">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Cliente">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Precio">
+								<p:outputLabel value="" />
+							</p:column>
+							<p:column headerText="Acciones">
+								Aquí van los botones
+							</p:column>
+						</p:dataTable>
+					</h:form>
+				</div>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
