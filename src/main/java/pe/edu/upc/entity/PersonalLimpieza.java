@@ -18,7 +18,7 @@ public class PersonalLimpieza implements Serializable  {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int id_personal_limpieza;
 	
 	@Column(name="nombre", nullable=false, length=80)
 	private String nombre;
@@ -53,7 +53,7 @@ public class PersonalLimpieza implements Serializable  {
 	public PersonalLimpieza(int id, String nombre, String apellidos, String email, String celular, String telefono,
 			Usuario usuario) {
 		super();
-		this.id = id;
+		this.id_personal_limpieza = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
@@ -63,11 +63,11 @@ public class PersonalLimpieza implements Serializable  {
 	}
 
 	public int getId() {
-		return id;
+		return id_personal_limpieza;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.id_personal_limpieza = id;
 	}
 
 	public String getNombre() {

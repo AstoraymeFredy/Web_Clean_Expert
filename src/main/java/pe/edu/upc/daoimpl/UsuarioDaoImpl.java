@@ -6,28 +6,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import pe.edu.upc.dao.IUsuarioDao;
 import pe.edu.upc.entity.Usuario;
 
-public class UsuarioDaoImpl implements IUsuarioDao, Serializable {
+public class UsuarioDaoImpl implements  Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	@Override
-	public Usuario login(Usuario usuario) {
-		Query q = em.createQuery("select u from Usuario u");
-		Usuario u = new Usuario();
-		return u;
+
+	public Usuario login(String username, String password) throws Exception {
+		Query query = em.createQuery("select u from Usuario u WHERE u.username=?1 AND u.password=?2", Usuario.class);
+		query.setParameter(1, username);
+		query.setParameter(2, password);
+		Usuario usuario = (Usuario) query.getSingleResult();
+		return usuario;
 	}
 
-	@Override
-	public Usuario registrar(Usuario usuario) {
+	public Usuario registrar(Usuario usuario) throws Exception {
 		em.persist(usuario);
-		Usuario u = new Usuario();
-		return u;
+		return usuario;
 	}
 
 	
