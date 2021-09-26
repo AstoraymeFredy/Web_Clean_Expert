@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="pageTitle">Clean Master</ui:insert></title>
+	<h:outputStylesheet name="css/bootstrap.min.css" />
+	<h:outputStylesheet name="css/layout.css" />
+	<h:outputStylesheet name="css/main_base.css" />
+	<h:outputStylesheet name="css/font_ico.css" />
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+</h:head>
+<body>
+	<div class="wrapper">
+		<!-- Sidebar Content  -->
+		<ui:insert name="sidebar">
+			<!-- Sidebar  -->
+			<nav id="sidebar" class="bg-primary p-2">
+			<div class="d-block">
+				<img src="../resources/img/logo.png" alt="" height="50" />
+			</div>
+			<div class="d-block text-center mt-4">
+				<img src="../resources/img/cliente.png" alt="" height="128" />
+				<p class="text-white mb-1">Sierra Ferguson</p>
+				<p class="text-white">s.ferguson@gmail.com</p>
+			</div>
+			<div class="d-block mt-4">
+				<ul class="nav flex-column" id="nav_accordion">
+					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
+						class="nav-link" href="#"><i class="bi bi-ui-checks-grid me-2"></i>
+							Mis reservas </a></li>
+					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
+						class="nav-link" href="#"><i class="bi bi-person-fill me-2"></i>
+							Mi perfil </a></li>
+					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
+						class="nav-link" href="#"><i class="bi bi-map-fill me-2"></i>
+							Mis direcciones </a></li>
+				</ul>
+			</div>
+
+			</nav>
+		</ui:insert>
+		<!-- Main Content  -->
+		<div id="content" class="bg-light">
+			<ui:insert name="header">
+				<nav
+					class="navbar navbar-expand-md navbar-dark bg-primary d-block p-0">
+				<div class="d-block">
+					<div class="d-flex justify-content-between d-md-none">
+						<div class="p-2 bd-highlight">
+							<!--Navbar:button-collapse-->
+							<button class="navbar-toggler" type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent"
+								aria-controls="navbarSupportedContent" aria-expanded="false"
+								aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+							<!--Navbar:items-menu-->
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+									<li class="nav-item ms-3"><a class="nav-link text-white"
+										href="#">Mis reservas </a></li>
+									<li class="nav-item ms-3"><a class="nav-link text-white"
+										href="#">Mi perfil</a></li>
+									<li class="nav-item ms-3"><a class="nav-link text-white"
+										href="#">Mis direcciones</a></li>
+									<li class="nav-item ms-3"><a class="nav-link text-white"
+										href="#">Cerrar sesión</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="p-2 bd-highlight">
+							<a class="navbar-brand d-md-none" href="#"> <img
+								src="resources/img/logo.png" alt="" height="50" />
+							</a>
+						</div>
+					</div>
+					<div class="d-none d-md-flex flex-row-reverse p-md-2 bd-highlight ">
+						<button type="button " class="btn btn-primary">Cerrar
+							sesión</button>
+					</div>
+				</div>
+				</nav>
+			</ui:insert>
+			<ui:insert name="content-body">
+				<p:panel class="m-4" styleClass="ui-panel">
+			 s
+			     </p:panel>
+			</ui:insert>
+		</div>
+	</div>
+</body>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+	crossorigin="anonymous" type=""></script>
+</html>
