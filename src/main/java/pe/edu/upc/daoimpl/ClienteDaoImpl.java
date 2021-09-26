@@ -4,29 +4,27 @@ import java.io.Serializable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IClienteDao;
 import pe.edu.upc.entity.Cliente;
 
-public class ClienteDaoImpl implements IClienteDao, Serializable  {
+public class ClienteDaoImpl implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	@Override
-	public Cliente obtenerCliente(int idUsuario) {
-		Cliente c = new Cliente();
-		c = em.getReference(Cliente.class, idUsuario);
-		return c;
+	public Cliente obtenerCliente(int idUsuario) throws Exception {
+		Query query = em.createQuery("select c from Cliente a where c.tipoUsuario.id_usuario = " + idUsuario, Cliente.class);
+		Cliente cliente = (Cliente) query.getSingleResult();
+		return cliente;
 		
 	}
 
 	@Transactional
-	@Override
-	public void registrar(Cliente cliente) {
+	public void registrar(Cliente cliente) throws Exception {
 		em.persist(cliente);
 	}
 	

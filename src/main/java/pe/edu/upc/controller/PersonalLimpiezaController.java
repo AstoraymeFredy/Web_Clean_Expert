@@ -8,40 +8,40 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.PersonalLimpieza;
-import pe.edu.upc.service.IPersonalLimpiezaService;
+import pe.edu.upc.serviceimpl.PersonalLimpiezaServiceImpl;
 
 @Named
 @RequestScoped
-public class PersonalLimpiezaController implements Serializable {
+public class PersonalLimpiezaController extends UsuarioController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IPersonalLimpiezaService psService;
-	private PersonalLimpieza personalLimpieza;
+	private PersonalLimpiezaServiceImpl psService;
+	// private PersonalLimpieza personalLimpieza;
 	
-	@PostConstruct
-	public void init() {
-		this.personalLimpieza = new PersonalLimpieza();
-	}
+	// @PostConstruct
+	// public void init() {
+	// 	this.personalLimpieza = new PersonalLimpieza();
+	// }
 	
 	public String registrar() {
-		psService.registrar(personalLimpieza);
+		try {
+			psService.registrar(getPersonalLimpieza());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		return "personal.xhtml";
 	}
 	
 	public void obtenerPersonalLimpieza () {
-		this.setPersonalLimpieza(psService.obtenerPersonalLimpieza(personalLimpieza.getId()));
+		try {
+			this.setPersonalLimpieza(psService.obtenerPersonalLimpieza(getPersonalLimpieza().getId()));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
-
-	public PersonalLimpieza getPersonalLimpieza() {
-		return personalLimpieza;
-	}
-
-	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
-		this.personalLimpieza = personalLimpieza;
-	}
-	
-	
 	
 }

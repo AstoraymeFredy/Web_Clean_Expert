@@ -39,7 +39,7 @@ public class PropiedadController implements Serializable {
 	
 	public String nuevaPropiedad () {
 		this.setPropiedad(new Propiedad());
-		return "horario.xhtml";
+		return "propiedad.xhtml";
 	}
 	
 	public void insertar() {
