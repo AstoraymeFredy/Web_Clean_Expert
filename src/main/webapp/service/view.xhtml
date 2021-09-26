@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<body>
+	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+		<ui:define name="pageTitle">
+	        Ver servicio - Clean Expert
+	    </ui:define>
+		<ui:define name="content-body">
+			<h:form id="frm" class="container">
+				<div class="ui-g">
+					<div class="ui-g-7  p-0">
+						<p:panel styleClass="ui-panel">
+							<h3 class="principal-title text-dark fw-bold mb-4">Ver
+								servicio</h3>
+							<p class="text-primary fw-bold">Habitaciones</p>
+							<div class="ui-fluid formgrid grid">
+								<div class="field col-4">
+									<p:outputLabel value="Dormitorio" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-4">
+									<p:outputLabel value="Baño" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-4">
+									<p:outputLabel value="Cocina" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-4">
+									<p:outputLabel value="Sala" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-4">
+									<p:outputLabel value="Biblioteca" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-4">
+									<p:outputLabel value="Comedor" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+							</div>
+							<p class="text-primary fw-bold">Horario y lugar</p>
+								<div class="ui-fluid formgrid grid">
+								<div class="field col-6">
+									<p:outputLabel value="Fecha" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel value="Hora" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+								<div class="field col-12">
+									<p:outputLabel value="Dirección" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+							</div>
+							<p class="text-primary fw-bold">Cliente</p>
+							<div class="ui-fluid formgrid grid">
+								<div class="field col-6">
+									<p:outputLabel value="Nombre completo" />
+									<p:outputLabel value="0" styleClass="text-dark d-block" />
+								</div>
+							</div>
+							<p class="text-primary fw-bold">Opciones</p>
+							<div class="ui-fluid formgrid grid">
+								<div class="field col-6">
+									<p:outputLabel value="Kit de limpieza" />
+									<p:outputLabel value="No" styleClass="text-dark d-block" />
+								</div>
+							</div>
+						</p:panel>
+					</div>
+					<div class="ui-g-5  p-0">
+						<p:panel styleClass="ui-panel">
+							<h3 class="principal-title text-dark fw-bold mb-4">Resultados
+								del servicio</h3>
+							<div class="ui-fluid">
+								<div class="field mb-2">
+									<p:outputLabel value="Horas promedio" />
+									<p class="text-dark d-block">5 horas</p>
+								</div>
+								<div class="field mb-2">
+									<p:outputLabel value="Monto total a pagar" />
+									<p class="text-dark d-block">s/. 50</p>
+								</div>
+							</div>
+						</p:panel>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
