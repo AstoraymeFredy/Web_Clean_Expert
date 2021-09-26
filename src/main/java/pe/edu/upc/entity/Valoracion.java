@@ -19,7 +19,7 @@ public class Valoracion implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int id_valoracion;
 	
 	@Column(name="comentario", nullable=true, length=200)
 	private String comentario;
@@ -28,7 +28,7 @@ public class Valoracion implements Serializable {
 	private int calificacion;
 	
 	@ManyToOne
-	@JoinColumn(name="idCliente", nullable=false)
+	@JoinColumn(name="Cliente_id", nullable=false)
 	private Cliente cliente;
 	
 	@ManyToOne
@@ -37,24 +37,23 @@ public class Valoracion implements Serializable {
 
 	public Valoracion() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Valoracion(int id, String comentario, int calificacion, Cliente cliente, PersonalLimpieza personalLimpieza) {
+	public Valoracion(int id_valoracion, String comentario, int calificacion, Cliente cliente, PersonalLimpieza personalLimpieza) {
 		super();
-		this.id = id;
+		this.id_valoracion = id_valoracion;
 		this.comentario = comentario;
 		this.calificacion = calificacion;
 		this.cliente = cliente;
 		this.personalLimpieza = personalLimpieza;
 	}
 
-	public int getId() {
-		return id;
+	public int getId_valoracion() {
+		return id_valoracion;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_valoracion(int id_valoracion) {
+		this.id_valoracion = id_valoracion;
 	}
 
 	public String getComentario() {
