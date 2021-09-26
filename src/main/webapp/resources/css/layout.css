@@ -9,7 +9,7 @@
 body{
 	font-family: 'Inter', sans-serif;
 }
-body h1{
+body h1,h2,h3,h4,h5,h6,p,span{
 	font-family: 'Inter', sans-serif;
 	font-weight: 700;
 }
