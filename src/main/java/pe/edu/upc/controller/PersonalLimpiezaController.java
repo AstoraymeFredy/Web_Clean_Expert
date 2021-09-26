@@ -3,11 +3,15 @@ package pe.edu.upc.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.service.IPersonalLimpiezaService;
 
+@Named
+@RequestScoped
 public class PersonalLimpiezaController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
