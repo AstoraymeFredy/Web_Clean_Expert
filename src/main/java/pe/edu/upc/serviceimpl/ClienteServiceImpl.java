@@ -6,24 +6,22 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.daoimpl.ClienteDaoImpl;
 import pe.edu.upc.entity.Cliente;
-import pe.edu.upc.service.IClienteService;
 
 @Named
 @RequestScoped
-public class ClienteServiceImpl implements IClienteService, Serializable {
+public class ClienteServiceImpl implements  Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Inject
-	private IClienteService cD;
+	private ClienteDaoImpl cD;
 
-	@Override
-	public Cliente obtenerCliente(int idUsuario) {
+	public Cliente obtenerCliente(int idUsuario) throws Exception {
 		return cD.obtenerCliente(idUsuario);
 	}
 
-	@Override
-	public void registrar(Cliente cliente) {
+	public void registrar(Cliente cliente) throws Exception {
 		cD.registrar(cliente);
 	}
 
