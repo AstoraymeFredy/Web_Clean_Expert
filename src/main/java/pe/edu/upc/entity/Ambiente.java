@@ -21,8 +21,5 @@ public class Ambiente implements Serializable {
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String nombre;
-	
-	@Column(name="precio", nullable=false)
-	private float precio;
-	
+		
 }

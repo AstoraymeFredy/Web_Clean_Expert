@@ -38,11 +38,8 @@ public class PersonalLimpieza implements Serializable  {
 	@Column(name="celular", nullable=false, length=20)
 	private String celular;
 	
-	@Column(name="telefono", nullable=false, length=20)
-	private String telefono;
-	
 	@OneToOne
-	@JoinColumn(name="idUsuario", nullable=false)
+	@JoinColumn(name="id_usuario", nullable=false)
 	private Usuario usuario;
 
 	public PersonalLimpieza() {
@@ -50,7 +47,7 @@ public class PersonalLimpieza implements Serializable  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PersonalLimpieza(int id, String nombre, String apellidos, String email, String celular, String telefono,
+	public PersonalLimpieza(int id, String nombre, String apellidos, String email, String celular,
 			Usuario usuario) {
 		super();
 		this.id_personal_limpieza = id;
@@ -58,7 +55,6 @@ public class PersonalLimpieza implements Serializable  {
 		this.apellidos = apellidos;
 		this.email = email;
 		this.celular = celular;
-		this.telefono = telefono;
 		this.usuario = usuario;
 	}
 
@@ -100,14 +96,6 @@ public class PersonalLimpieza implements Serializable  {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
 	}
 
 	public Usuario getUsuario() {
