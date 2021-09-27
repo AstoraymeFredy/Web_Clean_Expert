@@ -1,6 +1,3 @@
-
-
-
 INSERT INTO tipousuario (nombre) VALUES ('Cliente');
 INSERT INTO tipousuario (nombre) VALUES ('Personal de limpieza');
 
@@ -16,13 +13,12 @@ INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castill
 INSERT INTO personallimpieza (apellidos,celular,descripcion,edad,email,nombre,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado',34,'12345MP@gmail.com','Marta',4);
 INSERT INTO personallimpieza (apellidos,celular,descripcion,edad,email,nombre,id_usuario) VALUES ('Muñoz Acosta',912433412,'10 años de experiencia en limpieza',39,'pedro123@gmail.com','Pedro',3);
 
-INSERT INTO ambiente (nombre,precio) VALUES ('Sala',25);
-INSERT INTO ambiente (nombre,precio) VALUES ('Comedor',20);
-INSERT INTO ambiente (nombre,precio) VALUES ('Cocina',30);
-INSERT INTO ambiente (nombre,precio) VALUES ('Jardin',30);
-INSERT INTO ambiente (nombre,precio) VALUES ('Terraza',20);
-INSERT INTO ambiente (nombre,precio) VALUES ('Cuarto',15);
-INSERT INTO ambiente (nombre,precio) VALUES ('Baño',20);
+INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
+INSERT INTO ambiente (nombre) VALUES ('Comedor');
+INSERT INTO ambiente (nombre) VALUES ('Cocina');
+INSERT INTO ambiente (nombre) VALUES ('Biblioteca');
+INSERT INTO ambiente (nombre) VALUES ('Baño');
+INSERT INTO ambiente (nombre) VALUES ('Sala');
 
 
 
