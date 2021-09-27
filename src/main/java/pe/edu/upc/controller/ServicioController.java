@@ -50,7 +50,7 @@ public class ServicioController implements Serializable {
 	}
 	
 	public void listarPersonal(PersonalLimpieza personal) {
-		listaPersonal = sService.listarPersonal(personal.getId());
+		listaPersonal = sService.listarPersonal(personal.getId_personal_limpieza());
 	}
 	
 	public void limpiar () {

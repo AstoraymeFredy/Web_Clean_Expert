@@ -17,7 +17,7 @@ public class ClienteDaoImpl implements Serializable  {
 	private EntityManager em;
 
 	public Cliente obtenerCliente(int idUsuario) throws Exception {
-		Query query = em.createQuery("select c from Cliente a where c.tipoUsuario.id_usuario = " + idUsuario, Cliente.class);
+		Query query = em.createQuery("select c from Cliente c where c.usuario.id_usuario = " + idUsuario, Cliente.class);
 		Cliente cliente = (Cliente) query.getSingleResult();
 		return cliente;
 		

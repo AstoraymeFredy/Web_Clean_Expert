@@ -27,7 +27,7 @@ public class HorarioController implements Serializable {
 	}
 	
 	public void obtenerHorario (Usuario usuario) {
-		this.setHorario(hService.obtener(usuario.getId()));
+		this.setHorario(hService.obtener(usuario.getId_usuario()));
 	}
 	
 	public String registrarHorario () {
