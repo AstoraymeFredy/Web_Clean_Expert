@@ -13,14 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Servicio")
-public class Servicio implements Serializable {
+@Table(name="Reserva")
+public class Reserva implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id_reserva;
 	
 	@Column(name="fecha", nullable=false)
 	private Date fecha;
@@ -37,21 +37,6 @@ public class Servicio implements Serializable {
 	@Column(name="kit_limpieza_extra", nullable=false)
 	private boolean kit_limpieza_extra;
 	
-	@Column(name="lavado", nullable=false)
-	private boolean lavado;
-	
-	@Column(name="planchado", nullable=false)
-	private boolean planchado;
-	
-	@Column(name="cocina", nullable=false)
-	private boolean cocina;
-	
-	@Column(name="interior_refrigeradora", nullable=false)
-	private boolean interior_refrigeradora;
-	
-	@Column(name="ventanas_manparas", nullable=false)
-	private boolean ventanas_manparas;
-	
 	@Column(name="estado", nullable=false)
 	private String estado;
 	
@@ -62,44 +47,32 @@ public class Servicio implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="idPropiedad", nullable=false)
 	private Propiedad propiedad;
-	
-	@ManyToOne
-	@JoinColumn(name="idCliente", nullable=false)
-	private Cliente cliente;
 
-	public Servicio() {
+	public Reserva() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Servicio(int id, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
-			boolean lavado, boolean planchado, boolean cocina, boolean interior_refrigeradora,
-			boolean ventanas_manparas, String estado, PersonalLimpieza personalLimpieza, Propiedad propiedad,
-			Cliente cliente) {
+	public Reserva(Long id_reserva, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
+			String estado, PersonalLimpieza personalLimpieza, Propiedad propiedad) {
 		super();
-		this.id = id;
+		this.id_reserva = id_reserva;
 		this.fecha = fecha;
 		this.precio = precio;
 		this.hora_inicio = hora_inicio;
 		this.duracion = duracion;
 		this.kit_limpieza_extra = kit_limpieza_extra;
-		this.lavado = lavado;
-		this.planchado = planchado;
-		this.cocina = cocina;
-		this.interior_refrigeradora = interior_refrigeradora;
-		this.ventanas_manparas = ventanas_manparas;
 		this.estado = estado;
 		this.personalLimpieza = personalLimpieza;
 		this.propiedad = propiedad;
-		this.cliente = cliente;
 	}
 
-	public int getId() {
-		return id;
+	public Long getId_reserva() {
+		return id_reserva;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId_reserva(Long id_reserva) {
+		this.id_reserva = id_reserva;
 	}
 
 	public Date getFecha() {
@@ -142,46 +115,6 @@ public class Servicio implements Serializable {
 		this.kit_limpieza_extra = kit_limpieza_extra;
 	}
 
-	public boolean isLavado() {
-		return lavado;
-	}
-
-	public void setLavado(boolean lavado) {
-		this.lavado = lavado;
-	}
-
-	public boolean isPlanchado() {
-		return planchado;
-	}
-
-	public void setPlanchado(boolean planchado) {
-		this.planchado = planchado;
-	}
-
-	public boolean isCocina() {
-		return cocina;
-	}
-
-	public void setCocina(boolean cocina) {
-		this.cocina = cocina;
-	}
-
-	public boolean isInterior_refrigeradora() {
-		return interior_refrigeradora;
-	}
-
-	public void setInterior_refrigeradora(boolean interior_refrigeradora) {
-		this.interior_refrigeradora = interior_refrigeradora;
-	}
-
-	public boolean isVentanas_manparas() {
-		return ventanas_manparas;
-	}
-
-	public void setVentanas_manparas(boolean ventanas_manparas) {
-		this.ventanas_manparas = ventanas_manparas;
-	}
-
 	public String getEstado() {
 		return estado;
 	}
@@ -205,15 +138,5 @@ public class Servicio implements Serializable {
 	public void setPropiedad(Propiedad propiedad) {
 		this.propiedad = propiedad;
 	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	
-	
 	
 }
