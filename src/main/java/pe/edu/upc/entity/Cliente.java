@@ -32,9 +32,6 @@ public class Cliente implements Serializable  {
 	@Column(name="celular", nullable=false, length=20)
 	private String celular;
 	
-	@Column(name="telefono", nullable=false, length=20)
-	private String telefono;
-	
 	@OneToOne
 	@JoinColumn(name="id_usuario", nullable=false)
 	private Usuario usuario;
@@ -44,7 +41,7 @@ public class Cliente implements Serializable  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cliente(int id, String nombre, String apellidos, String email, String celular, String telefono,
+	public Cliente(int id, String nombre, String apellidos, String email, String celular,
 			Usuario usuario) {
 		super();
 		this.id_cliente = id;
@@ -52,7 +49,6 @@ public class Cliente implements Serializable  {
 		this.apellidos = apellidos;
 		this.email = email;
 		this.celular = celular;
-		this.telefono = telefono;
 		this.usuario = usuario;
 	}
 
@@ -94,14 +90,6 @@ public class Cliente implements Serializable  {
 
 	public void setCelular(String celular) {
 		this.celular = celular;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
 	}
 
 	public Usuario getUsuario() {

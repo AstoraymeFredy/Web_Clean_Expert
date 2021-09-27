@@ -2,44 +2,34 @@ package pe.edu.upc.controller;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.serviceimpl.ClienteServiceImpl;
+import pe.edu.upc.util.Message;
 
 @Named
 @RequestScoped
-public class ClienteController extends UsuarioController implements Serializable {
+public class ClienteController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
 	private ClienteServiceImpl cService;
-	// private Cliente cliente;
 	
-	// @PostConstruct
-	// public void init() {
-	// 	this.cliente = new Cliente();
-	// }
-	
-	public String registrar() {
+	public String registrar(Cliente cliente) {
 		try {
-			cService.registrar(getCliente());
+			cService.registrar(cliente);
 		} catch (Exception e) {
-			// TODO: handle exception
+			Message.messageError("Error al crear:  " + e.getMessage());
 		}
 		
-		return "cliente.xhtml";
+		return "/cliente";
 	}
 	
-	public void obtenerCliente () {
-		try {
-			setCliente(cService.obtenerCliente(getCliente().getUsuario().getId()));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+	public Cliente obtenerCliente (int idUsuario) throws Exception {
+		return cService.obtenerCliente(idUsuario);
 		
 	}
 	

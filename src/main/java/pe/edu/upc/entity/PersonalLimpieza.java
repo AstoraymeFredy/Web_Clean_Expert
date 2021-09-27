@@ -29,20 +29,14 @@ public class PersonalLimpieza implements Serializable  {
 	@Column(name="descripcion", nullable=false, length=150)
 	private String descripcion;
 	
-	@Column(name="edad", nullable=false)
-	private int edad;
-	
 	@Column(name="email", nullable=false, length=100)
 	private String email;
 	
 	@Column(name="celular", nullable=false, length=20)
 	private String celular;
 	
-	@Column(name="telefono", nullable=false, length=20)
-	private String telefono;
-	
 	@OneToOne
-	@JoinColumn(name="idUsuario", nullable=false)
+	@JoinColumn(name="id_usuario", nullable=false)
 	private Usuario usuario;
 
 	public PersonalLimpieza() {
@@ -50,24 +44,24 @@ public class PersonalLimpieza implements Serializable  {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PersonalLimpieza(int id, String nombre, String apellidos, String email, String celular, String telefono,
-			Usuario usuario) {
+	public PersonalLimpieza(int id_personal_limpieza, String nombre, String apellidos, String descripcion, String email,
+			String celular, Usuario usuario) {
 		super();
-		this.id_personal_limpieza = id;
+		this.id_personal_limpieza = id_personal_limpieza;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
+		this.descripcion = descripcion;
 		this.email = email;
 		this.celular = celular;
-		this.telefono = telefono;
 		this.usuario = usuario;
 	}
 
-	public int getId() {
+	public int getId_personal_limpieza() {
 		return id_personal_limpieza;
 	}
 
-	public void setId(int id) {
-		this.id_personal_limpieza = id;
+	public void setId_personal_limpieza(int id_personal_limpieza) {
+		this.id_personal_limpieza = id_personal_limpieza;
 	}
 
 	public String getNombre() {
@@ -86,6 +80,14 @@ public class PersonalLimpieza implements Serializable  {
 		this.apellidos = apellidos;
 	}
 
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -102,14 +104,6 @@ public class PersonalLimpieza implements Serializable  {
 		this.celular = celular;
 	}
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -117,6 +111,7 @@ public class PersonalLimpieza implements Serializable  {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 	
 	
 	
