@@ -8,10 +8,21 @@
 
 body{
 	font-family: 'Inter', sans-serif;
+	overflow: hidden;
 }
-body h1{
+body h1,h2,h3,h4,h5,h6{
 	font-family: 'Inter', sans-serif;
 	font-weight: 700;
+}
+.ui-timepicker .ui-icon{
+	text-indent:0 !important;
+}
+.ui-chkbox-box, .ui-widget{
+	line-height:1rem !important;
+}
+.container{
+	overflow: auto;
+    max-height: calc(100vh - 54px);
 }
 
 /* ---------------------------------------------------
@@ -59,6 +70,7 @@ body h1{
 .ui-panel-content{
 	border-radius:4px !important;
 	margin:2em;
+	padding:2em !important;
 }
 
 .background-image-client{

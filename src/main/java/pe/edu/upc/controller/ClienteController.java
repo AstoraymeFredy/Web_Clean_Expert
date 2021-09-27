@@ -8,37 +8,39 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Cliente;
-import pe.edu.upc.service.IClienteService;
+import pe.edu.upc.serviceimpl.ClienteServiceImpl;
 
 @Named
 @RequestScoped
-public class ClienteController  implements Serializable {
+public class ClienteController extends UsuarioController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IClienteService cService;
-	private Cliente cliente;
+	private ClienteServiceImpl cService;
+	// private Cliente cliente;
 	
-	@PostConstruct
-	public void init() {
-		this.cliente = new Cliente();
-	}
+	// @PostConstruct
+	// public void init() {
+	// 	this.cliente = new Cliente();
+	// }
 	
 	public String registrar() {
-		cService.registrar(cliente);
+		try {
+			cService.registrar(getCliente());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		return "cliente.xhtml";
 	}
 	
 	public void obtenerCliente () {
-		this.setCliente(cService.obtenerCliente(cliente.getId()));
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+		try {
+			setCliente(cService.obtenerCliente(getCliente().getUsuario().getId()));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 }

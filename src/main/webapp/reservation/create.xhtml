@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<body>
+	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
+		<ui:define name="pageTitle">
+	        Nueva reserva - Clean Expert
+	    </ui:define>
+		<ui:define name="content-body">
+			<h:form id="frm" class="container">
+				<div class="ui-g">
+					<div class="ui-g-7  p-0">
+						<p:panel styleClass="ui-panel">
+							<h3 class="principal-title text-dark fw-bold mb-4">Reservar
+								servicio</h3>
+							<p class="text-primary fw-bold">Habitaciones</p>
+							<div class="ui-fluid formgrid grid">
+								<div class="field col-6">
+									<p:outputLabel for="txtDormitorio">Dormitorio</p:outputLabel>
+									<p:inputNumber id="txtDormitorio" minValue="0" maxValue="6"
+										value="" decimalPlaces="0" emptyValue="zero" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtBaño">Baño</p:outputLabel>
+									<p:inputNumber id="txtBaño" minValue="0" maxValue="6" value=""
+										decimalPlaces="0" emptyValue="zero" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtCocina">Cocina</p:outputLabel>
+									<p:inputNumber id="txtCocina" minValue="0" maxValue="6"
+										value="" decimalPlaces="0" emptyValue="zero" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtSala">Sala</p:outputLabel>
+									<p:inputNumber id="txtSala" minValue="0" maxValue="6" value=""
+										decimalPlaces="0" emptyValue="zero" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtBiblioteca">Biblioteca</p:outputLabel>
+									<p:inputNumber id="txtBiblioteca" minValue="0" maxValue="6"
+										value="" decimalPlaces="0" emptyValue="zero" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtComedor">Comedor</p:outputLabel>
+									<p:inputNumber id="txtComedor" minValue="0" maxValue="6"
+										value="" decimalPlaces="0" emptyValue="zero" />
+								</div>
+							</div>
+							<p class="text-primary fw-bold">Horario y lugar</p>
+							<div class="ui-fluid formgrid grid">
+								<div class="field col-12">
+									<p:outputLabel for="txtDireccion">Dirección</p:outputLabel>
+									<p:selectOneMenu id="txtDireccion" required="true">
+										<f:selectItem
+											itemLabel="Selecciona la dirección correspondiente"
+											noSelectionOption="true" itemValue="" />
+									</p:selectOneMenu>
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtFecha">Fecha</p:outputLabel>
+									<p:datePicker id="txtFecha" value="" />
+								</div>
+								<div class="field col-6">
+									<p:outputLabel for="txtHora">Hora</p:outputLabel>
+									<p:datePicker id="txtHora" value="" timeOnly="true"
+										stepMinute="60" mindate="08:00" maxdate="16:00" />
+								</div>
+							</div>
+							<p class="text-primary fw-bold">Selecciona tu Clean Expert</p>
+							<p class="text-primary fw-bold">Opciones</p>
+							<p:selectBooleanCheckbox value="False"
+								itemLabel="Agregar kit de limpieza" />
+							<div class="d-flex mt-4">
+								<p:button value="Cancelar" styleClass="bg-secondary me-2"
+									action="" ajax="false" />
+								<p:button value="Pagar" styleClass="bg-primary" action=""
+									ajax="false" />
+							</div>
+						</p:panel>
+					</div>
+					<div class="ui-g-5  p-0">
+						<p:panel styleClass="ui-panel">
+							<h3 class="principal-title text-dark fw-bold mb-4">Resultados del servicio</h3>
+									<div class="ui-fluid">
+							<div class="field mb-2">
+								<p:outputLabel value="Horas promedio" />
+								<p  class="text-dark d-block" >5 horas</p>
+							</div>
+							<div class="field mb-2">
+								<p:outputLabel value="Monto total a pagar" />
+								<p  class="text-dark d-block" >s/. 50</p>
+							</div>
+								</div>
+						</p:panel>
+					</div>
+				</div>
+			</h:form>
+
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
