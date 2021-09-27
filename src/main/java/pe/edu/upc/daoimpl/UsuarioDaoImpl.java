@@ -17,9 +17,9 @@ public class UsuarioDaoImpl implements  Serializable {
 
 
 	public Usuario login(String username, String password) throws Exception {
-		Query query = em.createQuery("select u from Usuario u WHERE u.username=?1 AND u.password=?2", Usuario.class);
-		query.setParameter(1, username);
-		query.setParameter(2, password);
+		Query query = em.createQuery("select u from Usuario u WHERE u.username=:name AND u.password=:pass", Usuario.class);
+		query.setParameter("name", username);
+		query.setParameter("pass", password);
 		Usuario usuario = (Usuario) query.getSingleResult();
 		return usuario;
 	}

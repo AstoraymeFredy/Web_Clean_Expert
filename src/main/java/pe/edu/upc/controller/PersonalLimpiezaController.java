@@ -2,13 +2,13 @@ package pe.edu.upc.controller;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.serviceimpl.PersonalLimpiezaServiceImpl;
+import pe.edu.upc.util.Message;
 
 @Named
 @RequestScoped
@@ -18,30 +18,28 @@ public class PersonalLimpiezaController extends UsuarioController implements Ser
 	
 	@Inject
 	private PersonalLimpiezaServiceImpl psService;
-	// private PersonalLimpieza personalLimpieza;
-	
-	// @PostConstruct
-	// public void init() {
-	// 	this.personalLimpieza = new PersonalLimpieza();
-	// }
-	
-	public String registrar() {
+
+	public void registrar(PersonalLimpieza personal) {
 		try {
-			psService.registrar(getPersonalLimpieza());
+			psService.registrar(personal);
 		} catch (Exception e) {
-			// TODO: handle exception
+			Message.messageError("Error al crear:  " + e.getMessage());
 		}
-		
-		return "personal.xhtml";
 	}
 	
-	public void obtenerPersonalLimpieza () {
+
+	public void obtenerPersonalLimpieza (int idUsuario) {
 		try {
-			this.setPersonalLimpieza(psService.obtenerPersonalLimpieza(getPersonalLimpieza().getId()));
+			setPersonalLimpieza(psService.obtenerPersonalLimpieza(idUsuario));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
 	}
+
+
+	
+	
+	
 	
 }
