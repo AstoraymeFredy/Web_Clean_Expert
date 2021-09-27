@@ -12,39 +12,30 @@
 
 	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
 		<ui:define name="pageTitle">
-	        Lista de parámetros - Clean Expert
+	        Mi horario - Clean Expert
 	    </ui:define>
 		<ui:define name="content-body">
 			<p:panel styleClass="ui-panel">
 				<div class="p-2">
 					<h:form id="frm">
 						<div class="d-flex justify-content-between mb-5">
-							<h3 class="principal-title text-dark fw-bold">Listado de
-								parámetros</h3>
+							<h3 class="principal-title text-dark fw-bold">Mi horario</h3>
 							
 						</div>
 						<p:growl id="men" />
-						<p:dataTable id="datTabParameters"
-
-							paginatorPosition="bottom" paginator="true" rows="10">
+						<p:dataTable id="datTabSchedule"
+							paginatorPosition="bottom" paginator="true" rows="7">
 							<p:column headerText="#">
 								<p:outputLabel value="" />
 							</p:column>
-							<p:column headerText="Nombre">
+							<p:column headerText="Día">
 								<p:outputLabel value="" />
 							</p:column>
-							<p:column headerText="Valor">
+						
+							<p:column headerText="Disponibilidad">
 								<p:outputLabel value="" />
 							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
-							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
-							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
-							</p:column>
+
 							<p:column headerText="Acciones">
 								
 							</p:column>
@@ -57,3 +48,4 @@
 
 </body>
 </html>
+
