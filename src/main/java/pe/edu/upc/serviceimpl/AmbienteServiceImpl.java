@@ -7,20 +7,19 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import pe.edu.upc.dao.IAmbienteDao;
+import pe.edu.upc.daoimpl.AmbienteDaoImpl;
 import pe.edu.upc.entity.Ambiente;
-import pe.edu.upc.service.IAmbienteService;
 
 @Named
 @RequestScoped
-public class AmbienteServiceImpl implements IAmbienteService, Serializable {
+public class AmbienteServiceImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IAmbienteDao aD;
+	private AmbienteDaoImpl amb; 
 
-	@Override
+	
 	public List<Ambiente> listar() {
-		return aD.listar();
+		return amb.listar();
 	}
 }

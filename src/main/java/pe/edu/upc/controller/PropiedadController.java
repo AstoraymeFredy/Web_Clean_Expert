@@ -5,71 +5,131 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.Distrito;
 import pe.edu.upc.entity.Propiedad;
-import pe.edu.upc.service.IDistritoService;
-import pe.edu.upc.service.IPropiedadService;
+import pe.edu.upc.serviceimpl.DistritoServiceImpl;
+import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
+import pe.edu.upc.util.Message;
 
+
+@Named
+@RequestScoped
 public class PropiedadController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IPropiedadService pService;
+	private PropiedadServiceImpl pService;
 	private Propiedad propiedad;
 	List<Propiedad> listaPropiedades;
 	
 	@Inject
-	private IDistritoService dService;
+	private DistritoServiceImpl dService;
 	private Distrito distrito;
 	List<Distrito> listaDistritos;
+	
+	private Cliente cliente;
 	
 	@PostConstruct
 	public void init() {
 		this.listaDistritos = new ArrayList<Distrito>();
 		this.distrito = new Distrito();
 		this.listarDistritos();
+		this.cliente= Cliente("Torres Arias",978563412,"torresA@gmail.com","Ana",1);
 		
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
-		this.listar(this.propiedad.getCliente());
+		this.listar();
+		
 	}
-	
+	/*
 	public String nuevaPropiedad () {
 		this.setPropiedad(new Propiedad());
-		return "propiedad.xhtml";
+		return "/propiedad";
+	}*/
+	
+	private Cliente Cliente(String string, int i, String string2, String string3, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String nuevaPropiedad() {
+		try {
+			this.listaDistritos = dService.listar();
+			this.propiedad = new Propiedad ();
+		} 
+		catch (Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return "/addresses/propiedad";
 	}
 	
-	public void insertar() {
-		pService.insertar(propiedad);
-		limpiar();
-		this.listar(propiedad.getCliente());
+	public String insertar() {
+		String view = "";
+		try {
+			propiedad.setDistrito(distrito);
+			pService.insertar(propiedad);
+			
+			Message.messageInfo("Registro insertado correctamente");
+			this.listar();
+			this.propiedad = new Propiedad ();
+			view = "/addresses/listAddresses";
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return view;
 	}
 	
+	/*	
 	public void actualizar() {
 		pService.actualizar(propiedad);
 		limpiar();
 		this.listar(propiedad.getCliente());
 	}
+	*/
 	
 	public void limpiar() {
 		this.init();
 	}
 	
-	public void listar (Cliente cliente) {
+	public void listar () {
+		try {
 		listaPropiedades = pService.listar(cliente.getId());
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
 	}
 	
 	public void listarDistritos () {
-		listaDistritos = dService.listar();
+		try {
+			listaDistritos = dService.listar();
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
 	}
 	
-	public void eliminar (Cliente cliente) {
-		pService.eliminar(cliente.getId());
-		this.listar(cliente);
+	public String eliminar () {
+		String view = "";
+		try {
+			pService.eliminar(cliente.getId());
+			Message.messageInfo("Registro Eliminado correctamente");
+			this.listar();
+			view = "/addresses/listAddresses";
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return view;
 	}
+	
+	
 
 	public Propiedad getPropiedad() {
 		return propiedad;
@@ -101,6 +161,14 @@ public class PropiedadController implements Serializable {
 
 	public void setListaDistritos(List<Distrito> listaDistritos) {
 		this.listaDistritos = listaDistritos;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	

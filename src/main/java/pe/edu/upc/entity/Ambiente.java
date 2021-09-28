@@ -17,9 +17,22 @@ public class Ambiente implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int idAmbiente;
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String nombre;
+	
+	public Ambiente() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Ambiente(int idAmbiente, String nombre) {
+		super();
+		this.idAmbiente = idAmbiente;
+		this.nombre = nombre;
+	}
+	
+	
 		
 }
