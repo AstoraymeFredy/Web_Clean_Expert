@@ -24,16 +24,17 @@
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-6">
 									<h:outputLabel for="txtNombre" value="Nombre*"/>
-            						<p:inputText id="txtNombre" required="true"/>
+            						<p:inputText id="txtNombre" required="true"
+            						value="#{parametroController.parametro.nombre}" />
 								</div>
 								
 								<div class="field col-6">
 									
 								</div>
 								<div class="field col-6">
-									<p:outputLabel for="txtValor" value="Valor*"/>
-									<p:inputNumber id="txtValor" minValue="0" maxValue="6"
-										value="" decimalPlaces="0"/>
+									<p:outputLabel for="txtValor" value="Valor"/>
+									<p:inputNumber id="txtValor" required="true" minValue="0"
+										value="#{parametroController.parametro.valor}" decimalPlaces="0"/>
 								</div>
 								
 							</div>

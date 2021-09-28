@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.transaction.Transactional;
 
 import pe.edu.upc.entity.Parametro;
 import pe.edu.upc.daoimpl.ParametroDaoImpl;
@@ -17,18 +18,23 @@ public class ParametroServiceImpl implements Serializable {
 	@Inject
 	private ParametroDaoImpl parametroDaoImpl ;
 	
+	@Transactional
+	public Long insertar(Parametro parametro) throws Exception{
+		return parametroDaoImpl.insertar(parametro);
+	}
+	
 	public Parametro obtenerParametro(int idParametro) {
 		return obtenerParametro(idParametro);
 	}
 
-	public List<Parametro> listar() {
-		return parametroDaoImpl.listar();
-	}
-
-	public int editarParametro(Parametro parametro) {
+	public Long editarParametro(Parametro parametro) {
 		return parametroDaoImpl.editarParametro(parametro);
 	}
+	
+	public List<Parametro> findAll() throws Exception{
+		return parametroDaoImpl.findAll();
+	}
 
-
+	
 
 }

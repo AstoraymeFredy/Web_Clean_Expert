@@ -9,6 +9,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+
+import pe.edu.upc.util.Message;
 import pe.edu.upc.entity.Parametro;
 import pe.edu.upc.serviceimpl.ParametroServiceImpl;
 
@@ -20,14 +22,20 @@ public class ParametroController  implements Serializable {
 	@Inject
 	private ParametroServiceImpl parametroService;
 	
-	List<Parametro> listaParametro;
-	Parametro parametro;
+	private Parametro parametro;
+	private List<Parametro> listaParametro;
+	
 	
 	@PostConstruct
 	public void init() {
-		this.listaParametro = new ArrayList<Parametro>();
+		
 		this.parametro = new Parametro();
-		this.listar();
+		this.listaParametro = new ArrayList<Parametro>();
+		getAllParameters();
+	}
+	
+	public void resetForm() {
+		this.parametro = new Parametro();
 	}
 	
 	public void obtenerParametro()
@@ -36,9 +44,50 @@ public class ParametroController  implements Serializable {
 	}
 
 	
+	public String editParameter () {
+		String view = "";
+		try {
+			if(this.getParametro() == parametro) {
+				parametro.setValor(view);
+				view = "/parameters/modifyParameter";
+			}
+			else {
+				Message.messageError("Error");
+			}
+		}
+		catch(Exception ex) {
+			Message.messageError("Error: " + ex.getMessage());
+		}
+		return view;
+	}
 	
-	public void listar() {
-		listaParametro = parametroService.listar();
+	public void getAllParameters() {
+		try
+		{
+			listaParametro = parametroService.findAll();
+		}
+		catch(Exception e)
+		{
+			Message.messageError("Error");
+		}
+	}
+	
+	public String guardarParametro() {
+		String view = "";
+		try{
+			if(parametro.getId_parametro()!= 0) {
+				parametroService.editarParametro(parametro);
+			}
+		else{
+			parametroService.insertar(parametro);
+		}
+		this.getAllParameters();
+		resetForm();
+		view = "/parameters/listParameters";
+		}
+		catch(Exception e) {
+		}
+		return view;
 	}
 	
 	public List<Parametro> getListaParametro() {
