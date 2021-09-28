@@ -36,26 +36,38 @@ public class PropiedadController implements Serializable {
 	
 	@PostConstruct
 	public void init() {
+		Message.messageInfo("Registro 3");
 		this.listaDistritos = new ArrayList<Distrito>();
 		this.distrito = new Distrito();
 		this.listarDistritos();
-		this.cliente= Cliente("Torres Arias",978563412,"torresA@gmail.com","Ana",1);
-		
+		this.cliente= new Cliente();
+		Message.messageInfo("Registro 2");
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
-		this.listar();
+		//this.listar();
+		Message.messageInfo("Registro 1");
 		
 	}
+	
+	//Error :org.hibernate.QueryException: could not resolve property: 
+		//idcliente of: pe.edu.upc.entity.Propiedad [FROM pe.edu.upc.entity.Propiedad p WHERE p.idcliente LIKE ?1]
+	
+	
+	
+	
+	
 	/*
 	public String nuevaPropiedad () {
 		this.setPropiedad(new Propiedad());
 		return "/propiedad";
 	}*/
 	
-	private Cliente Cliente(String string, int i, String string2, String string3, int j) {
-		// TODO Auto-generated method stub
-		return null;
+	public void carga()
+	{
+		this.listar();
+				
 	}
+
 
 	public String nuevaPropiedad() {
 		try {
@@ -98,8 +110,10 @@ public class PropiedadController implements Serializable {
 	}
 	
 	public void listar () {
+		Message.messageInfo("ga");
 		try {
-		listaPropiedades = pService.listar(cliente.getId());
+		listaPropiedades = pService.listar(1);
+		Message.messageInfo("1");
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());

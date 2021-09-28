@@ -15,9 +15,10 @@
 	        Listado de direcciones - Clean Expert
 	    </ui:define>
 		<ui:define name="content-body">
-			<p:panel styleClass="ui-panel">
+			<p:panel styleClass="ui-panel" >
 				<div class="p-2">
 					<h:form id="frm">
+					<p:growl id="men" />
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Listado de
 								direcciones</h3>
@@ -26,19 +27,21 @@
 								ajax="false" />
 								
 						</div>
-						<p:growl id="men" />
+						
 						
 						
 						
 						<p:dataTable id="datTabAddresses"
 							emptyMessage="No existen direcciones registradas" 
 							paginatorPosition="bottom" paginator="true" rows="10"
-							value="#{propiedadController.listaPropiedades}" var="propi" >
+							value="#{propiedadController.listaPropiedades}" var="propi"
+							action="#{propiedadController.carga()}"
+							>
 							
 							
 							
 							<p:column headerText="#">
-								<p:outputLabel value="#{propi.id}" />
+								<p:outputLabel value="hola" />
 							</p:column>
 							<p:column headerText="Distrito">
 								<p:outputLabel value="#{propi.distrito.nombre}" />
@@ -47,7 +50,7 @@
 								<p:outputLabel value="#{propi.direccion}" />
 							</p:column>
 							<p:column headerText="Acciones">
-								Aquí van los botones
+								
 							</p:column>
 						</p:dataTable>
 					</h:form>
