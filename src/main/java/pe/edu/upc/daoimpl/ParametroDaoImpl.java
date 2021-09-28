@@ -17,23 +17,32 @@ public class ParametroDaoImpl implements Serializable  {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
+	public Long insertar(Parametro parametro) throws Exception {
+		em.persist(parametro);
+		return parametro.getId_parametro();
+	}
+	
+	public Long editarParametro(Parametro parametro) {
+		em.merge(parametro);
+		return parametro.getId_parametro();
+	}
+	
+	public List<Parametro> findAll() throws Exception{
+		List<Parametro> parametros = new ArrayList<>();
+		TypedQuery<Parametro> query = em.createQuery("SELECT pa FROM Parametro pa", Parametro.class);
+		parametros = query.getResultList();
+		return parametros;
+	}
+	
 	public Parametro obtenerParametro(int idParametro) {
 		Parametro p = new Parametro();
 		p = em.getReference(Parametro.class, idParametro);
 		return p;
 	}
 
-	public List<Parametro> listar() {
-		List<Parametro> parametros = new ArrayList<>();
-		TypedQuery<Parametro> query = em.createQuery("SELECT p FROM Parametro p", Parametro.class);
-		parametros = query.getResultList();
-		return parametros;
-	}
 	
-	public int editarParametro(Parametro parametro) {
-		em.merge(parametro);
-		return parametro.getId_parametro();
-	}
+	
+	
 
 	
 }
