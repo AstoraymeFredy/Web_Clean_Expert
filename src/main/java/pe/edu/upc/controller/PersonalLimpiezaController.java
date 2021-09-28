@@ -28,13 +28,8 @@ public class PersonalLimpiezaController extends UsuarioController implements Ser
 	}
 	
 
-	public void obtenerPersonalLimpieza (int idUsuario) {
-		try {
-			setPersonalLimpieza(psService.obtenerPersonalLimpieza(idUsuario));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
+	public PersonalLimpieza obtenerPersonalLimpieza (int idUsuario) throws Exception  {
+		return psService.obtenerPersonalLimpieza(idUsuario);
 	}
 
 

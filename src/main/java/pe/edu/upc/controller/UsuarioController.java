@@ -1,7 +1,6 @@
 package pe.edu.upc.controller;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -14,6 +13,7 @@ import pe.edu.upc.entity.TipoUsuario;
 import pe.edu.upc.entity.Usuario;
 import pe.edu.upc.serviceimpl.UsuarioServiceImpl;
 import pe.edu.upc.util.Message;
+import pe.edu.upc.util.Sesion;
 
 @Named
 @RequestScoped
@@ -38,6 +38,9 @@ public class UsuarioController implements Serializable {
 	
 	private TipoUsuario tipoUsuario;
 	
+	@Inject
+	private Sesion sesion;
+	
 
 	@PostConstruct
 	public void init() {
@@ -56,8 +59,10 @@ public class UsuarioController implements Serializable {
 			}
 			this.usuario.setTipoUsuario(tipoUsuario);
 			uService.registrar(usuario);
+			
 			if (this.usuario.getTipoUsuario().getId() == 1) {
 				this.cliente.setUsuario(usuario);
+				
 				controllerCliente.registrar(this.cliente);
 			} else {
 				this.personalLimpieza.setUsuario(usuario);
@@ -68,25 +73,28 @@ public class UsuarioController implements Serializable {
 		}
 		
 		Message.messageInfo("Usuario registrado correctamente");
-		return "/index";
+		return "/index?faces-redirect=true";
 	}
 	
 	public String login () {
 		String view = ""; 
 		try {
 			this.setUsuario(uService.login(username, password));
+			sesion.setUsuario(usuario);
 			Message.messageInfo(usuario.getUsername());
 			if(this.usuario.getTipoUsuario().getId() == 1) {
 				setCliente(controllerCliente.obtenerCliente(usuario.getId_usuario()));
+				sesion.setCliente(cliente);
 				Message.messageInfo("1 " + cliente.getApellidos());
-				view = "/reservation/list";
+				view = "/reservation/list?faces-redirect=true";
 			} else {
-				controllerPL.obtenerPersonalLimpieza(usuario.getId_usuario());
+				setPersonalLimpieza(controllerPL.obtenerPersonalLimpieza(usuario.getId_usuario()));
+				sesion.setPersonalLimpieza(personalLimpieza);
 				Message.messageInfo("2 " + personalLimpieza.getApellidos());
-				view = "/service/list";
+				view = "/service/list?faces-redirect=true";
 			}
 		} catch (Exception e) {
-			Message.messageError("Error al crear " + e.getMessage());
+			Message.messageError("Error al iniciar sesion" + e.getMessage());
 		}
 		return view;
 	}
@@ -139,6 +147,14 @@ public class UsuarioController implements Serializable {
 		this.tipoUsuario = tipoUsuario;
 	}
 
+	public Sesion getSesion() {
+		return sesion;
+	}
+
+	public void setSesion(Sesion sesion) {
+		this.sesion = sesion;
+	}
+	
 	
 	
 }
