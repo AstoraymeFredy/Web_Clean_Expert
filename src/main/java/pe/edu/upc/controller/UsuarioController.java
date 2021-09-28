@@ -81,7 +81,7 @@ public class UsuarioController implements Serializable {
 		try {
 			this.setUsuario(uService.login(username, password));
 			sesion.setUsuario(usuario);
-			Message.messageInfo(usuario.getUsername());
+			Message.messageInfo(usuario.getTipoUsuario().getNombre());
 			if(this.usuario.getTipoUsuario().getId() == 1) {
 				setCliente(controllerCliente.obtenerCliente(usuario.getId_usuario()));
 				sesion.setCliente(cliente);
