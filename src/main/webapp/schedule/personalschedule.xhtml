@@ -20,28 +20,91 @@
 					<h:form id="frm">
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Mi horario</h3>
-							
+							<p:commandButton value="Guardar" styleClass="ui-button-success"
+							action="#{horarioController.actualizar()}" ajax= "false"
+							 />
 						</div>
 						<p:growl id="men" />
-						<p:dataTable id="datTabSchedule"
-							paginatorPosition="bottom" paginator="true" rows="7">
-							<p:column headerText="#">
-								<p:outputLabel value="" />
-							</p:column>
-							<p:column headerText="Día">
-								<p:outputLabel value="" />
-							</p:column>
+						<table class="table">
 						
-							<p:column headerText="Disponibilidad">
-								<p:outputLabel value="" />
-							</p:column>
+					   	<thead class="thead-dark">
+					      <tr>
+					         <th class="header" scope="col">#</th>
+					         <th class="header" scope="col">Día</th>
+					         <th class="header" scope="col">Disponibilidad</th>
+					         
+					      </tr>
+					   </thead>
 
-							<p:column headerText="Acciones">
-							<p:commandButton value="Cambiar" styleClass="ui-button-warning"
-								action="#{parametroController.()}"
-							/>	
-							</p:column>
-						</p:dataTable>
+						   <tbody>
+						      <tr>
+						         <td><p:outputLabel value="1"/></td>
+						         <td><p:outputLabel value="Lunes"/></td>
+						         <td>
+							         <p:selectBooleanCheckbox value="#{horarioController.horario.lunes}" itemLabel="">
+								            
+								     </p:selectBooleanCheckbox>
+						         </td>
+						      </tr>
+						      <tr>
+						         <td><p:outputLabel value="2"/> </td>
+						         <td><p:outputLabel value="Martes"/></td>
+						         <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.martes}" itemLabel="">
+							           
+							        </p:selectBooleanCheckbox>
+						         </td>
+						         
+						      </tr>
+						      <tr>
+						         <td><p:outputLabel value="3"/> </td>
+						         <td><p:outputLabel value="Miércoles"/></td>
+						        <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.miercoles}" itemLabel="">
+							         
+							        </p:selectBooleanCheckbox>
+						         </td>
+						         
+						      </tr><tr>
+						         <td><p:outputLabel value="4"/> </td>
+						         <td><p:outputLabel value="Jueves"/></td>
+						        <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.jueves}" itemLabel="">
+							           
+							        </p:selectBooleanCheckbox>
+						         </td>
+						         
+						      </tr><tr>
+						         <td><p:outputLabel value="5"/> </td>
+						         <td><p:outputLabel value="Viernes"/></td>
+						        <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.viernes}" itemLabel="">
+							        
+							        </p:selectBooleanCheckbox>
+						         </td>
+						         
+						      </tr><tr>
+						         <td><p:outputLabel value="6"/> </td>
+						         <td><p:outputLabel value="Sábado"/></td>
+						        <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.sabado}" itemLabel="">
+							          
+							        </p:selectBooleanCheckbox>
+						         </td>
+						        
+						      </tr><tr>
+						         <td><p:outputLabel value="7"/> </td>
+						         <td><p:outputLabel value="Domingo"/></td>
+						         <td>
+						         <p:selectBooleanCheckbox value="#{horarioController.horario.domingo}" itemLabel="">
+							            
+							        </p:selectBooleanCheckbox>
+						         </td>
+						        
+						      </tr>
+						   </tbody>
+						</table>
+
 					</h:form>
 				</div>
 			</p:panel>
