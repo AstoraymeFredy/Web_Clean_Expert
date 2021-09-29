@@ -24,27 +24,34 @@
 	                        </h1>
 							<div class="ui-fluid">
 								<div class="p-field">
-									<p:outputLabel for="txtNombre">Nombres</p:outputLabel>
-									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{clienteController.cliente.nombre}" />
+									<p:outputLabel for="txtNombre" styleClass="mt-3">Nombres</p:outputLabel>
+									<p:inputText styleClass="mt-2" id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{clienteController.cliente.nombre}" />
 								</div>
 								<div class="p-field">
-									<p:outputLabel for="txtApellido">Apellidos</p:outputLabel>
-									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{clienteController.cliente.apellidos}" style="width:100%" />
+									<p:outputLabel for="txtApellido" styleClass="mt-4">Apellidos</p:outputLabel>
+									<p:inputText styleClass="mt-2" id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{clienteController.cliente.apellidos}" style="width:100%" />
 								</div>
 								<div class="p-field">
-									<p:outputLabel for="txtCelular">Celular</p:outputLabel>
-									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{clienteController.cliente.celular}" />
+									<p:outputLabel for="txtCelular" styleClass="mt-4">Celular</p:outputLabel>
+									<p:inputText styleClass="mt-2" id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{clienteController.cliente.celular}" />
 								</div>
 								<div class="p-field">
-									<p:outputLabel for="txtEmail">Correo electrónico</p:outputLabel>
-									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{clienteController.cliente.email}" style="width:100%" />
+									<p:outputLabel for="txtEmail" styleClass="mt-4">Email</p:outputLabel>
+									<p:inputText styleClass="mt-2" id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{clienteController.cliente.email}" style="width:100%" />
 								</div>
-
-								<p:commandButton value="Guardar"
-									action="#{clienteController.actualizar()}"
-									ajax="false"
-									
-									styleClass="bg-primary my-4"/>
+								<div class="d-flex p-grid ui-fluid">
+									<p:commandButton value="Cancelar"
+										action="#{clienteController.actualizar()}"
+										ajax="false"
+										
+										styleClass="bg-gray w-auto px-2 my-4"/>
+									<p:commandButton value="Guardar"
+										action="#{clienteController.actualizar()}"
+										ajax="false"
+										
+										styleClass="bg-primary w-auto px-2 my-4"/>
+								</div>
+								
 							</div>
 						</h:form>
 				</div>

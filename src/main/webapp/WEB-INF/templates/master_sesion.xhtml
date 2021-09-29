@@ -28,15 +28,24 @@
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="bd-highlight">
 								<a class="navbar-brand" href="#"> <img
-									src="resources/img/logo.png" alt="" height="80" />
+									src="./resources/img/logo.png" alt="" height="80" />
+								</a>
+								<a class="navbar-brand" href="#"> <img
+									src="../../resources/img/logo.png" alt="" height="80" />
 								</a>
 							</div>
-							<div class="d-flex">
-								<a class="nav-link me-2" href="./formsRegister/registerPersonal.xhtml">Quiero ser Clean Expert</a> 
-								<a class="nav-link me-2" href="./formsRegister/registerClient">Regístrate</a> <a href="../index.xhtml">
-									<button type="button" class="btn btn-primary">Iniciar
-										sesión</button>
-								</a>
+							<div class="d-flex p-grid ui-fluid">
+									<p:commandLink action="#{usuarioController.pageRegisterPersonal()}" styleClass="nav-link me-2 text-primary">
+										<h:outputText value="Quiero ser Clean Expert"/>
+									</p:commandLink>
+									<p:commandLink action="#{usuarioController.pageRegisterClient()}" styleClass="nav-link me-2 text-primary">
+										<h:outputText value="Regístrate"/>
+									</p:commandLink>
+									<h:form>
+									<p:commandButton value="Iniciar sesión" action="#{usuarioController.pageLogin()}"
+										ajax="false"
+										styleClass="btn btn-primary bg-primary"/>
+										</h:form>
 							</div>
 						</div>
 					</div>

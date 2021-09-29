@@ -49,6 +49,10 @@ public class ClienteController implements Serializable {
 		return "/perfil/modifyClient?faces-redirect=true";
 	}
 	
+	public String accederDirecciones() {
+		return "/addresses/listAddresses?faces-redirect=true";
+	}
+	
 	public String actualizar () {
 		try {
 			sesion.setCliente(cService.actualizar(cliente));

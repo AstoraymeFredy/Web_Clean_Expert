@@ -106,23 +106,16 @@ public class UsuarioController implements Serializable {
 		return view;
 	}
 	
-	public String actualizar(int idTipoUsuario) {
-		String view = ""; 
-		try {
-			if(idTipoUsuario == 1) {
-				// controllerCliente.actualizar(cliente);
-			} else {
-				
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return view;
+	public String pageRegisterClient() {
+		return "/formsRegister/registerClient?faces-redirect=true";
 	}
 	
-	public String modificarCliente() {
-		// cliente = sesion.getCliente();
-		return "/perfil/modifyClient";
+	public String pageRegisterPersonal() {
+		return "/formsRegister/registerPersonal?faces-redirect=true";
+	}
+	
+	public String pageLogin () {
+		return "/index?faces-redirect=true";
 	}
 	
 	public String logout() {
