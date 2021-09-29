@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ServicioAmbiente")
-public class ServicioAmbiente implements Serializable  {
+@Table(name="DetalleReserva")
+public class DetalleReserva implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -29,20 +29,20 @@ public class ServicioAmbiente implements Serializable  {
 	private Ambiente ambiente;
 	
 	@ManyToOne
-	@JoinColumn(name="idServicio", nullable=false)
-	private Servicio servicio;
+	@JoinColumn(name="idReserva", nullable=false)
+	private Reserva reserva;
 
-	public ServicioAmbiente() {
+	public DetalleReserva() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ServicioAmbiente(int id, int cantidad, Ambiente ambiente, Servicio servicio) {
+	public DetalleReserva(int id, int cantidad, Ambiente ambiente, Reserva reserva) {
 		super();
 		this.id = id;
 		this.cantidad = cantidad;
 		this.ambiente = ambiente;
-		this.servicio = servicio;
+		this.reserva = reserva;
 	}
 
 	public int getId() {
@@ -69,14 +69,11 @@ public class ServicioAmbiente implements Serializable  {
 		this.ambiente = ambiente;
 	}
 
-	public Servicio getServicio() {
-		return servicio;
+	public Reserva getReserva() {
+		return reserva;
 	}
 
-	public void setServicio(Servicio servicio) {
-		this.servicio = servicio;
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
 	}
-	
-	
-	
 }
