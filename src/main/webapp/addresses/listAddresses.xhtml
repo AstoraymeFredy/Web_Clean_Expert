@@ -18,13 +18,23 @@
 			<p:panel styleClass="ui-panel">
 				<div class="p-2">
 					<h:form id="frm">
+						<p:growl id="men" />
+					
 						<div class="d-flex justify-content-between mb-5">
+							
+							
 							<h3 class="principal-title text-dark fw-bold">Listado de
 								direcciones</h3>
-							<p:button value="Nuevo" styleClass="bg-primary" action=""
-								ajax="false" />
+								
+									
+									<p:commandButton value="Nuevo" styleClass="bg-primary" action="#{propiedadController.nuevaPropiedad()}"
+									ajax="false" />
+							
+									
+								
+								
 						</div>
-						<p:growl id="men" />
+						
 						<p:dataTable id="datTabAddresses"
 							emptyMessage="No existen direcciones registradas" 
 							paginatorPosition="bottom" paginator="true" rows="10"
