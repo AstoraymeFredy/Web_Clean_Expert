@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
@@ -21,9 +22,13 @@ public class HorarioDaoImpl implements Serializable {
 	@Transactional
 	public Horario obtener(int idUsuario) throws Exception{
 		System.out.println("entrando dao");
-		Horario h = new Horario();
-		h = em.getReference(Horario.class, idUsuario);
+
+		Query query = em.createQuery("select h from Horario h where h.personalLimpieza.id_personal_limpieza = " + idUsuario, Horario.class);
+        Horario h= (Horario) query.getSingleResult();
+		
+	        //
 		System.out.println("saliendo dao");
+		System.out.println(h.getId_horario());
 		return h;
 	}
 
