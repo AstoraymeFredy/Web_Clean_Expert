@@ -12,6 +12,7 @@ import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.TipoUsuario;
 import pe.edu.upc.entity.Usuario;
+import pe.edu.upc.serviceimpl.ClienteServiceImpl;
 import pe.edu.upc.serviceimpl.UsuarioServiceImpl;
 import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
@@ -105,9 +106,16 @@ public class UsuarioController implements Serializable {
 		return view;
 	}
 	
-	public String actualizar(int idTipoUsuario) {
-		
-		return "";
+	public String pageRegisterClient() {
+		return "/formsRegister/registerClient?faces-redirect=true";
+	}
+	
+	public String pageRegisterPersonal() {
+		return "/formsRegister/registerPersonal?faces-redirect=true";
+	}
+	
+	public String pageLogin () {
+		return "/index?faces-redirect=true";
 	}
 	
 	public String logout() {

@@ -27,5 +27,9 @@ public class PersonalLimpiezaDaoImpl implements Serializable {
 		em.persist(personalLimpieza);
 	}
 	
-	
+	@Transactional
+	public PersonalLimpieza actualizar(PersonalLimpieza personalL)throws Exception {
+		em.merge(personalL);
+		return personalL;
+	}
 }

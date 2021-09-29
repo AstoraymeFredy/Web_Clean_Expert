@@ -21,5 +21,9 @@ public class PersonalLimpiezaServiceImpl implements Serializable {
 	public void registrar(PersonalLimpieza personalLimpieza) throws Exception {
 		plD.registrar(personalLimpieza);
 	}
+	
+	public PersonalLimpieza actualizar (PersonalLimpieza personalL) throws Exception {
+		return plD.actualizar(personalL);
+	}
 
 }

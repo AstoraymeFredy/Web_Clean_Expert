@@ -29,16 +29,15 @@
 			<div class="d-block mt-4">
 			<h:form>
 				<ul class="nav flex-column" id="nav_accordion">
-					<li class="nav-item nav-item-side rounded-1 mb-2 p-1">
-						<p:commandLink styleClass="nav-link bi bi-ui-checks-grid me-2" id="nonAjax" action="#{buttonView.buttonAction}" style="margin-right:20px;" ajax="false">
-				            <h:outputText value="Mis servicios"/>
-				        </p:commandLink>
+					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
+						class="nav-link" href="../service/list.xhtml"><i class="bi bi-person-fill me-2"></i>
+							Mis servicios </a>
 					</li>
 					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
 						class="nav-link" href="../perfil/viewPerfilPS.xhtml"><i class="bi bi-person-fill me-2"></i>
 							Mi perfil </a></li>
 					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
-						class="nav-link" href="#"><i
+						class="nav-link" href="../schedule/personalschedule.xhtml"><i
 							class="bi bi-calendar2-range-fill me-2"></i> Mi horario </a></li>
 				</ul>
 			</h:form>
