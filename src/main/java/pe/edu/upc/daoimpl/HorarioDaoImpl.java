@@ -18,20 +18,20 @@ public class HorarioDaoImpl implements Serializable {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-
-	public Horario obtener(int idUsuario) {
+	@Transactional
+	public Horario obtener(int idUsuario) throws Exception{
+		System.out.println("entrando dao");
 		Horario h = new Horario();
 		h = em.getReference(Horario.class, idUsuario);
+		System.out.println("saliendo dao");
 		return h;
 	}
 
 	@Transactional
-	public void registrar(Horario horario) {
+	public void registrar(Horario horario) throws Exception{
 		em.persist(horario);
 	}
-	
-	
-	
+	@Transactional
 	public List<Horario> findHorario() throws Exception{
 		List<Horario> horarios = new ArrayList<>();
 		TypedQuery<Horario> query = em.createQuery("SELECT h FROM Horario h", Horario.class);
@@ -40,7 +40,7 @@ public class HorarioDaoImpl implements Serializable {
 	}
 
 	@Transactional
-	public void actualizar(Horario horario) {
+	public void actualizar(Horario horario) throws Exception{
 		em.merge(horario);
 	}
 	

@@ -10,7 +10,7 @@
 </h:head>
 <body>
 
-	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
 		<ui:define name="pageTitle">
 	        Mi horario - Clean Expert
 	    </ui:define>
@@ -21,7 +21,7 @@
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Mi horario</h3>
 							<p:commandButton value="Guardar" styleClass="ui-button-success"
-							action="#{horarioController.prueba()}" ajax= "false"
+							 ajax= "false"
 							 />
 						</div>
 						<p:growl id="men" />
