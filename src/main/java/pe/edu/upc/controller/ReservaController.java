@@ -50,7 +50,7 @@ public class ReservaController implements Serializable {
 	
 	public void obtenerReservasPorPersonal(PersonalLimpieza personal) {
 		try {
-			listaPorCliente = rService.listarPorPersonal(personal.getId());
+			//listaPorCliente = rService.listarPorPersonal(personal.getId());
 		} catch(Exception e) {
 			//Message.messageError("Error al cargar las reservas de servicio");
 		}

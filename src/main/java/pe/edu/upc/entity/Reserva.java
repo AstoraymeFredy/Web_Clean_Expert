@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Reserva")
@@ -22,14 +24,14 @@ public class Reserva implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_reserva;
 	
-	@Column(name="fecha", nullable=false)
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
 	@Column(name="hora_inicio", nullable=false)
-	private Date hora_inicio;
+	private String hora_inicio;
 	
 	@Column(name="duracion", nullable=false)
 	private int duracion;
@@ -41,11 +43,11 @@ public class Reserva implements Serializable {
 	private String estado;
 	
 	@ManyToOne
-	@JoinColumn(name="idPersonalLimpieza", nullable=false)
+	@JoinColumn(name="id_personal_limpieza", nullable=false)
 	private PersonalLimpieza personalLimpieza;
 	
 	@ManyToOne
-	@JoinColumn(name="idPropiedad", nullable=false)
+	@JoinColumn(name="id_propiedad", nullable=false)
 	private Propiedad propiedad;
 
 	public Reserva() {
@@ -53,7 +55,7 @@ public class Reserva implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reserva(Long id_reserva, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
+	public Reserva(Long id_reserva, Date fecha, float precio, String hora_inicio, int duracion, boolean kit_limpieza_extra,
 			String estado, PersonalLimpieza personalLimpieza, Propiedad propiedad) {
 		super();
 		this.id_reserva = id_reserva;
@@ -91,11 +93,11 @@ public class Reserva implements Serializable {
 		this.precio = precio;
 	}
 
-	public Date getHora_inicio() {
+	public String getHora_inicio() {
 		return hora_inicio;
 	}
 
-	public void setHora_inicio(Date hora_inicio) {
+	public void setHora_inicio(String hora_inicio) {
 		this.hora_inicio = hora_inicio;
 	}
 
