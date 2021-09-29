@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -16,7 +17,7 @@ import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class UsuarioController implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -51,7 +52,6 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public String registrar (int idTipo) {
-		Message.messageInfo("entra");
 		String view = ""; 
 		try {
 			if(idTipo == 1) {
@@ -103,6 +103,11 @@ public class UsuarioController implements Serializable {
 		this.username = "";
 		this.password = "";
 		return view;
+	}
+	
+	public String actualizar(int idTipoUsuario) {
+		
+		return "";
 	}
 	
 	public String logout() {

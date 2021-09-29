@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+		<ui:define name="pageTitle">
+	        Mi perfil
+	    </ui:define>
+		<ui:define name="content-body">
+			<p:panel styleClass="ui-panel">
+				<div class="p-2">
+					<h:form id="frm">
+						<div class="d-flex justify-content-between mb-5">
+							<h3 class="principal-title text-dark fw-bold">Mi perfil</h3>
+							<p:button value="Ver direcciones" styleClass="bg-primary" action=""
+								ajax="false" />
+							<p:button value="Nuevo" styleClass="bg-primary" action=""
+								ajax="false" />
+						</div>
+						<p:growl id="men" />
+
+
+						<div class="ui-fluid">
+							<div class="p-field">
+								<p class="text-gray">Nombres</p>
+							</div>
+							<div class="p-field mt-3">
+								<p class="text-black">#{usuarioController.sesion.personalLimpieza.nombre} </p>
+							</div>
+
+							<div class="p-field mt-4">
+								<p class="text-gray">Apellidos</p>
+								
+							</div>
+							<div class="p-field mt-3">
+								<p class="text-black">#{usuarioController.sesion.personalLimpieza.apellidos}</p>
+							</div>
+							<div class="p-field mt-4">
+								<p class="text-gray">Celular</p>
+								
+							</div>
+							<div class="p-field mt-3">
+								<p class="text-black">#{usuarioController.sesion.personalLimpieza.celular}</p>
+							</div>
+							
+							<div class="p-field mt-4">
+								<p class="text-gray">Correo Electronico</p>
+								
+							</div>
+							<div class="p-field mt-3">
+								<p class="text-black">#{usuarioController.sesion.personalLimpieza.email}</p>
+							</div>
+							<div class="p-field mt-4">
+								<p class="text-gray">Especialidad</p>
+								
+							</div>
+							<div class="p-field mt-3">
+								<p class="text-black">#{usuarioController.sesion.personalLimpieza.descripcion}</p>
+							</div>
+							
+							
+						</div>
+
+					</h:form>
+				</div>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
