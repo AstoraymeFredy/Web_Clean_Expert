@@ -19,15 +19,18 @@ public class HorarioServiceImpl implements Serializable {
 	@Inject
 	private HorarioDaoImpl horariodaoimpl;
 	
-	public Horario obtener(int idUsuario) {
+	
+	
+	public Horario obtener(int idUsuario) throws Exception{
+		System.out.println("entrando service");
 		return horariodaoimpl.obtener(idUsuario);
 	}
 	
-	public void registrar(Horario horario) {
+	public void registrar(Horario horario)throws Exception {
 		horariodaoimpl.registrar(horario);
 	}
 	
-	public void actualizar(Horario horario) {
+	public void actualizar(Horario horario) throws Exception{
 		horariodaoimpl.actualizar(horario);
 	}
 	
