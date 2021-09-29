@@ -23,6 +23,7 @@
 								parámetros</h3>
 							
 						</div>
+						
 						<p:growl id="men" />
 						<p:dataTable id="datTabParameters"
 
@@ -43,10 +44,14 @@
 								<p:outputLabel value="#{parameter.valor}" />
 							</p:column>
 							
+							<p:column headerText="Unidad">
+								<p:outputLabel value="#{parameter.unidad}" />
+							</p:column>
+							
 							<p:column headerText="Acciones">
-								<p:commandButton type="button" value="Modificar" styleClass="ui-button-warning"
-								action="#{parametroController.editParameter()}"
-									ajax="false" />
+								<p:commandButton value="Modificar" styleClass="ui-button-warning"
+								action="#{parametroController.editParameter(parameter)}" 
+									 />
 							</p:column>
 						</p:dataTable>
 					</h:form>

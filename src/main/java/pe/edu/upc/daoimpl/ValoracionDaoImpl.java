@@ -9,17 +9,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.dao.IValoracionDao;
 import pe.edu.upc.entity.Valoracion;
 
-public class ValoracionDaoImpl implements IValoracionDao, Serializable {
+public class ValoracionDaoImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	@Override
+
 	public List<Valoracion> listar() {
 		List<Valoracion> lista = new ArrayList<Valoracion>();
 		Query q = em.createQuery("select v from Valoracion v");
@@ -28,7 +27,7 @@ public class ValoracionDaoImpl implements IValoracionDao, Serializable {
 	}
 
 	@Transactional
-	@Override
+
 	public void insertar(Valoracion valoracion) {
 		em.persist(valoracion);
 	}

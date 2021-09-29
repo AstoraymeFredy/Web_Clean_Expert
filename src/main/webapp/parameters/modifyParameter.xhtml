@@ -33,15 +33,25 @@
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtValor" value="Valor"/>
-									<p:inputNumber id="txtValor" required="true" minValue="0"
-										value="#{parametroController.parametro.valor}" decimalPlaces="0"/>
+									<p:inputNumber id="txtValor" required="true"
+										value="#{parametroController.parametro.valor}"/>
+								</div>
+								
+								<div class="field col-6">
+									<p:outputLabel for="txtUnidad" value="Unidad"/>
+									<p:inputText id="txtUnidad" required="true"
+										value="#{parametroController.parametro.unidad}"/>
 								</div>
 								
 							</div>
-								    <p:button value="Cancelar" styleClass="bg-secondary me-2"
-									action="" ajax="false" />
-								<p:button value="Guardar" styleClass="bg-primary" action=""
+								    <p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
+									action="#{parametroController.listadoParametros()}" 
+									immediate="true"
 									ajax="false" />
+									 
+								<p:commandButton value="Guardar" styleClass="bg-primary" 
+								action="#{parametroController.guardarParametro()}"
+								ajax="false" />
 						</p:panel>
 					</div>
 					<div class="ui-g-5  p-0">

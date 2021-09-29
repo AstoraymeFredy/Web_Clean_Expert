@@ -20,35 +20,45 @@ public class ParametroController  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private ParametroServiceImpl parametroService;
+	private ParametroServiceImpl parameterService;
 	
-	private Parametro parametro;
+	private Parametro parameter;
 	private List<Parametro> listaParametro;
 	
 	
 	@PostConstruct
-	public void init() {
-		
-		this.parametro = new Parametro();
+	public void init() {		
+		parameter = new Parametro();
 		this.listaParametro = new ArrayList<Parametro>();
 		getAllParameters();
 	}
 	
 	public void resetForm() {
-		this.parametro = new Parametro();
+		this.parameter = new Parametro();
 	}
 	
 	public void obtenerParametro()
 	{
-		parametro.getId_parametro();
+		parameter.getId_parametro();
 	}
 
+	public String listadoParametros()
+	{
+		System.out.println("hola");
+		return "/parameters/listParameters";
+	}
 	
-	public String editParameter () {
-		String view = "";
+	public String editParameter (Parametro parameter) {
+		this.setParametro(parameter);
+		
+		System.out.println("Entrando a metodo editar");
+		System.out.println("Id: " + parameter.getId_parametro());
+		System.out.println("Nombre: " + parameter.getNombre());
+		System.out.println("Valor: " + parameter.getValor());
+		String view = "";		
 		try {
-			if(this.getParametro() == parametro) {
-				parametro.setValor(view);
+			if(this.getParametro() != null) {
+				
 				view = "/parameters/modifyParameter";
 			}
 			else {
@@ -64,7 +74,7 @@ public class ParametroController  implements Serializable {
 	public void getAllParameters() {
 		try
 		{
-			listaParametro = parametroService.findAll();
+			listaParametro = parameterService.findAll();
 		}
 		catch(Exception e)
 		{
@@ -72,14 +82,19 @@ public class ParametroController  implements Serializable {
 		}
 	}
 	
+	
 	public String guardarParametro() {
+		System.out.println("guardar");
+		System.out.println("valor"+ parameter.getValor());
+		System.out.println("id" + this.parameter.getId_parametro());
 		String view = "";
 		try{
-			if(parametro.getId_parametro()!= 0) {
-				parametroService.editarParametro(parametro);
+			if(parameter.getId_parametro() >= 1) {
+				parameterService.editarParametro(parameter);
+				Message.messageInfo("Actualizado");
 			}
 		else{
-			parametroService.insertar(parametro);
+			parameterService.editarParametro(parameter);
 		}
 		this.getAllParameters();
 		resetForm();
@@ -99,11 +114,11 @@ public class ParametroController  implements Serializable {
 	}
 	
 	public Parametro getParametro() {
-		return parametro;
+		return parameter;
 	}
 	
-	public void setParametro(Parametro parametro) {
-		this.parametro = parametro;
+	public void setParametro(Parametro parameter) {
+		this.parameter = parameter;
 	}
 
 }

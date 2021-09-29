@@ -1,35 +1,38 @@
 package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.daoimpl.HorarioDaoImpl;
 import pe.edu.upc.entity.Horario;
-import pe.edu.upc.service.IHorarioService;
 
 @Named
 @RequestScoped
-public class HorarioServiceImpl implements IHorarioService, Serializable {
+public class HorarioServiceImpl implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IHorarioService hD;
+	private HorarioDaoImpl horariodaoimpl;
 	
-	@Override
 	public Horario obtener(int idUsuario) {
-		return hD.obtener(idUsuario);
+		return horariodaoimpl.obtener(idUsuario);
 	}
 	
-	@Override
 	public void registrar(Horario horario) {
-		hD.registrar(horario);
+		horariodaoimpl.registrar(horario);
 	}
 	
-	@Override
 	public void actualizar(Horario horario) {
-		hD.actualizar(horario);
+		horariodaoimpl.actualizar(horario);
+	}
+	
+	public List<Horario> findHorario() throws Exception{
+		return horariodaoimpl.findHorario();
 	}
 }
+

@@ -9,7 +9,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.Usuario;
-import pe.edu.upc.service.IHorarioService;
+import pe.edu.upc.serviceimpl.HorarioServiceImpl;
 
 @Named
 @RequestScoped
@@ -18,8 +18,10 @@ public class HorarioController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private IHorarioService hService;
+	private HorarioServiceImpl hService;
+	
 	private Horario horario;
+	
 	
 	@PostConstruct
 	public void init() {
