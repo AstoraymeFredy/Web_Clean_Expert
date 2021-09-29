@@ -68,7 +68,7 @@ public class PropiedadController implements Serializable {
 	public String nuevaPropiedad() {
 		try {
 			this.listaDistritos = dService.listar();
-			this.propiedad = new Propiedad ();
+			this.propiedad = new Propiedad();
 			Message.messageInfo("entro");
 		} 
 		catch (Exception e) {

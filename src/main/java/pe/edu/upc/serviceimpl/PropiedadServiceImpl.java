@@ -27,8 +27,10 @@ public class PropiedadServiceImpl implements Serializable {
 		prop.eliminar(idPropiedad);
 	}
 
-	public void insertar(Propiedad propiedad) throws Exception{
-		prop.insertar(propiedad);
+	public int insertar(Propiedad propiedad) throws Exception{
+		System.out.println("entra a servicio");
+
+		return prop.insertar(propiedad);
 	}
 	
 	public void actualizar(Propiedad propiedad) throws Exception{

@@ -36,8 +36,11 @@ public class PropiedadDaoImpl implements Serializable {
 	}
 	
 	@Transactional
-	public void insertar(Propiedad propiedad)throws Exception {
+	public int insertar(Propiedad propiedad)throws Exception {
+		System.out.println("entra a propiedad");
+
 		em.persist(propiedad);
+		return propiedad.getId();
 	}
 
 	
