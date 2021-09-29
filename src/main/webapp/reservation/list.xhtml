@@ -27,27 +27,34 @@
 						<p:growl id="men" />
 						<p:dataTable id="datTabReservations"
 							emptyMessage="No existen reservas registradas"
-							paginatorPosition="bottom" paginator="true" rows="10">
+							paginatorPosition="bottom" paginator="true" rows="10"
+							value="#{reservaController.listaPorCliente}" var="res">
 							<p:column headerText="#">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{res.id_reserva}" />
 							</p:column>
 							<p:column headerText="Fecha">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{res.fecha}">
+									<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+								</p:outputLabel>
 							</p:column>
 							<p:column headerText="Dirección">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{res.propiedad.direccion}" />
 							</p:column>
 							<p:column headerText="Distrito">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{res.propiedad.distrito.nombre}" />
 							</p:column>
 							<p:column headerText="Encargada(o)">
-								<p:outputLabel value="" />
+								<p:outputLabel
+									value="#{res.personalLimpieza.nombre} #{res.personalLimpieza.apellidos}" />
 							</p:column>
 							<p:column headerText="Precio">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{res.precio}" />
 							</p:column>
 							<p:column headerText="Acciones">
-								Aquí van los botones
+								<p:commandButton value="Ver" styleClass="ui-button-info me-2"
+									action="#{reservaController.obtenerReserva(res)}" />
+								<p:commandButton value="Calificar"
+									styleClass="ui-button-success" />
 							</p:column>
 						</p:dataTable>
 					</h:form>

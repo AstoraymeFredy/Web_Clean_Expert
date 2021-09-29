@@ -29,37 +29,37 @@ public class PropiedadController implements Serializable {
 	private PropiedadServiceImpl pService;
 	private Propiedad propiedad;
 	List<Propiedad> listaPropiedades;
-	
+
 	@Inject
 	private DistritoServiceImpl dService;
 	private Distrito distrito;
 	List<Distrito> listaDistritos;
-	
+
 	private Cliente cliente;
-	
+
 	@Inject
 	private Sesion sesion;
-	
+
 	@PostConstruct
 	public void init() {
-		
+
 		this.listaDistritos = new ArrayList<Distrito>();
 		this.distrito = new Distrito();
 		this.listarDistritos();
 		this.cliente= new Cliente();
-		
+
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
-	
-		this.listar();		
+
+		this.listar();
 	}
-	
+
 	/*
 	public String nuevaPropiedad () {
 		this.setPropiedad(new Propiedad());
 		return "/propiedad";
 	}*/
-	
+
 	public String listaProp()
 	{
 			return  "/addresses/listAddresses?faces-redirect=true";
@@ -69,14 +69,14 @@ public class PropiedadController implements Serializable {
 	public String nuevaPropiedad() {
 		try {
 			this.listaDistritos = dService.listar();
-			this.propiedad = new Propiedad ();
-		} 
+			this.propiedad = new Propiedad();
+		}
 		catch (Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
 		return "/addresses/property?faces-redirect=true";
 	}
-	
+
 	public String guardar_I_M() {
 		String view = "";
 		try {
@@ -84,7 +84,7 @@ public class PropiedadController implements Serializable {
 				Message.messageInfo("por actualizar");
 				propiedad.setDistrito(distrito);
 				pService.actualizar(propiedad);
-			
+
 				Message.messageInfo("actualizado");
 			}
 			else {
@@ -93,11 +93,11 @@ public class PropiedadController implements Serializable {
 				propiedad.setDistrito(distrito);
 				propiedad.setCliente(sesion.getCliente());
 				pService.insertar(propiedad);
-			
+
 				Message.messageInfo("Registrado");
 			}
-			
-			
+
+
 			this.listar();
 			this.propiedad = new Propiedad ();
 			view = "/addresses/listAddresses?faces-redirect=true";
@@ -108,8 +108,8 @@ public class PropiedadController implements Serializable {
 		Message.messageInfo("salida");
 		return view;
 	}
-	
-	
+
+
 	public String editProperty(Propiedad p) {
 		String view = "";
 		try {
@@ -124,32 +124,32 @@ public class PropiedadController implements Serializable {
 		}
 		return view;
 	}
-	
+
 	//Error :WFLYJPA0060: Transaction is required to perform this operation (either use a transaction or extended persistence context)
-	
-	/*	
+
+	/*
 	public void actualizar() {
 		pService.actualizar(propiedad);
 		limpiar();
 		this.listar(propiedad.getCliente());
 	}
 	*/
-	
+
 	public void limpiar() {
 		this.init();
 	}
-	
+
 	public void listar () {
-		
+
 		try {
 		listaPropiedades = pService.listar(sesion.getCliente().getId());
-		
+
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
 	}
-	
+
 	public void listarDistritos () {
 		try {
 			listaDistritos = dService.listar();
@@ -158,7 +158,7 @@ public class PropiedadController implements Serializable {
 			Message.messageError("Error :" + e.getMessage());
 		}
 	}
-	
+
 	public String eliminar (Propiedad p) {
 		String view = "";
 		try {
@@ -173,7 +173,7 @@ public class PropiedadController implements Serializable {
 		}
 		return view;
 	}
-	
+
 
 	public Propiedad getPropiedad() {
 		return propiedad;
@@ -214,7 +214,7 @@ public class PropiedadController implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
-	
+
+
+
 }

@@ -26,14 +26,9 @@
                         
                         <p:growl id="men" />
                         <p:dataTable id="datTabParameters"
-
                             value="#{parametroController.listaParametro}" var="parameter"
-                            rowKey="#{parameter.id_parametro}"
-                    
-                            paginatorPosition="bottom" paginator="true" rows="3">
-                            
-                            
-                            
+                            rowKey="#{parameter.id_parametro}"                    
+                            paginatorPosition="bottom" paginator="true" rows="3">                        
                             <p:column headerText="#">
                                 <p:outputLabel value="#{parameter.id_parametro}" />
                             </p:column>
