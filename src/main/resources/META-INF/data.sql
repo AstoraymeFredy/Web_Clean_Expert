@@ -1,3 +1,6 @@
+
+
+
 INSERT INTO tipousuario (nombre) VALUES ('Cliente');
 INSERT INTO tipousuario (nombre) VALUES ('Personal de limpieza');
 
@@ -70,3 +73,8 @@ INSERT INTO distrito (nombre) VALUES ('Villa María del Triunfo');
 INSERT INTO parametro (nombre,valor) VALUES ('Tiempo de limpieza','45 minutos');
 INSERT INTO parametro (nombre,valor) VALUES ('Costo de promedio','15 soles/hora');
 INSERT INTO parametro (nombre,valor) VALUES ('Costo kit','50 soles/hora');
+
+
+INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av univeritaria',2,3);
+INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av la marina',1,5);
+INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av tomas valle',1,6);
