@@ -70,9 +70,9 @@ INSERT INTO distrito (nombre) VALUES ('Villa El Salvador');
 INSERT INTO distrito (nombre) VALUES ('Villa María del Triunfo');
 
 
-INSERT INTO parametro (nombre,valor) VALUES ('Tiempo de limpieza','45 minutos');
-INSERT INTO parametro (nombre,valor) VALUES ('Costo de promedio','15 soles/hora');
-INSERT INTO parametro (nombre,valor) VALUES ('Costo kit','50 soles/hora');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Tiempo de limpieza',45,'minutos');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo de promedio',15,'soles/hora');
+INSERT INTO parametro (nombre,valor,unidad) VALUES ('Costo kit',50,'soles/hora');
 
 
 INSERT INTO propiedad (direccion,idcliente,iddistrito) VALUES ('av univeritaria',2,3);
