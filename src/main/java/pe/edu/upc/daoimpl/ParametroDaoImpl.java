@@ -39,10 +39,5 @@ public class ParametroDaoImpl implements Serializable  {
 		p = em.getReference(Parametro.class, idParametro);
 		return p;
 	}
-
-	
-	
-	
-
 	
 }

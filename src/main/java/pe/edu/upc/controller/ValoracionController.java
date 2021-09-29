@@ -10,7 +10,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Valoracion;
-import pe.edu.upc.service.IValoracionService;
+import pe.edu.upc.serviceimpl.ValoracionServiceImpl;
+
 
 @Named
 @RequestScoped
@@ -19,7 +20,7 @@ public class ValoracionController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IValoracionService vService;
+	private ValoracionServiceImpl vService;
 	private Valoracion valoracion;
 	List<Valoracion> listaValoraciones;
 	
