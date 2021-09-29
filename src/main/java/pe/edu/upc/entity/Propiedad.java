@@ -19,7 +19,7 @@ public class Propiedad implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private int idPropiedad;
 	
 	@Column(name="direccion", nullable=false, length=150)
 	private String direccion;
@@ -37,20 +37,20 @@ public class Propiedad implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Propiedad(int id, String direccion, Cliente cliente, Distrito distrito) {
+	public Propiedad(int idPropiedad, String direccion, Cliente cliente, Distrito distrito) {
 		super();
-		this.id = id;
+		this.idPropiedad = idPropiedad;
 		this.direccion = direccion;
 		this.cliente = cliente;
 		this.distrito = distrito;
 	}
 
 	public int getId() {
-		return id;
+		return idPropiedad;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int idPropiedad) {
+		this.idPropiedad = idPropiedad;
 	}
 
 	public String getDireccion() {

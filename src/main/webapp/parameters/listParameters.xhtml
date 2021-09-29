@@ -23,30 +23,35 @@
 								parámetros</h3>
 							
 						</div>
+						
 						<p:growl id="men" />
 						<p:dataTable id="datTabParameters"
 
-							paginatorPosition="bottom" paginator="true" rows="10">
+							value="#{parametroController.listaParametro}" var="parameter"
+							rowKey="#{parameter.id_parametro}"
+					
+							paginatorPosition="bottom" paginator="true" rows="3">
+							
+							
+							
 							<p:column headerText="#">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{parameter.id_parametro}" />
 							</p:column>
 							<p:column headerText="Nombre">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{parameter.nombre}" />
 							</p:column>
 							<p:column headerText="Valor">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{parameter.valor}" />
 							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
+							
+							<p:column headerText="Unidad">
+								<p:outputLabel value="#{parameter.unidad}" />
 							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
-							</p:column>
-							<p:column headerText="">
-								<p:outputLabel value="" />
-							</p:column>
+							
 							<p:column headerText="Acciones">
-								
+								<p:commandButton value="Modificar" styleClass="ui-button-warning"
+								action="#{parametroController.editParameter(parameter)}" 
+									 />
 							</p:column>
 						</p:dataTable>
 					</h:form>

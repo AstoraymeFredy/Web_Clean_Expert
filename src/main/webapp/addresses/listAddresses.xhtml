@@ -10,36 +10,36 @@
 </h:head>
 <body>
 
-	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
 		<ui:define name="pageTitle">
-	        Mi horario - Clean Expert
+	        Listado de direcciones - Clean Expert
 	    </ui:define>
 		<ui:define name="content-body">
 			<p:panel styleClass="ui-panel">
 				<div class="p-2">
 					<h:form id="frm">
 						<div class="d-flex justify-content-between mb-5">
-							<h3 class="principal-title text-dark fw-bold">Mi horario</h3>
-							
+							<h3 class="principal-title text-dark fw-bold">Listado de
+								direcciones</h3>
+							<p:button value="Nuevo" styleClass="bg-primary" action=""
+								ajax="false" />
 						</div>
 						<p:growl id="men" />
-						<p:dataTable id="datTabSchedule"
-							paginatorPosition="bottom" paginator="true" rows="7">
+						<p:dataTable id="datTabAddresses"
+							emptyMessage="No existen direcciones registradas" 
+							paginatorPosition="bottom" paginator="true" rows="10"
+							value="#{propiedadController.listaPropiedades}" var="propi">
 							<p:column headerText="#">
-								<p:outputLabel value="" />
+								<p:outputLabel value="#{propi.id}" />
 							</p:column>
-							<p:column headerText="Día">
-								<p:outputLabel value="" />
+							<p:column headerText="Distrito">
+								<p:outputLabel value="#{propi.distrito.nombre}" />
 							</p:column>
-						
-							<p:column headerText="Disponibilidad">
-								<p:outputLabel value="" />
+							<p:column headerText="Dirección">
+								<p:outputLabel value="#{propi.direccion}" />
 							</p:column>
-
 							<p:column headerText="Acciones">
-							<p:commandButton value="Cambiar" styleClass="ui-button-warning"
-								action="#{parametroController.()}"
-							/>	
+								aqui van botones
 							</p:column>
 						</p:dataTable>
 					</h:form>
@@ -50,4 +50,3 @@
 
 </body>
 </html>
-

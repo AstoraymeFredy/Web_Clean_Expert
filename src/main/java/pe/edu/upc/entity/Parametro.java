@@ -23,17 +23,29 @@ public class Parametro implements Serializable{
 	private String nombre;
 	
 	@Column(name="valor", nullable=false, length=50)
-	private String valor;
+	private int valor;
+	
+	@Column(name="unidad", nullable=false, length=50)
+	private String unidad;
+
+	public String getUnidad() {
+		return unidad;
+	}
+
+	public void setUnidad(String unidad) {
+		this.unidad = unidad;
+	}
 
 	public Parametro() {
 		super();
 	}
 
-	public Parametro(int id_parametro, String nombre, String valor) {
+	public Parametro(int id_parametro, String nombre, int valor, String unidad) {
 		super();
 		this.id_parametro = id_parametro;
 		this.nombre = nombre;
 		this.valor = valor;
+		this.unidad= unidad;
 	}
 
 	public int getId_parametro() {
@@ -52,11 +64,11 @@ public class Parametro implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public String getValor() {
+	public int getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(int valor) {
 		this.valor = valor;
 	}
 	

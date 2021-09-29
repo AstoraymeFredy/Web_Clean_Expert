@@ -6,25 +6,23 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
-import pe.edu.upc.dao.IDistritoDao;
 import pe.edu.upc.entity.Distrito;
 
-public class IDistritoDaoImpl implements IDistritoDao, Serializable {
+public class IDistritoDaoImpl implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Distrito> listar() {
-		List<Distrito> lista = new ArrayList<Distrito>();
-		Query q = em.createQuery("select d from Distrito d");
-		lista = (List<Distrito>) q.getResultList();
-		return lista;
+	
+	public List<Distrito> listarDistritos() throws Exception{
+		List <Distrito> distritos=new ArrayList<>();
+		TypedQuery<Distrito> query=em.createQuery("SELECT d FROM Distrito d", Distrito.class);
+		distritos=query.getResultList();
+		return distritos;
+		
 	}
 	
 }

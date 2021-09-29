@@ -5,71 +5,150 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.Distrito;
 import pe.edu.upc.entity.Propiedad;
-import pe.edu.upc.service.IDistritoService;
-import pe.edu.upc.service.IPropiedadService;
+import pe.edu.upc.serviceimpl.DistritoServiceImpl;
+import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
+import pe.edu.upc.util.Message;
+import pe.edu.upc.util.Sesion;
 
+
+@Named
+@RequestScoped
 public class PropiedadController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private IPropiedadService pService;
+	private PropiedadServiceImpl pService;
 	private Propiedad propiedad;
 	List<Propiedad> listaPropiedades;
 	
 	@Inject
-	private IDistritoService dService;
+	private DistritoServiceImpl dService;
 	private Distrito distrito;
 	List<Distrito> listaDistritos;
 	
+	private Cliente cliente;
+	
+	@Inject
+	private Sesion sesion;
+	
 	@PostConstruct
 	public void init() {
+		
 		this.listaDistritos = new ArrayList<Distrito>();
 		this.distrito = new Distrito();
 		this.listarDistritos();
+		this.cliente= new Cliente();
 		
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
-		this.listar(this.propiedad.getCliente());
+	
+		this.listar();
+		
+		
 	}
 	
+	//Error :org.hibernate.QueryException: could not resolve property: 
+		//idcliente of: pe.edu.upc.entity.Propiedad [FROM pe.edu.upc.entity.Propiedad p WHERE p.idcliente LIKE ?1]
+	
+	
+	
+	
+	
+	/*
 	public String nuevaPropiedad () {
 		this.setPropiedad(new Propiedad());
-		return "propiedad.xhtml";
+		return "/propiedad";
+	}*/
+	
+	public String carga()
+	{
+		this.init();
+			return  "../addresses/listAddresses.xhtml";
+	}
+
+
+	public String nuevaPropiedad() {
+		try {
+			this.listaDistritos = dService.listar();
+			this.propiedad = new Propiedad ();
+		} 
+		catch (Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return "/addresses/propiedad";
 	}
 	
-	public void insertar() {
-		pService.insertar(propiedad);
-		limpiar();
-		this.listar(propiedad.getCliente());
+	public String insertar() {
+		String view = "";
+		try {
+			propiedad.setDistrito(distrito);
+			pService.insertar(propiedad);
+			
+			Message.messageInfo("Registro insertado correctamente");
+			this.listar();
+			this.propiedad = new Propiedad ();
+			view = "/addresses/listAddresses";
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return view;
 	}
 	
+	/*	
 	public void actualizar() {
 		pService.actualizar(propiedad);
 		limpiar();
 		this.listar(propiedad.getCliente());
 	}
+	*/
 	
 	public void limpiar() {
 		this.init();
 	}
 	
-	public void listar (Cliente cliente) {
-		listaPropiedades = pService.listar(cliente.getId());
+	public void listar () {
+		
+		try {
+		listaPropiedades = pService.listar(sesion.getCliente().getId());
+		
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
 	}
 	
 	public void listarDistritos () {
-		listaDistritos = dService.listar();
+		try {
+			listaDistritos = dService.listar();
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
 	}
 	
-	public void eliminar (Cliente cliente) {
-		pService.eliminar(cliente.getId());
-		this.listar(cliente);
+	public String eliminar () {
+		String view = "";
+		try {
+			pService.eliminar(cliente.getId());
+			Message.messageInfo("Registro Eliminado correctamente");
+			this.listar();
+			view = "/addresses/listAddresses";
+		}
+		catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
+		return view;
 	}
+	
+	
 
 	public Propiedad getPropiedad() {
 		return propiedad;
@@ -101,6 +180,14 @@ public class PropiedadController implements Serializable {
 
 	public void setListaDistritos(List<Distrito> listaDistritos) {
 		this.listaDistritos = listaDistritos;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	
