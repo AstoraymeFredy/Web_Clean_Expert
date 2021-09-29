@@ -17,12 +17,12 @@ public class ParametroDaoImpl implements Serializable  {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	public int insertar(Parametro parametro) throws Exception {
+	public Long insertar(Parametro parametro) throws Exception {
 		em.persist(parametro);
 		return parametro.getId_parametro();
 	}
 	
-	public int editarParametro(Parametro parametro) {
+	public Long editarParametro(Parametro parametro) throws Exception{
 		em.merge(parametro);
 		return parametro.getId_parametro();
 	}

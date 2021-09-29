@@ -17,7 +17,7 @@ public class Parametro implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id_parametro;
+	private Long id_parametro;
 	
 	@Column(name="nombre", nullable=false, length=50)
 	private String nombre;
@@ -40,7 +40,7 @@ public class Parametro implements Serializable{
 		super();
 	}
 
-	public Parametro(int id_parametro, String nombre, int valor, String unidad) {
+	public Parametro(Long id_parametro, String nombre, int valor, String unidad) {
 		super();
 		this.id_parametro = id_parametro;
 		this.nombre = nombre;
@@ -48,11 +48,11 @@ public class Parametro implements Serializable{
 		this.unidad= unidad;
 	}
 
-	public int getId_parametro() {
+	public Long getId_parametro() {
 		return id_parametro;
 	}
 
-	public void setId_parametro(int id_parametro) {
+	public void setId_parametro(Long id_parametro) {
 		this.id_parametro = id_parametro;
 	}
 

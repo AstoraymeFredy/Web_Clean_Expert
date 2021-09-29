@@ -19,15 +19,16 @@ public class ParametroServiceImpl implements Serializable {
 	private ParametroDaoImpl parametroDaoImpl ;
 	
 	@Transactional
-	public int insertar(Parametro parametro) throws Exception{
+	public Long insertar(Parametro parametro) throws Exception{
 		return parametroDaoImpl.insertar(parametro);
 	}
 	
-	public Parametro obtenerParametro(int idParametro) {
-		return obtenerParametro(idParametro);
+	public Parametro obtenerParametro(int idParametro) throws Exception {
+		return parametroDaoImpl.obtenerParametro(idParametro);
 	}
-
-	public int editarParametro(Parametro parametro) {
+	
+	@Transactional
+	public Long editarParametro(Parametro parametro) throws Exception {
 		return parametroDaoImpl.editarParametro(parametro);
 	}
 	
