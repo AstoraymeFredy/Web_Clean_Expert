@@ -39,8 +39,8 @@ public class PropiedadDaoImpl implements Serializable {
 	public void insertar(Propiedad propiedad)throws Exception {
 		em.persist(propiedad);
 	}
-
 	
+	@Transactional
 	public void actualizar(Propiedad propiedad)throws Exception {
 		em.merge(propiedad);
 	}
