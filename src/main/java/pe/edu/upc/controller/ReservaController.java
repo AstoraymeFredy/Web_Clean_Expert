@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.event.SelectEvent;
-
-import pe.edu.upc.entity.Cliente;
-import pe.edu.upc.entity.PersonalLimpieza;
+import pe.edu.upc.entity.DetalleReserva;
 import pe.edu.upc.entity.Reserva;
+import pe.edu.upc.serviceimpl.DetalleReservaServiceImpl;
 import pe.edu.upc.serviceimpl.ReservaServiceImpl;
+import pe.edu.upc.util.Message;
+import pe.edu.upc.util.Sesion;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class ReservaController implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -26,10 +26,15 @@ public class ReservaController implements Serializable {
 	private ReservaServiceImpl rService;
 	private Reserva reserva;
 	
-	private Reserva reservaSeleccionada;
+	@Inject
+	private DetalleReservaServiceImpl dService;
+	
+	@Inject
+	private Sesion sesion;
 	
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
+	private List<DetalleReserva> listaDetalleReserva;
 	
 	@PostConstruct
 	public void init() {
@@ -38,21 +43,44 @@ public class ReservaController implements Serializable {
 		
 		this.listaPorCliente = new ArrayList<Reserva>();
 		this.listaPorPersonal = new ArrayList<Reserva>();
+		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
+		
+		this.obtenerReservasPorCliente();	
 	}
 	
-	public void obtenerReservasPorCliente(Cliente cliente) {
+	public void obtenerReservasPorCliente() {
 		try {
-			listaPorCliente = rService.listarPorCliente(cliente.getId());
+			listaPorCliente = rService.listarPorCliente(sesion.getCliente().getId());
 		} catch(Exception e) {
-			//Message.messageError("Error al cargar las reservas de servicio");
+			Message.messageError("Error :" + e.getMessage());
 		}
 	}
 	
-	public void obtenerReservasPorPersonal(PersonalLimpieza personal) {
+	public void obtenerReserva2(int idReserva) {
 		try {
-			//listaPorCliente = rService.listarPorPersonal(personal.getId());
+			reserva = rService.obtenerReserva(idReserva);
 		} catch(Exception e) {
-			//Message.messageError("Error al cargar las reservas de servicio");
+			Message.messageError("Error :" + e.getMessage());
+		}
+	}
+	
+	public String obtenerReserva(Reserva reserva) {
+		String view = "";
+		try {
+			this.reserva = reserva;
+			listaDetalleReserva = dService.listarDetalleReserva(reserva.getId_reserva());
+			view = "/reservation/view?faces-redirect=true";
+		} catch(Exception e) {
+			Message.messageError("Error en reserva:" + e.getMessage());
+		}
+		return view;
+	}
+	
+	public void obtenerReservasPorPersonal() {
+		try {
+			listaPorCliente = rService.listarPorPersonal(sesion.getPersonalLimpieza().getId_personal_limpieza());
+		} catch(Exception e) {
+			Message.messageError("Error :" + e.getMessage());
 		}
 	}
 	
@@ -68,12 +96,7 @@ public class ReservaController implements Serializable {
 	public String editarReserva() {
 		String view = "";
 		try {
-			if(this.reservaSeleccionada != null) {
-				this.reserva = reservaSeleccionada;
-				view = "/reservation/update";
-			} else {
-				//Message.messageError("Debe seleccionar una reserva");
-			}
+		
 		} catch (Exception e) {
 			   //Message.messageError("Error en producto " + e.getMessage());
 		}
@@ -112,9 +135,7 @@ public class ReservaController implements Serializable {
 		return view;
 	}
 	
-	public void reservaSeleccionada(SelectEvent e) {
-		this.reservaSeleccionada = (Reserva)e.getObject();
-	}
+
 
 	public Reserva getReserva() {
 		return reserva;
@@ -122,14 +143,6 @@ public class ReservaController implements Serializable {
 
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
-	}
-
-	public Reserva getReservaSeleccionada() {
-		return reservaSeleccionada;
-	}
-
-	public void setReservaSeleccionada(Reserva reservaSeleccionada) {
-		this.reservaSeleccionada = reservaSeleccionada;
 	}
 
 	public List<Reserva> getListaPorCliente() {
@@ -146,6 +159,15 @@ public class ReservaController implements Serializable {
 
 	public void setListaPorPersonal(List<Reserva> listaPorPersonal) {
 		this.listaPorPersonal = listaPorPersonal;
+	}
+
+	public List<DetalleReserva> getListaDetalleReserva() {
+		return listaDetalleReserva;
+	}
+
+	public void setListaDetalleReserva(List<DetalleReserva> listaDetalleReserva) {
+		this.listaDetalleReserva = listaDetalleReserva;
 	}	
+	
 	
 }

@@ -42,7 +42,7 @@ public class ReservaDaoImpl implements Serializable {
 	
 	public List<Reserva> listarPorCliente(int idCliente) throws Exception{
 		List<Reserva> lista = new ArrayList<Reserva>();
-		TypedQuery<Reserva> query =em.createQuery("select r from Reserva r where r.cliente.id = ?1", Reserva.class);
+		TypedQuery<Reserva> query =em.createQuery("select r from Reserva r where r.propiedad.cliente.id_cliente = ?1", Reserva.class);
 		query.setParameter(1, idCliente);
 		lista = query.getResultList();
 		return lista;

@@ -32,6 +32,22 @@ public class Ambiente implements Serializable {
 		this.idAmbiente = idAmbiente;
 		this.nombre = nombre;
 	}
+
+	public int getIdAmbiente() {
+		return idAmbiente;
+	}
+
+	public void setIdAmbiente(int idAmbiente) {
+		this.idAmbiente = idAmbiente;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	
 	
 		
