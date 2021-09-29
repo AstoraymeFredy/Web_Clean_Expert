@@ -23,8 +23,8 @@
 			</div>
 			<div class="d-block text-center mt-4">
 				<img src="../resources/img/cliente.png" alt="" height="128" />
-				<p class="text-white mb-1">#{usuarioController.cliente.nombre} #{usuarioController.cliente.apellidos}</p>
-				<p class="text-white">#{usuarioController.cliente.email}</p>
+				<p class="text-white mb-1">#{usuarioController.sesion.cliente.nombre} #{usuarioController.sesion.cliente.apellidos}</p>
+				<p class="text-white">#{usuarioController.sesion.cliente.email}</p>
 			</div>
 			<div class="d-block mt-4">
 				<ul class="nav flex-column" id="nav_accordion">
@@ -36,7 +36,7 @@
 							Mi perfil </a></li>
 							
 					<li class="nav-item nav-item-side rounded-1 mb-2 p-1"><a
-						class="nav-link" href="addresses/listAddresses.xhtml"><i class="bi bi-map-fill me-2" ></i>
+						class="nav-link" href="#{propiedadController.carga()}"><i class="bi bi-map-fill me-2"></i>
 							Mis direcciones </a></li>
 							
 				</ul>

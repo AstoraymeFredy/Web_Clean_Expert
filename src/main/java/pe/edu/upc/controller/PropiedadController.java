@@ -15,6 +15,7 @@ import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.serviceimpl.DistritoServiceImpl;
 import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
 import pe.edu.upc.util.Message;
+import pe.edu.upc.util.Sesion;
 
 
 @Named
@@ -34,18 +35,22 @@ public class PropiedadController implements Serializable {
 	
 	private Cliente cliente;
 	
+	@Inject
+	private Sesion sesion;
+	
 	@PostConstruct
 	public void init() {
-		Message.messageInfo("Registro 3");
+		
 		this.listaDistritos = new ArrayList<Distrito>();
 		this.distrito = new Distrito();
 		this.listarDistritos();
 		this.cliente= new Cliente();
-		Message.messageInfo("Registro 2");
+		
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
-		//this.listar();
-		Message.messageInfo("Registro 1");
+	
+		this.listar();
+		
 		
 	}
 	
@@ -62,10 +67,10 @@ public class PropiedadController implements Serializable {
 		return "/propiedad";
 	}*/
 	
-	public void carga()
+	public String carga()
 	{
-		this.listar();
-				
+		this.init();
+			return  "../addresses/listAddresses.xhtml";
 	}
 
 
@@ -110,10 +115,10 @@ public class PropiedadController implements Serializable {
 	}
 	
 	public void listar () {
-		Message.messageInfo("ga");
+		
 		try {
-		listaPropiedades = pService.listar(1);
-		Message.messageInfo("1");
+		listaPropiedades = pService.listar(sesion.getCliente().getId());
+		
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
