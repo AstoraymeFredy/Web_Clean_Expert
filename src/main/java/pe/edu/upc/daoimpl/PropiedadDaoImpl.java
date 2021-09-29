@@ -42,8 +42,8 @@ public class PropiedadDaoImpl implements Serializable {
 		em.persist(propiedad);
 		return propiedad.getId();
 	}
-
 	
+	@Transactional
 	public void actualizar(Propiedad propiedad)throws Exception {
 		em.merge(propiedad);
 	}

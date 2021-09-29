@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
+		<ui:define name="pageTitle">
+	        Modificar usuario - Clean Expert
+	    </ui:define>
+		<ui:define name="content-body">
+			<p:panel styleClass="ui-panel">
+				<div class="p-2">
+					<h:form>
+							<p:growl id="men" />
+							 <h1 class="principal-title text-dark fs-2">
+	                            Modificar perfil                       
+	                        </h1>
+							<div class="ui-fluid">
+								<div class="p-field">
+									<p:outputLabel for="txtNombre">Nombres</p:outputLabel>
+									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{usuarioController.cliente.nombre}" />
+								</div>
+								<div class="p-field">
+									<p:outputLabel for="txtApellido">Apellidos</p:outputLabel>
+									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{usuarioController.cliente.apellidos}" style="width:100%" />
+								</div>
+								<div class="p-field">
+									<p:outputLabel for="txtCelular">Celular</p:outputLabel>
+									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{usuarioController.cliente.celular}" />
+								</div>
+								<div class="p-field">
+									<p:outputLabel for="txtEmail">Correo electrónico</p:outputLabel>
+									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{usuarioController.cliente.email}" style="width:100%" />
+								</div>
+
+								<p:commandButton value="Guardar"
+									action="#{usuarioController.actualizar(1)}"
+									ajax="false"
+									
+									styleClass="bg-primary my-4"/>
+							</div>
+						</h:form>
+				</div>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
