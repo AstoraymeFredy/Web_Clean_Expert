@@ -8,7 +8,6 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import pe.edu.upc.entity.Cliente;
-
 public class ClienteDaoImpl implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
@@ -26,6 +25,12 @@ public class ClienteDaoImpl implements Serializable  {
 	@Transactional
 	public void registrar(Cliente cliente) throws Exception {
 		em.persist(cliente);
+	}
+	
+	@Transactional
+	public Cliente actualizar(Cliente cliente)throws Exception {
+		em.merge(cliente);
+		return cliente;
 	}
 	
 }

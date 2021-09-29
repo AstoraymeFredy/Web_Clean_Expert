@@ -22,7 +22,7 @@
 							<h3 class="principal-title text-dark fw-bold">Mi perfil</h3>
 							<p:button value="Ver direcciones" styleClass="bg-primary" action=""
 								ajax="false" />
-							<p:button value="Nuevo" styleClass="bg-primary" action=""
+							<p:commandButton value="Modificar" styleClass="bg-primary" action="#{clienteController.modificarCliente()}"
 								ajax="false" />
 						</div>
 						<p:growl id="men" />
@@ -33,7 +33,7 @@
 								<p class="text-gray">Nombres</p>
 							</div>
 							<div class="p-field mt-3">
-								<p class="text-black">#{usuarioController.sesion.cliente.nombre} </p>
+								<p class="text-black">#{clienteController.cliente.nombre} </p>
 							</div>
 
 							<div class="p-field mt-4">
@@ -41,14 +41,14 @@
 								
 							</div>
 							<div class="p-field mt-3">
-								<p class="text-black">#{usuarioController.sesion.cliente.apellidos}</p>
+								<p class="text-black">#{clienteController.cliente.apellidos}</p>
 							</div>
 							<div class="p-field mt-4">
 								<p class="text-gray">Celular</p>
 								
 							</div>
 							<div class="p-field mt-3">
-								<p class="text-black">#{usuarioController.sesion.cliente.celular}</p>
+								<p class="text-black">#{clienteController.cliente.celular}</p>
 							</div>
 							
 							<div class="p-field mt-4">
@@ -56,7 +56,7 @@
 								
 							</div>
 							<div class="p-field mt-3">
-								<p class="text-black">#{usuarioController.sesion.cliente.email}</p>
+								<p class="text-black">#{clienteController.cliente.email}</p>
 							</div>
 							
 						</div>

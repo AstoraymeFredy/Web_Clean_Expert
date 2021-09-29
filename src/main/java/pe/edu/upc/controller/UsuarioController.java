@@ -12,6 +12,7 @@ import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.TipoUsuario;
 import pe.edu.upc.entity.Usuario;
+import pe.edu.upc.serviceimpl.ClienteServiceImpl;
 import pe.edu.upc.serviceimpl.UsuarioServiceImpl;
 import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
@@ -106,8 +107,22 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public String actualizar(int idTipoUsuario) {
-		
-		return "";
+		String view = ""; 
+		try {
+			if(idTipoUsuario == 1) {
+				// controllerCliente.actualizar(cliente);
+			} else {
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return view;
+	}
+	
+	public String modificarCliente() {
+		// cliente = sesion.getCliente();
+		return "/perfil/modifyClient";
 	}
 	
 	public String logout() {
