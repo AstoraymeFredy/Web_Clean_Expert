@@ -12,6 +12,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.Distrito;
+import pe.edu.upc.entity.Parametro;
 import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.serviceimpl.DistritoServiceImpl;
 import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
@@ -69,20 +70,15 @@ public class PropiedadController implements Serializable {
 		try {
 			this.listaDistritos = dService.listar();
 			this.propiedad = new Propiedad ();
-			Message.messageInfo("entro");
 		} 
 		catch (Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
-		Message.messageInfo("llego");
 		return "/addresses/property?faces-redirect=true";
 	}
 	
 	public String guardar_I_M() {
 		String view = "";
-		Message.messageInfo(""+distrito.getNombre());
-		Message.messageInfo(""+distrito.getId());
-		Message.messageInfo(""+propiedad.getDireccion());
 		try {
 			if(propiedad.getId() != 0) {
 				Message.messageInfo("por actualizar");
@@ -94,6 +90,7 @@ public class PropiedadController implements Serializable {
 			else {
 				Message.messageInfo("por insertar");
 				propiedad.setDistrito(distrito);
+				propiedad.setCliente(sesion.getCliente());
 				pService.insertar(propiedad);
 			
 				Message.messageInfo("Registrado");
@@ -112,9 +109,22 @@ public class PropiedadController implements Serializable {
 	}
 	
 	
-	//Error :org.hibernate.exception.ConstraintViolationException: could not execute statement
+	public String editProperty(Propiedad p) {
+		String view = "";
+		try {
+
+			this.propiedad = p;
+			view = "/addresses/property?faces-redirect=true";
+
+			Message.messageError("Debe seleccionar un parametro");
+
+		} catch (Exception e) {
+			Message.messageError("Error en parametro " + e.getMessage());
+		}
+		return view;
+	}
 	
-	
+	//Error :WFLYJPA0060: Transaction is required to perform this operation (either use a transaction or extended persistence context)
 	
 	/*	
 	public void actualizar() {
@@ -148,20 +158,20 @@ public class PropiedadController implements Serializable {
 		}
 	}
 	
-	public String eliminar () {
+	public String eliminar (Propiedad p) {
 		String view = "";
 		try {
-			pService.eliminar(cliente.getId());
+			this.propiedad=p;
+			pService.eliminar(propiedad.getId());
 			Message.messageInfo("Registro Eliminado correctamente");
 			this.listar();
-			view = "/addresses/listAddresses";
+			view = "/addresses/listAddresses?faces-redirect=true";
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
 		return view;
 	}
-	
 	
 
 	public Propiedad getPropiedad() {
