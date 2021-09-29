@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,7 +20,7 @@ import pe.edu.upc.util.Sesion;
 
 
 @Named
-@RequestScoped
+@SessionScoped
 public class PropiedadController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -49,17 +50,8 @@ public class PropiedadController implements Serializable {
 		this.listaPropiedades = new ArrayList<Propiedad>();
 		this.propiedad = new Propiedad();
 	
-		this.listar();
-		
-		
+		this.listar();		
 	}
-	
-	//Error :org.hibernate.QueryException: could not resolve property: 
-		//idcliente of: pe.edu.upc.entity.Propiedad [FROM pe.edu.upc.entity.Propiedad p WHERE p.idcliente LIKE ?1]
-	
-	
-	
-	
 	
 	/*
 	public String nuevaPropiedad () {
@@ -67,10 +59,9 @@ public class PropiedadController implements Serializable {
 		return "/propiedad";
 	}*/
 	
-	public String carga()
+	public String listaProp()
 	{
-		this.init();
-			return  "../addresses/listAddresses.xhtml";
+			return  "/addresses/listAddresses?faces-redirect=true";
 	}
 
 
@@ -78,29 +69,52 @@ public class PropiedadController implements Serializable {
 		try {
 			this.listaDistritos = dService.listar();
 			this.propiedad = new Propiedad ();
+			Message.messageInfo("entro");
 		} 
 		catch (Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
-		return "/addresses/propiedad";
+		Message.messageInfo("llego");
+		return "/addresses/property?faces-redirect=true";
 	}
 	
-	public String insertar() {
+	public String guardar_I_M() {
 		String view = "";
+		Message.messageInfo(""+distrito.getNombre());
+		Message.messageInfo(""+distrito.getId());
+		Message.messageInfo(""+propiedad.getDireccion());
 		try {
-			propiedad.setDistrito(distrito);
-			pService.insertar(propiedad);
+			if(propiedad.getId() != 0) {
+				Message.messageInfo("por actualizar");
+				propiedad.setDistrito(distrito);
+				pService.actualizar(propiedad);
 			
-			Message.messageInfo("Registro insertado correctamente");
+				Message.messageInfo("actualizado");
+			}
+			else {
+				Message.messageInfo("por insertar");
+				propiedad.setDistrito(distrito);
+				pService.insertar(propiedad);
+			
+				Message.messageInfo("Registrado");
+			}
+			
+			
 			this.listar();
 			this.propiedad = new Propiedad ();
-			view = "/addresses/listAddresses";
+			view = "/addresses/listAddresses?faces-redirect=true";
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
+		Message.messageInfo("salida");
 		return view;
 	}
+	
+	
+	//Error :org.hibernate.exception.ConstraintViolationException: could not execute statement
+	
+	
 	
 	/*	
 	public void actualizar() {
