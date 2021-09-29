@@ -43,7 +43,7 @@ public class ParametroController implements Serializable {
 	}
 
 	public String listadoParametros() {
-		System.out.println("hola");
+
 		return "/parameters/listParameters";
 	}
 
