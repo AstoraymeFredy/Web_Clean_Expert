@@ -1,64 +1,64 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
 </h:head>
 <body>
 
-	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
-		<ui:define name="pageTitle">
-	        Lista de parámetros - Clean Expert
-	    </ui:define>
-		<ui:define name="content-body">
-			<p:panel styleClass="ui-panel">
-				<div class="p-2">
-					<h:form id="frm">
-						<div class="d-flex justify-content-between mb-5">
-							<h3 class="principal-title text-dark fw-bold">Listado de
-								parámetros</h3>
-							
-						</div>
-						
-						<p:growl id="men" />
-						<p:dataTable id="datTabParameters"
+    <ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+        <ui:define name="pageTitle">
+            Lista de parámetros - Clean Expert
+        </ui:define>
+        <ui:define name="content-body">
+            <p:panel styleClass="ui-panel">
+                <div class="p-2">
+                    <h:form id="frm">
+                        <div class="d-flex justify-content-between mb-5">
+                            <h3 class="principal-title text-dark fw-bold">Listado de
+                                parámetros</h3>
+                            
+                        </div>
+                        
+                        <p:growl id="men" />
+                        <p:dataTable id="datTabParameters"
 
-							value="#{parametroController.listaParametro}" var="parameter"
-							rowKey="#{parameter.id_parametro}"
-					
-							paginatorPosition="bottom" paginator="true" rows="3">
-							
-							
-							
-							<p:column headerText="#">
-								<p:outputLabel value="#{parameter.id_parametro}" />
-							</p:column>
-							<p:column headerText="Nombre">
-								<p:outputLabel value="#{parameter.nombre}" />
-							</p:column>
-							<p:column headerText="Valor">
-								<p:outputLabel value="#{parameter.valor}" />
-							</p:column>
-							
-							<p:column headerText="Unidad">
-								<p:outputLabel value="#{parameter.unidad}" />
-							</p:column>
-							
-							<p:column headerText="Acciones">
-								<p:commandButton value="Modificar" styleClass="ui-button-warning"
-								action="#{parametroController.editParameter(parameter)}" 
-									 />
-							</p:column>
-						</p:dataTable>
-					</h:form>
-				</div>
-			</p:panel>
-		</ui:define>
-	</ui:composition>
+                            value="#{parametroController.listaParametro}" var="parameter"
+                            rowKey="#{parameter.id_parametro}"
+                    
+                            paginatorPosition="bottom" paginator="true" rows="3">
+                            
+                            
+                            
+                            <p:column headerText="#">
+                                <p:outputLabel value="#{parameter.id_parametro}" />
+                            </p:column>
+                            <p:column headerText="Nombre">
+                                <p:outputLabel value="#{parameter.nombre}" />
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <p:outputLabel value="#{parameter.valor}" />
+                            </p:column>
+                            
+                            <p:column headerText="Unidad">
+                                <p:outputLabel value="#{parameter.unidad}" />
+                            </p:column>
+                            
+                            <p:column headerText="Acciones">
+                                <p:commandButton value="Modificar" styleClass="ui-button-warning"
+                                action="#{parametroController.editParameter(parameter)}" 
+                                     />
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </p:panel>
+        </ui:define>
+    </ui:composition>
 
 </body>
 </html>

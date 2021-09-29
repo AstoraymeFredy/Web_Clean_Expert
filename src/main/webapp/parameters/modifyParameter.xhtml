@@ -1,67 +1,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 </h:head>
 <body>
-	<ui:composition template="/WEB-INF/templates/master_personal.xhtml">
-		<ui:define name="pageTitle">
-	        Modificar parámetro - Clean Expert
-	    </ui:define>
-		<ui:define name="content-body">
+    <ui:composition template="/WEB-INF/templates/master_personal.xhtml">
+        <ui:define name="pageTitle">
+            Modificar parámetro - Clean Expert
+        </ui:define>
+        <ui:define name="content-body">
 
-			<h:form id="frm">
-				<div class="ui-g">
-					<div class="ui-g-7  p-0">
-						<p:panel styleClass="ui-panel">
-							<h3 class="principal-title text-dark fw-bold ">Modificar
-							parámetro</h3>
-							
-							<div class="ui-fluid formgrid grid">
-								<div class="field col-6">
-									<h:outputLabel for="txtNombre" value="Nombre*"/>
-            						<p:inputText id="txtNombre" required="true"
-            						value="#{parametroController.parametro.nombre}" />
-								</div>
-								
-								<div class="field col-6">
-									
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtValor" value="Valor"/>
-									<p:inputNumber id="txtValor" required="true"
-										value="#{parametroController.parametro.valor}"/>
-								</div>
-								
-								<div class="field col-6">
-									<p:outputLabel for="txtUnidad" value="Unidad"/>
-									<p:inputText id="txtUnidad" required="true"
-										value="#{parametroController.parametro.unidad}"/>
-								</div>
-								
-							</div>
-								    <p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
-									action="#{parametroController.listadoParametros()}" 
-									immediate="true"
-									ajax="false" />
-									 
-								<p:commandButton value="Guardar" styleClass="bg-primary" 
-								action="#{parametroController.guardarParametro()}"
-								ajax="false" />
-						</p:panel>
-					</div>
-					<div class="ui-g-5  p-0">
-						
-					</div>
-				</div>
-			</h:form>
+            <h:form id="frm">
+                <div class="ui-g">
+                    <div class="ui-g-7  p-0">
+                        <p:panel styleClass="ui-panel">
+                            <h3 class="principal-title text-dark fw-bold ">Modificar
+                            parámetro</h3>
+                            
+                            <div class="ui-fluid formgrid grid">
+                                <div class="field col-6">
+                                    <h:outputLabel for="txtNombre" value="Nombre*"/>
+                                    <p:inputText id="txtNombre" required="true"
+                                    value="#{parametroController.parametro.nombre}" />
+                                </div>
+                                
+                                <div class="field col-6">
+                                    
+                                </div>
+                                <div class="field col-6">
+                                    <p:outputLabel for="txtValor" value="Valor"/>
+                                    <p:inputNumber id="txtValor" required="true"
+                                        value="#{parametroController.parametro.valor}"/>
+                                </div>
+                                
+                                <div class="field col-6">
+                                    <p:outputLabel for="txtUnidad" value="Unidad"/>
+                                    <p:inputText id="txtUnidad" required="true"
+                                        value="#{parametroController.parametro.unidad}"/>
+                                </div>
+                                
+                            </div>
+                                    <p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
+                                    action="#{parametroController.listadoParametros()}" 
+                                    immediate="true"
+                                    ajax="false" />
+                                     
+                                <p:commandButton value="Guardar" styleClass="bg-primary" 
+                                action="#{parametroController.guardarParametro()}"
+                                ajax="false" />
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-5  p-0">
+                        
+                    </div>
+                </div>
+            </h:form>
 
-		</ui:define>
-	</ui:composition>
+        </ui:define>
+    </ui:composition>
 
 </body>
 </html>
