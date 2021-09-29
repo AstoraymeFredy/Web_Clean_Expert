@@ -51,15 +51,19 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public String registrar (int idTipo) {
+		Message.messageInfo("entra");
+		String view = ""; 
 		try {
 			if(idTipo == 1) {
 				tipoUsuario = new TipoUsuario(1, "Cliente");
 			} else {
 				tipoUsuario = new TipoUsuario(2, "Personal de limpieza");
 			}
+			Message.messageInfo(this.tipoUsuario.getNombre());
 			this.usuario.setTipoUsuario(tipoUsuario);
+			Message.messageInfo(this.usuario.getUsername());
 			uService.registrar(usuario);
-			
+			Message.messageInfo(usuario.getUsername());
 			if (this.usuario.getTipoUsuario().getId() == 1) {
 				this.cliente.setUsuario(usuario);
 				
@@ -68,12 +72,14 @@ public class UsuarioController implements Serializable {
 				this.personalLimpieza.setUsuario(usuario);
 				controllerPL.registrar(this.personalLimpieza);
 			}
+			Message.messageInfo("Usuario registrado correctamente");
+			view = "/index?faces-redirect=true";
 		} catch (Exception e) {
-			Message.messageError("Error al crear 2:  " + e.getMessage());
+			Message.messageError("Error al crear el usuario:  " + e.getMessage());
 		}
 		
-		Message.messageInfo("Usuario registrado correctamente");
-		return "/index?faces-redirect=true";
+		
+		return view;
 	}
 	
 	public String login () {
@@ -81,22 +87,29 @@ public class UsuarioController implements Serializable {
 		try {
 			this.setUsuario(uService.login(username, password));
 			sesion.setUsuario(usuario);
-			Message.messageInfo(usuario.getTipoUsuario().getNombre());
 			if(this.usuario.getTipoUsuario().getId() == 1) {
 				setCliente(controllerCliente.obtenerCliente(usuario.getId_usuario()));
 				sesion.setCliente(cliente);
-				Message.messageInfo("1 " + cliente.getApellidos());
 				view = "/reservation/list?faces-redirect=true";
 			} else {
 				setPersonalLimpieza(controllerPL.obtenerPersonalLimpieza(usuario.getId_usuario()));
 				sesion.setPersonalLimpieza(personalLimpieza);
-				Message.messageInfo("2 " + personalLimpieza.getApellidos());
 				view = "/service/list?faces-redirect=true";
 			}
 		} catch (Exception e) {
 			Message.messageError("Error al iniciar sesion" + e.getMessage());
 		}
+		Message.messageInfo("Bienvenido");
+		this.username = "";
+		this.password = "";
 		return view;
+	}
+	
+	public String logout() {
+		sesion.setUsuario(new Usuario());
+		sesion.setCliente(new Cliente());
+		sesion.setPersonalLimpieza(new PersonalLimpieza());
+		return "/index?faces-redirect=true";
 	}
 
 	public Cliente getCliente() {

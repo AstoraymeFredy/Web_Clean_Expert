@@ -81,8 +81,13 @@
 						</div>
 					</div>
 					<div class="d-none d-md-flex flex-row-reverse p-md-2 bd-highlight ">
-						<button type="button " class="btn btn-primary">Cerrar
-							sesión</button>
+						<h:form>
+						<p:commandButton value="Cerrar sesion"
+							action="#{usuarioController.logout()}"
+							ajax="false"
+							styleClass="btn btn-primary"/>
+						</h:form>
+						
 					</div>
 				</div>
 				</nav>
