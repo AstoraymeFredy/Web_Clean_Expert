@@ -39,8 +39,9 @@
 			            </div>
 					 	<div class="ui-fluid p-formgrid p-grid">
 			            	
-						<h5>Comentario</h5>
-				        <p:inputTextarea rows="6" cols="33"/>
+						<p:outputLabel for="txtComentario" value="Comentario"/>
+				        <p:inputTextarea  id="txtComentario"
+				        value="#{valoracionController.valoracion.comentario}"/>
 				        
 				        </div>
 				        
