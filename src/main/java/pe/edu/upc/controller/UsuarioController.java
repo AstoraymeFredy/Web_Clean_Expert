@@ -122,7 +122,7 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public String pageLogin () {
-		return "/index?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}
 	
 	public String logout() {
@@ -132,7 +132,7 @@ public class UsuarioController implements Serializable {
 		sesion.setUsuario(new Usuario());
 		sesion.setCliente(new Cliente());
 		sesion.setPersonalLimpieza(new PersonalLimpieza());
-		return "/index?faces-redirect=true";
+		return "/login?faces-redirect=true";
 	}
 
 	public Cliente getCliente() {
