@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 import pe.edu.upc.entity.Distrito;
 
-public class IDistritoDaoImpl implements Serializable {
+public class DistritoDaoImpl implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +22,6 @@ public class IDistritoDaoImpl implements Serializable {
 		TypedQuery<Distrito> query=em.createQuery("SELECT d FROM Distrito d", Distrito.class);
 		distritos=query.getResultList();
 		return distritos;
-		
 	}
 	
 }

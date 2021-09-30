@@ -21,8 +21,6 @@ public class PropiedadServiceImpl implements Serializable {
 		return prop.listarPorCliente(idCliente);
 	}
 	
-	
-	
 	public void eliminar(int idPropiedad)throws Exception {
 		prop.eliminar(idPropiedad);
 	}
@@ -36,5 +34,4 @@ public class PropiedadServiceImpl implements Serializable {
 	public void actualizar(Propiedad propiedad) throws Exception{
 		prop.actualizar(propiedad);
 	}
-	
 }

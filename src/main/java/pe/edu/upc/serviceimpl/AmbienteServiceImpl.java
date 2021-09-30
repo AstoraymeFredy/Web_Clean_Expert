@@ -18,7 +18,6 @@ public class AmbienteServiceImpl implements Serializable {
 	@Inject
 	private AmbienteDaoImpl amb; 
 
-	
 	public List<Ambiente> listar() {
 		return amb.listar();
 	}
