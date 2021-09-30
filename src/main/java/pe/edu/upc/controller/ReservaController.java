@@ -11,10 +11,12 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.Ambiente;
 import pe.edu.upc.entity.DetalleReserva;
+import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.entity.Reserva;
 import pe.edu.upc.serviceimpl.AmbienteServiceImpl;
 import pe.edu.upc.serviceimpl.DetalleReservaServiceImpl;
+import pe.edu.upc.serviceimpl.HorarioServiceImpl;
 import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
 import pe.edu.upc.serviceimpl.ReservaServiceImpl;
 import pe.edu.upc.util.Message;
@@ -31,6 +33,10 @@ public class ReservaController implements Serializable {
 	private Reserva reserva;
 	
 	@Inject
+	private HorarioServiceImpl hService;
+	private Horario horario;
+
+	@Inject
 	private DetalleReservaServiceImpl dService;
 	
 	@Inject
@@ -45,14 +51,17 @@ public class ReservaController implements Serializable {
 	
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
+	private List<Reserva> listaPorFechaHorario;
+	private List<Horario> listaHorarios;	
 	private List<DetalleReserva> listaDetalleReserva;
-	private List<Propiedad> listaDirecciones;
+	private List<Propiedad> listaDirecciones;	
+
+
 
 	@PostConstruct
 	public void init() {
 		this.reserva = new Reserva();
-		//direccion,personal 
-		
+
 		this.listaPorCliente = new ArrayList<Reserva>();
 		this.listaPorPersonal = new ArrayList<Reserva>();
 		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
@@ -113,6 +122,16 @@ public class ReservaController implements Serializable {
 			Message.messageError("Error :" + e.getMessage());
 		}
 		return "/reservation/create?faces-redirect=true";
+	}
+	
+	public void listarPersonal () {
+		try {
+		
+
+		}
+		catch (Exception e) {
+			Message.messageError("Error :" + e.getMessage());
+		}
 	}
 	
 	public String listarReservasPorPersonal() {

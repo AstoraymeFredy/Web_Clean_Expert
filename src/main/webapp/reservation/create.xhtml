@@ -61,6 +61,8 @@
 								</div>
 							</div>
 							<p class="text-primary fw-bold">Selecciona tu Clean Expert</p>
+								<p:commandButton value="Mostrar personal dispnible" styleClass="bg-primary" action="#{reservaController.registrar()}"
+								ajax="false" />
 							<p class="text-primary fw-bold">Opciones</p>
 							<p:selectBooleanCheckbox value="#{reservaController.reserva.kit_limpieza_extra}"
 								itemLabel="Agregar kit de limpieza" />
