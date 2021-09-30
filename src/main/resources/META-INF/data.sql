@@ -22,7 +22,7 @@ INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
 INSERT INTO ambiente (nombre) VALUES ('Comedor');
 INSERT INTO ambiente (nombre) VALUES ('Cocina');
 INSERT INTO ambiente (nombre) VALUES ('Biblioteca');
-INSERT INTO ambiente (nombre) VALUES ('BaÃ±o');
+INSERT INTO ambiente (nombre) VALUES ('Baño');
 INSERT INTO ambiente (nombre) VALUES ('Sala');
 
 
