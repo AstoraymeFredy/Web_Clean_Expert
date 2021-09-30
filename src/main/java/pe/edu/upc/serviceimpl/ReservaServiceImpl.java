@@ -29,17 +29,14 @@ public class ReservaServiceImpl implements Serializable {
 	}
 	
 	public List<Reserva> listarPorPersonal(int idPersonalLimpieza) throws Exception {
-		// TODO Auto-generated method stub
 		return rD.listarPorPersonal(idPersonalLimpieza);
 	}
 	
 	public List<Reserva> listarPorCliente(int idCliente) throws Exception {
-		// TODO Auto-generated method stub
 		return rD.listarPorCliente(idCliente);
 	}
 	
 	public List<Reserva> listarPorFecha(Date fecha) throws Exception{
 		return rD.listarPorFecha(fecha);
 	}
-	
 }

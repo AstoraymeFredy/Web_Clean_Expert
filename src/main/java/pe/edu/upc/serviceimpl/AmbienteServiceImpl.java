@@ -19,7 +19,6 @@ public class AmbienteServiceImpl implements Serializable {
 	@Inject
 	private AmbienteDaoImpl amb;
 
-
 	public List<Ambiente> listarAmbientes() throws Exception {
 		return amb.listar();
 	}

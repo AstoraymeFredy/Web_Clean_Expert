@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import pe.edu.upc.entity.Usuario;
@@ -42,7 +41,5 @@ public class UsuarioDaoImpl implements  Serializable {
 		}
 		em.persist(usuario);
 		return usuario;
-	}
-
-	
+	}	
 }

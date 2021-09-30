@@ -26,5 +26,4 @@ public class PersonalLimpiezaServiceImpl implements Serializable {
 	public PersonalLimpieza actualizar (PersonalLimpieza personalL) throws Exception {
 		return plD.actualizar(personalL);
 	}
-
 }

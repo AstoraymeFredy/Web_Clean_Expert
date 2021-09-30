@@ -48,7 +48,6 @@ public class Horario implements Serializable {
 
 	public Horario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Horario(int id_horario, boolean lunes, boolean martes, boolean miercoles, boolean jueves, boolean viernes,
@@ -136,7 +135,4 @@ public class Horario implements Serializable {
 	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
 		this.personalLimpieza = personalLimpieza;
 	}
-	
-	
-	
 }
