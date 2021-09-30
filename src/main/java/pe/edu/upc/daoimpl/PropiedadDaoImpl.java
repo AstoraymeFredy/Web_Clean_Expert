@@ -17,7 +17,7 @@ public class PropiedadDaoImpl implements Serializable {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 	
-
+	@SuppressWarnings("unchecked")
 	public List<Propiedad> listarPorCliente(int idCliente)throws Exception{
 		List<Propiedad> propiedades =new ArrayList<>();
 		Query query=em.createQuery("select p from Propiedad p WHERE p.cliente.id_cliente=:idcli", Propiedad.class);
@@ -25,8 +25,6 @@ public class PropiedadDaoImpl implements Serializable {
 		propiedades=(List<Propiedad>)query.getResultList();
 		return propiedades;
 		}
-	
-
 	
 	@Transactional
 	public void eliminar(int idPropiedad) {
@@ -47,6 +45,4 @@ public class PropiedadDaoImpl implements Serializable {
 	public void actualizar(Propiedad propiedad)throws Exception {
 		em.merge(propiedad);
 	}
-	
-	
 }
