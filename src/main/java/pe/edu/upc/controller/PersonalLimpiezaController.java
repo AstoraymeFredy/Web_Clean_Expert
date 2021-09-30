@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.serviceimpl.PersonalLimpiezaServiceImpl;
 import pe.edu.upc.util.Message;
@@ -33,7 +34,8 @@ public class PersonalLimpiezaController extends UsuarioController implements Ser
 
 	public void registrar(PersonalLimpieza personal) {
 		try {
-			psService.registrar(personal);
+			Horario horario = new Horario();
+			psService.registrar(personal, horario);
 		} catch (Exception e) {
 			Message.messageError("Error al crear:  " + e.getMessage());
 		}

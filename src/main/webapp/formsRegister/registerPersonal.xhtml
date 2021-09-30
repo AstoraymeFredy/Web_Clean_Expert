@@ -15,7 +15,7 @@
 		    Iniciar sesión - Clean Expert
 	    </ui:define>
 		<ui:define name="content">
-			<div class="container">
+			<div class="container mt-5">
 				<div class="vh-100 d-flex justify-content-center align-items-center">
 					<div style="width: 60%">
 						<h:form>
@@ -28,29 +28,29 @@
 									<p:outputLabel for="txtNombre">Nombres</p:outputLabel>
 									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{usuarioController.personalLimpieza.nombre}" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtApellido">Apellidos</p:outputLabel>
 									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{usuarioController.personalLimpieza.apellidos}" style="width:100%" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtCelular">Celular</p:outputLabel>
 									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{usuarioController.personalLimpieza.celular}" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtEmail">Correo electrónico</p:outputLabel>
 									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{usuarioController.personalLimpieza.email}" style="width:100%" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtUsername">Usuario</p:outputLabel>
 									<p:inputText id="txtUsername" placeholder="Ingresar usuario" required="true" value="#{usuarioController.usuario.username}" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtContraseña">Contraseña</p:outputLabel>
 									<p:password id="txtContraseña" placeholder="Ingresar contraseña" required="true" value="#{usuarioController.usuario.password}" style="width:100%" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtDescription">¿En qué te especializas?</p:outputLabel>
-									<p:inputText id="txtDescription" placeholder="Ingresar información sobre ti" required="true" value="#{usuarioController.personalLimpieza.descripcion}" />
+									<p:inputTextarea id="txtDescription" placeholder="Ingresar información sobre ti" required="true" value="#{usuarioController.personalLimpieza.descripcion}" />
 								</div>
 								<p:commandButton value="Registrar cuenta"
 									action="#{usuarioController.registrar(2)}"

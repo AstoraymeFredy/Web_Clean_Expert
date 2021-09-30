@@ -60,11 +60,10 @@ public class UsuarioController implements Serializable {
 			} else {
 				tipoUsuario = new TipoUsuario(2, "Personal de limpieza");
 			}
-			Message.messageInfo(this.tipoUsuario.getNombre());
 			this.usuario.setTipoUsuario(tipoUsuario);
-			Message.messageInfo(this.usuario.getUsername());
+			this.usuario.setUsername(usuario.getUsername().trim());
+			this.usuario.setPassword(usuario.getPassword().trim());
 			uService.registrar(usuario);
-			Message.messageInfo(usuario.getUsername());
 			if (this.usuario.getTipoUsuario().getId() == 1) {
 				this.cliente.setUsuario(usuario);
 				
@@ -78,15 +77,16 @@ public class UsuarioController implements Serializable {
 		} catch (Exception e) {
 			Message.messageError("Error al crear el usuario:  " + e.getMessage());
 		}
-		
-		
+		this.setUsuario(new Usuario());
+		this.setPersonalLimpieza(new PersonalLimpieza());
+		this.setCliente(new Cliente());
 		return view;
 	}
 	
 	public String login () {
 		String view = ""; 
 		try {
-			this.setUsuario(uService.login(username, password));
+			this.setUsuario(uService.login(username.trim(), password.trim()));
 			sesion.setUsuario(usuario);
 			if(this.usuario.getTipoUsuario().getId() == 1) {
 				setCliente(controllerCliente.obtenerCliente(usuario.getId_usuario()));

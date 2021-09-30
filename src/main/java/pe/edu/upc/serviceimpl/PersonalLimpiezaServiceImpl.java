@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.inject.Inject;
 
 import pe.edu.upc.daoimpl.PersonalLimpiezaDaoImpl;
+import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.PersonalLimpieza;
 
 public class PersonalLimpiezaServiceImpl implements Serializable {
@@ -18,8 +19,8 @@ public class PersonalLimpiezaServiceImpl implements Serializable {
 		return plD.obtenerPersonalLimpieza(idUsuario);
 	}
 
-	public void registrar(PersonalLimpieza personalLimpieza) throws Exception {
-		plD.registrar(personalLimpieza);
+	public void registrar(PersonalLimpieza personalLimpieza, Horario horario) throws Exception {
+		plD.registrar(personalLimpieza, horario);
 	}
 	
 	public PersonalLimpieza actualizar (PersonalLimpieza personalL) throws Exception {
