@@ -27,9 +27,6 @@ public class HorarioDaoImpl implements Serializable {
 		Query query = em.createQuery("select h from Horario h where h.personalLimpieza.id_personal_limpieza = " + idUsuario, Horario.class);
         Horario h= (Horario) query.getSingleResult();
 		
-	        //
-		System.out.println("saliendo dao");
-		System.out.println(h.getId_horario());
 		return h;
 	}
 
@@ -48,7 +45,6 @@ public class HorarioDaoImpl implements Serializable {
 	
 	public List<Horario> findHorariobyDate(int day) throws Exception{
 		List<Horario> horarios = new ArrayList<>();
-		System.out.println("dao");
 
 		String dayWeek = "";
 		if(day == 1) {
@@ -72,12 +68,10 @@ public class HorarioDaoImpl implements Serializable {
 		if(day == 7) {
 			dayWeek = "domingo";
 		}
-		System.out.println(dayWeek);
+
 		TypedQuery<Horario> query = em.createQuery("SELECT h FROM Horario h WHERE h." + dayWeek + " = True", Horario.class);
 		horarios = query.getResultList();
-		 for (int i = 0; i < horarios.size(); i++) {
-	  	         System.out.println(horarios.get(i).getPersonalLimpieza().getId_personal_limpieza());
-	     }
+
 		return horarios;
 	}
 

@@ -55,10 +55,6 @@ public class ReservaDaoImpl implements Serializable {
 		TypedQuery<Reserva> query =em.createQuery("select r from Reserva r where r.fecha = ?1", Reserva.class);
 		query.setParameter(1, fecha);
 		lista = query.getResultList();
-		System.out.println("retorna R");
-		for (int i = 0; i < lista.size(); i++) {
- 	         System.out.println(lista.get(i).getFecha());
-		}
 		return lista;
 	}
 }

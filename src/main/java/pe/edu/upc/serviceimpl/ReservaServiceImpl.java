@@ -39,7 +39,6 @@ public class ReservaServiceImpl implements Serializable {
 	}
 	
 	public List<Reserva> listarPorFecha(Date fecha) throws Exception{
-		System.out.println("service R");
 		return rD.listarPorFecha(fecha);
 	}
 	
