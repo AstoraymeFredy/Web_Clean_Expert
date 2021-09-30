@@ -31,22 +31,23 @@
 									</div>
 								</p:repeat>
 							</div>
-							
+							<h:form id="frm2" >
 							<p class="text-primary fw-bold">Horario y lugar</p>
 				
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-12">
 									<p:outputLabel for="cboDirección">Dirección</p:outputLabel>
-									<p:selectOneMenu id="cboDirección" required="true" effect="drop"
+									<p:selectOneMenu id="cboDirección" required="true"  effect="drop"
 										value="#{reservaController.propiedad}"
-										converter="omnifaces.SelectItemsConverter">
+										converter="omnifaces.SelectItemsConverter"
+										>
 										<f:selectItem itemLabel="Seleccione una opción"
 											noSelectionOption="true" itemValue="" />
 										<f:selectItems value="#{reservaController.listaDirecciones}"
 											var="propiedad" itemLabel="#{propiedad.distrito.nombre} - #{propiedad.direccion}"
 											itemValue="#{propiedad}" />
-											<p:ajax event="change" update="@this"/>
 									</p:selectOneMenu>
+								
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtFecha">Fecha</p:outputLabel>
@@ -63,8 +64,9 @@
 								</div>
 							</div>
 							<p class="text-primary fw-bold">Selecciona tu Clean Expert</p>
-								<p:button value="Mostrar personal dispnible" styleClass="bg-primary" onclick="#{reservaController.listarPersonal()}"
+								<p:commandButton value="SELECCIONA"  form="frm2" styleClass="bg-primary" action="#{reservaController.listarPersonal()}"
 								ajax="false" />
+									</h:form>
 							<p class="text-primary fw-bold">Opciones</p>
 							<p:selectBooleanCheckbox value="#{reservaController.reserva.kit_limpieza_extra}"
 								itemLabel="Agregar kit de limpieza" />
