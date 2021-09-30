@@ -12,7 +12,6 @@ import javax.transaction.Transactional;
 
 import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.entity.Reserva;
-import pe.edu.upc.entity.Usuario;
 
 public class PropiedadDaoImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -34,6 +33,11 @@ public class PropiedadDaoImpl implements Serializable {
 		if (em.contains(propiedad)) {
 			em.remove(propiedad);
 		} else {
+			TypedQuery<Reserva> q =em.createQuery("select r from Reserva r where r.propiedad.idPropiedad=:idprop", Reserva.class);
+			q.setParameter("idprop", propiedad.getId());
+			if(q.getResultList().size()>0) {
+				throw new RuntimeException("La propiedad no se puede eliminar, esta siendo utilizada.");
+			}
 			Propiedad p = em.getReference(propiedad.getClass(), propiedad.getId());
 			em.remove(p);
 		}
