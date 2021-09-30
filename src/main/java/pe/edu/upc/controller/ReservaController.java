@@ -98,7 +98,7 @@ public class ReservaController implements Serializable {
 		}
 	}
 
-	public String obtenerReserva(Reserva reserva) {
+	public String obtenerReserva(Reserva reserva,int idtipoUsuario) {
 		String view = "";
 		try {
 			this.reserva = reserva;
