@@ -23,8 +23,7 @@ public class ReservaDaoImpl implements Serializable {
 	@Transactional
 	public Reserva insertar(Reserva reserva) throws Exception {
 		em.persist(reserva);
-		Reserva s = new Reserva();
-		return s;
+		return reserva;
 	}
 	
 	public Reserva obtenerReserva(int idReserva) throws Exception {

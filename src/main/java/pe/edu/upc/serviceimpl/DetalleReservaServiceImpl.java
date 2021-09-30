@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import pe.edu.upc.daoimpl.DetalleReservaDaoImpl;
 import pe.edu.upc.entity.DetalleReserva;
+import pe.edu.upc.entity.Reserva;
 
 @Named
 @RequestScoped
@@ -18,6 +19,10 @@ public class DetalleReservaServiceImpl implements Serializable{
 
 	@Inject
 	private DetalleReservaDaoImpl dD;
+	
+	public DetalleReserva insertar(DetalleReserva detalleReserva) throws Exception {
+		return dD.insertar(detalleReserva);
+	}
 	
 	public List<DetalleReserva> listarDetalleReserva(long idReserva) throws Exception {
 		// TODO Auto-generated method stub

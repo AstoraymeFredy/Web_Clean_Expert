@@ -32,7 +32,7 @@ public class ParametroServiceImpl implements Serializable {
 		return parametroDaoImpl.editarParametro(parametro);
 	}
 	
-	public List<Parametro> findAll() throws Exception{
+	public List<Parametro> listarParametros() throws Exception{
 		return parametroDaoImpl.findAll();
 	}
 

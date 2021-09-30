@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -17,9 +17,11 @@ import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.entity.Reserva;
+import pe.edu.upc.entity.Parametro;
 import pe.edu.upc.serviceimpl.AmbienteServiceImpl;
 import pe.edu.upc.serviceimpl.DetalleReservaServiceImpl;
 import pe.edu.upc.serviceimpl.HorarioServiceImpl;
+import pe.edu.upc.serviceimpl.ParametroServiceImpl;
 import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
 import pe.edu.upc.serviceimpl.ReservaServiceImpl;
 import pe.edu.upc.util.Message;
@@ -39,6 +41,10 @@ public class ReservaController implements Serializable {
 	private HorarioServiceImpl hService;
 	private Horario horario;
 
+	
+	@Inject
+	private ParametroServiceImpl paService;
+	
 	@Inject
 	private DetalleReservaServiceImpl dService;
 	
@@ -48,6 +54,7 @@ public class ReservaController implements Serializable {
 	@Inject
 	private PropiedadServiceImpl pService;
 	private Propiedad propiedad;
+	private PersonalLimpieza personalLimpieza;
 	
 	@Inject
 	private Sesion sesion;
@@ -58,9 +65,9 @@ public class ReservaController implements Serializable {
 	private List<Horario> listaHorarios;	
 	private List<DetalleReserva> listaDetalleReserva;
 	private List<Propiedad> listaDirecciones;	
+	private List<Parametro> listaParametros;
 
-
-
+	
 	@PostConstruct
 	public void init() {
 		this.reserva = new Reserva();
@@ -70,7 +77,8 @@ public class ReservaController implements Serializable {
 		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
 		this.listaDirecciones = new ArrayList<Propiedad>();
 		this.listaPersonalDisponible = new ArrayList<PersonalLimpieza>();
-				
+		this.listaParametros = new ArrayList<Parametro>();
+		
 		this.obtenerReservasPorCliente();	
 	}
 	
@@ -120,7 +128,7 @@ public class ReservaController implements Serializable {
 		         listaDetalleReserva.add(detalle);
 		     }
 			listaDirecciones = pService.listar(sesion.getCliente().getId());
-
+			listaParametros = paService.listarParametros();
 		}
 		catch (Exception e) {
 			Message.messageError("Error :" + e.getMessage());
@@ -154,13 +162,36 @@ public class ReservaController implements Serializable {
 				if (notFinded) {
 					listaPersonalDisponible.add(personalLimpiezaporHorario.get(i));
 				}
-			}
-			
-
+			}	
 		}
 		catch (Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
+	}
+	
+	public String pagar() {
+		return "/reservation/payment";
+	}
+	
+	public String registrar () {
+		String view = "";
+		try {
+			reserva.setPropiedad(propiedad);
+			reserva.setPersonalLimpieza(personalLimpieza);
+			reserva.setEstado("Por realizar");
+			this.reserva = rService.insertar(reserva);
+			
+			for (int i = 0; i < listaDetalleReserva.size(); i++) {
+		         DetalleReserva detalle_reserva=listaDetalleReserva.get(i);
+		         detalle_reserva.setReserva(reserva);
+		         dService.insertar(detalle_reserva);
+		     }
+		} catch (Exception e) {
+			Message.messageError("Error en parametro " + e.getMessage());
+		}
+		this.obtenerReservasPorCliente();
+		this.propiedad = new Propiedad();
+		return view;
 	}
 	
 	public String listarReservasPorPersonal() {
@@ -171,33 +202,37 @@ public class ReservaController implements Serializable {
 		return "/reservation/list";
 	}	
 	
+	public void simularPrecio(AjaxBehaviorEvent e) {
+
+		float precio_total = 0;
+		float duracion_total = 0;
+		int duracion_aproximada = 0;
+		if(listaParametros.size()>0) {
+			int duracion_limpieza=listaParametros.get(0).getValor();
+			int costo_hora=listaParametros.get(1).getValor();
+			int costo_kit=listaParametros.get(2).getValor();
+			
+			for (int i = 0; i < listaDetalleReserva.size(); i++) {
+		         DetalleReserva detalle_reserva=listaDetalleReserva.get(i);
+		         duracion_total= duracion_total + duracion_limpieza * detalle_reserva.getCantidad();    
+		     }
+			duracion_aproximada= (int) Math.ceil(duracion_total/60);
+			precio_total=duracion_aproximada*costo_hora;
+			if(reserva.isKit_limpieza_extra()) {
+				precio_total=precio_total+costo_kit;
+			}
+
+		}
+	
+		this.reserva.setDuracion(duracion_aproximada);
+		this.reserva.setPrecio(precio_total);
+	
+	}
+	
 	public void resetForm() {
 		this.reserva = new Reserva();
 	}
 	
-	public String registrar () {
-        System.out.println("dntrando");
-        System.out.println(reserva.getFecha());
-		String view = "";
-		try {
-			if(reserva.getId_reserva() != null) {
-				//update
-				//Message.messageInfo("Registro actualizado correctamente");
-			} else {
-				//insert
-				//Message.messageInfo("Registro actualizado correctamente");
-			}
-			//llamar productos
-			//resetForm();
-			//view = "reservation/list";
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return view;
-	}
-	
-
-
 	public Reserva getReserva() {
 		return reserva;
 	}
@@ -244,7 +279,23 @@ public class ReservaController implements Serializable {
 
 	public void setListaDirecciones(List<Propiedad> listaDirecciones) {
 		this.listaDirecciones = listaDirecciones;
-	}	
-	
+	}
+
+	public List<PersonalLimpieza> getListaPersonalDisponible() {
+		return listaPersonalDisponible;
+	}
+
+	public void setListaPersonalDisponible(List<PersonalLimpieza> listaPersonalDisponible) {
+		this.listaPersonalDisponible = listaPersonalDisponible;
+	}
+
+	public PersonalLimpieza getPersonalLimpieza() {
+		return personalLimpieza;
+	}
+
+	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
+		this.personalLimpieza = personalLimpieza;
+	}
+
 	
 }
