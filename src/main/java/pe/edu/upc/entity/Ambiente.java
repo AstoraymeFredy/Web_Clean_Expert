@@ -24,7 +24,6 @@ public class Ambiente implements Serializable {
 	
 	public Ambiente() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Ambiente(int idAmbiente, String nombre) {
@@ -48,7 +47,4 @@ public class Ambiente implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-		
 }

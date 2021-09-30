@@ -34,7 +34,6 @@ public class Propiedad implements Serializable {
 
 	public Propiedad() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Propiedad(int idPropiedad, String direccion, Cliente cliente, Distrito distrito) {
@@ -75,8 +74,5 @@ public class Propiedad implements Serializable {
 
 	public void setDistrito(Distrito distrito) {
 		this.distrito = distrito;
-	}
-	
-	
-	
+	}	
 }

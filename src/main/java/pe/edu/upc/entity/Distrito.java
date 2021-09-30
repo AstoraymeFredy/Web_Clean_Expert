@@ -24,7 +24,6 @@ public class Distrito implements Serializable {
 
 	public Distrito() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Distrito(int idDistrito, String nombre) {
@@ -48,7 +47,4 @@ public class Distrito implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
 }
