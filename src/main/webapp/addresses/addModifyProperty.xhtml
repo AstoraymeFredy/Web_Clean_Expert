@@ -16,10 +16,10 @@
 		<ui:define name="content-body">
 			<h:form id="frm">
 				<div class="p-2">
-
+					<p:growl id="men" />
 					<p:panel styleClass="ui-panel">
 						<div class="d-flex justify-content-between mb-5">
-							<h3 class="principal-title text-dark fw-bold">Agregar
+							<h3 class="principal-title text-dark fw-bold">Guardar
 								direccion</h3>
 						</div>
 						<div class="ui-fluid formgrid grid">
@@ -36,6 +36,7 @@
 										itemValue="#{distrito}" />
 									<p:ajax event="change" update="@this" />
 								</p:selectOneMenu>
+								<p:message for="cboDistrito" display="text" />								
 							</div>
 
 							<div class="field col-6"></div>
@@ -43,6 +44,7 @@
 								<p:outputLabel for="txtDireccion">Direccion</p:outputLabel>
 								<p:inputText id="txtDireccion" required="true"
 									value="#{propiedadController.propiedad.direccion}" />
+								<p:message for="txtDireccion" display="text" />
 							</div>
 						</div>
 

@@ -16,10 +16,10 @@ import pe.edu.upc.entity.Usuario;
 
 public class PropiedadDaoImpl implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Propiedad> listarPorCliente(int idCliente)throws Exception{
 		List<Propiedad> propiedades =new ArrayList<>();
@@ -28,26 +28,23 @@ public class PropiedadDaoImpl implements Serializable {
 		propiedades=(List<Propiedad>)query.getResultList();
 		return propiedades;
 		}
-	
+
 	@Transactional
-	public void eliminar(int idPropiedad) throws Exception {
-		TypedQuery<Reserva> q =em.createQuery("select r from Reserva r where r.propiedad.idPropiedad=:idprop", Reserva.class);
-		q.setParameter("idprop", idPropiedad);
-		System.out.println(q.getResultList().size());
-		if(q.getResultList().size()>0) {
-			throw new RuntimeException("La propiedad no se puede eliminar, está siendo utilizada.");
+	public void eliminar(Propiedad propiedad)throws Exception {
+		if (em.contains(propiedad)) {
+			em.remove(propiedad);
+		} else {
+			Propiedad p = em.getReference(propiedad.getClass(), propiedad.getId());
+			em.remove(p);
 		}
-		// Propiedad propiedad = new Propiedad();
-		// propiedad = em.getReference(Propiedad.class, idPropiedad);
-		// em.remove(propiedad);
 	}
-	
+
 	@Transactional
 	public int insertar(Propiedad propiedad)throws Exception {
 		em.persist(propiedad);
 		return propiedad.getId();
 	}
-	
+
 	@Transactional
 	public void actualizar(Propiedad propiedad)throws Exception {
 		em.merge(propiedad);
