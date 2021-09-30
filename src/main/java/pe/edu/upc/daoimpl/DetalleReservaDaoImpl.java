@@ -10,8 +10,6 @@ import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import pe.edu.upc.entity.DetalleReserva;
-import pe.edu.upc.entity.Propiedad;
-import pe.edu.upc.entity.Reserva;
 
 public class DetalleReservaDaoImpl implements Serializable{
 	private static final long serialVersionUID = 1L;

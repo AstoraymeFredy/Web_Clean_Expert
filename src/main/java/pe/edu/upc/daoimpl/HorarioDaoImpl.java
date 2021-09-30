@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
-import pe.edu.upc.entity.DetalleReserva;
 import pe.edu.upc.entity.Horario;
 
 public class HorarioDaoImpl implements Serializable {
@@ -32,7 +31,6 @@ public class HorarioDaoImpl implements Serializable {
 	public void registrar(Horario horario) throws Exception{
 		em.persist(horario);
 	}
-	
 	
 	public List<Horario> findHorario() throws Exception{
 		List<Horario> horarios = new ArrayList<>();
@@ -77,5 +75,4 @@ public class HorarioDaoImpl implements Serializable {
 	public void actualizar(Horario horario) throws Exception{
 		em.merge(horario);
 	}
-	
 }

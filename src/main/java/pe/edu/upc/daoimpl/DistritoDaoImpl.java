@@ -23,5 +23,4 @@ public class DistritoDaoImpl implements Serializable {
 		distritos=query.getResultList();
 		return distritos;
 	}
-	
 }

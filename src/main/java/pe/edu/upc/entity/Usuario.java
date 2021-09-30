@@ -33,7 +33,6 @@ private static final long serialVersionUID = 1L;
 
 	public Usuario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(int id_usuario, String username, String password, TipoUsuario tipoUsuario) {
@@ -75,7 +74,4 @@ private static final long serialVersionUID = 1L;
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-
-	
-	
 }
