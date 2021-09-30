@@ -26,31 +26,31 @@
 							<div class="ui-fluid">
 								<div class="p-field">
 									<p:outputLabel for="txtNombre">Nombres</p:outputLabel>
-									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{usuarioController.personalLimpieza.nombre}" />
+									<p:inputText id="txtNombre" placeholder="Ingresar nombres" maxlength="80" required="true" value="#{usuarioController.personalLimpieza.nombre}" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtApellido">Apellidos</p:outputLabel>
-									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{usuarioController.personalLimpieza.apellidos}" style="width:100%" />
+									<p:inputText id="txtApellido" placeholder="Ingresar apellidos" maxlength="100" required="true" value="#{usuarioController.personalLimpieza.apellidos}" style="width:100%" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtCelular">Celular</p:outputLabel>
-									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{usuarioController.personalLimpieza.celular}" />
+									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" maxlength="20" required="true" value="#{usuarioController.personalLimpieza.celular}" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtEmail">Correo electrónico</p:outputLabel>
-									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{usuarioController.personalLimpieza.email}" style="width:100%" />
+									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" maxlength="100" required="true" value="#{usuarioController.personalLimpieza.email}" style="width:100%" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtUsername">Usuario</p:outputLabel>
-									<p:inputText id="txtUsername" placeholder="Ingresar usuario" required="true" value="#{usuarioController.usuario.username}" />
+									<p:inputText id="txtUsername" placeholder="Ingresar usuario" required="true" maxlength="50" value="#{usuarioController.usuario.username}" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtContraseña">Contraseña</p:outputLabel>
-									<p:password id="txtContraseña" placeholder="Ingresar contraseña" required="true" value="#{usuarioController.usuario.password}" style="width:100%" />
+									<p:password id="txtContraseña" placeholder="Ingresar contraseña" required="true" maxlength="50" value="#{usuarioController.usuario.password}" style="width:100%" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtDescription">¿En qué te especializas?</p:outputLabel>
-									<p:inputTextarea id="txtDescription" placeholder="Ingresar información sobre ti" required="true" value="#{usuarioController.personalLimpieza.descripcion}" />
+									<p:inputTextarea id="txtDescription" placeholder="Ingresar información sobre ti" maxlength="150" required="true" value="#{usuarioController.personalLimpieza.descripcion}" />
 								</div>
 								<p:commandButton value="Registrar cuenta"
 									action="#{usuarioController.registrar(2)}"

@@ -28,7 +28,7 @@
 							emptyMessage="No existen direcciones registradas"
 							paginatorPosition="bottom" paginator="true" rows="10"
 							value="#{propiedadController.listaPropiedades}" var="propi">
-							
+
 							<p:column headerText="#">
 								<p:outputLabel value="#{propi.id}" />
 							</p:column>
@@ -40,8 +40,8 @@
 							</p:column>
 							<p:column headerText="Acciones">
 
-								<p:commandButton value="Eliminar" styleClass="ui-button-danger" 
-									action="#{propiedadController.eliminar(propi)}" ajax="false"/>
+								<p:commandButton value="Eliminar" styleClass="ui-button-danger me-2"
+									action="#{propiedadController.eliminar(propi)}" ajax="false" />
 								<p:commandButton value="Modificar"
 									styleClass="ui-button-success"
 									action="#{propiedadController.editProperty(propi)}" />
