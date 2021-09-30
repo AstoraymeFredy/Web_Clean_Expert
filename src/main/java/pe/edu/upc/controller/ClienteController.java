@@ -6,7 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.serviceimpl.ClienteServiceImpl;
 import pe.edu.upc.util.Message;

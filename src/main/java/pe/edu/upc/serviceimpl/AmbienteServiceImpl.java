@@ -13,12 +13,14 @@ import pe.edu.upc.entity.Ambiente;
 @Named
 @RequestScoped
 public class AmbienteServiceImpl implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	@Inject
-	private AmbienteDaoImpl amb; 
 
-	public List<Ambiente> listar() {
+	private static final long serialVersionUID = 1L;
+
+	@Inject
+	private AmbienteDaoImpl amb;
+
+
+	public List<Ambiente> listarAmbientes() throws Exception {
 		return amb.listar();
 	}
 }

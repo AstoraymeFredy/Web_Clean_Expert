@@ -12,15 +12,15 @@ import pe.edu.upc.entity.Propiedad;
 
 @Named
 public class PropiedadServiceImpl implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private PropiedadDaoImpl prop;
-	
+
 	public List<Propiedad> listar(int idCliente)throws Exception {
 		return prop.listarPorCliente(idCliente);
 	}
-	
+
 	public void eliminar(int idPropiedad)throws Exception {
 		prop.eliminar(idPropiedad);
 	}
@@ -30,7 +30,7 @@ public class PropiedadServiceImpl implements Serializable {
 
 		return prop.insertar(propiedad);
 	}
-	
+
 	public void actualizar(Propiedad propiedad) throws Exception{
 		prop.actualizar(propiedad);
 	}

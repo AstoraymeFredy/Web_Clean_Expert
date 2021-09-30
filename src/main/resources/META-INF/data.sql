@@ -16,7 +16,7 @@ INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usua
 INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Muñoz Acosta',912433412,'10 años de experiencia en limpieza','pedro123@gmail.com','Pedro',3);
 
 
-INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (false,false,true,false,false,true,false,2);
+INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,2);
 
 INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
 INSERT INTO ambiente (nombre) VALUES ('Comedor');

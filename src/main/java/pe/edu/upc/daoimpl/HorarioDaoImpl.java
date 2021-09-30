@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import pe.edu.upc.entity.DetalleReserva;
 import pe.edu.upc.entity.Horario;
 
 public class HorarioDaoImpl implements Serializable {
@@ -47,6 +48,8 @@ public class HorarioDaoImpl implements Serializable {
 	
 	public List<Horario> findHorariobyDate(int day) throws Exception{
 		List<Horario> horarios = new ArrayList<>();
+		System.out.println("dao");
+
 		String dayWeek = "";
 		if(day == 1) {
 			dayWeek = "lunes";
@@ -69,8 +72,12 @@ public class HorarioDaoImpl implements Serializable {
 		if(day == 7) {
 			dayWeek = "domingo";
 		}
+		System.out.println(dayWeek);
 		TypedQuery<Horario> query = em.createQuery("SELECT h FROM Horario h WHERE h." + dayWeek + " = True", Horario.class);
 		horarios = query.getResultList();
+		 for (int i = 0; i < horarios.size(); i++) {
+	  	         System.out.println(horarios.get(i).getPersonalLimpieza().getId_personal_limpieza());
+	     }
 		return horarios;
 	}
 
