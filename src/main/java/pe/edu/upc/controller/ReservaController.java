@@ -3,7 +3,6 @@ package pe.edu.upc.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -39,8 +38,6 @@ public class ReservaController implements Serializable {
 	
 	@Inject
 	private HorarioServiceImpl hService;
-	private Horario horario;
-
 	
 	@Inject
 	private ParametroServiceImpl paService;
@@ -62,7 +59,6 @@ public class ReservaController implements Serializable {
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
 	private List<PersonalLimpieza> listaPersonalDisponible;
-	private List<Horario> listaHorarios;	
 	private List<DetalleReserva> listaDetalleReserva;
 	private List<Propiedad> listaDirecciones;	
 	private List<Parametro> listaParametros;
@@ -78,14 +74,12 @@ public class ReservaController implements Serializable {
 		this.listaDirecciones = new ArrayList<Propiedad>();
 		this.listaPersonalDisponible = new ArrayList<PersonalLimpieza>();
 		this.listaParametros = new ArrayList<Parametro>();
-		
 	
 		if (sesion.getUsuario().getTipoUsuario().getId()==1) {
 			this.obtenerReservasPorCliente();
 		} else {
 			this.obtenerReservasPorPersonal();
-		}
-			
+		}	
 	}
 	
 	public void obtenerReservasPorCliente() {
@@ -232,12 +226,9 @@ public class ReservaController implements Serializable {
 			if(reserva.isKit_limpieza_extra()) {
 				precio_total=precio_total+costo_kit;
 			}
-
 		}
-	
 		this.reserva.setDuracion(duracion_aproximada);
 		this.reserva.setPrecio(precio_total);
-	
 	}
 	
 	public void resetForm() {
@@ -306,7 +297,5 @@ public class ReservaController implements Serializable {
 
 	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
 		this.personalLimpieza = personalLimpieza;
-	}
-
-	
+	}	
 }

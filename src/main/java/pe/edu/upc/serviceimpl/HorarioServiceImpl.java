@@ -36,7 +36,6 @@ public class HorarioServiceImpl implements Serializable {
 	}
 	
 	public List<Horario> findHorariobyDate(int day) throws Exception{
-		System.out.println("service");
 		return horariodaoimpl.findHorariobyDate(day);
 	}
 }

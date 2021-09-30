@@ -25,7 +25,5 @@ public class ValoracionServiceImpl implements Serializable {
 
 	public void insertar(Valoracion valoracion) {
 		vD.insertar(valoracion);
-	}
-	
-	
+	}	
 }
