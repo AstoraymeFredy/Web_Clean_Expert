@@ -19,7 +19,7 @@ public class HorarioDaoImpl implements Serializable {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-	@Transactional
+	
 	public Horario obtener(int idUsuario) throws Exception{
 		System.out.println("entrando dao");
 
@@ -36,10 +36,40 @@ public class HorarioDaoImpl implements Serializable {
 	public void registrar(Horario horario) throws Exception{
 		em.persist(horario);
 	}
-	@Transactional
+	
+	
 	public List<Horario> findHorario() throws Exception{
 		List<Horario> horarios = new ArrayList<>();
 		TypedQuery<Horario> query = em.createQuery("SELECT h FROM Horario h", Horario.class);
+		horarios = query.getResultList();
+		return horarios;
+	}
+	
+	public List<Horario> findHorariobyDate(int day) throws Exception{
+		List<Horario> horarios = new ArrayList<>();
+		String dayWeek = "";
+		if(day == 1) {
+			dayWeek = "lunes";
+		}
+		if(day == 2) {
+			dayWeek = "martes";
+		}
+		if(day == 3) {
+			dayWeek = "miercoles";
+		}
+		if(day == 4) {
+			dayWeek = "jueves";
+		}
+		if(day == 5) {
+			dayWeek = "viernes";
+		}
+		if(day == 6) {
+			dayWeek = "sabado";
+		}
+		if(day == 7) {
+			dayWeek = "domingo";
+		}
+		TypedQuery<Horario> query = em.createQuery("SELECT h FROM Horario h WHERE h." + dayWeek + " = True", Horario.class);
 		horarios = query.getResultList();
 		return horarios;
 	}
