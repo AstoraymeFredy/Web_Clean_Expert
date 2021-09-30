@@ -23,11 +23,11 @@
 							<div class="ui-fluid">
 								<div class="p-field mt-2">
 									<p:outputLabel for="txtUsuario">Usuario</p:outputLabel>
-									<p:inputText id="txtUsuario" required="true" value="#{usuarioController.username}" />
+									<p:inputText id="txtUsuario" required="true" maxlength="50" value="#{usuarioController.username}" />
 								</div>
 								<div class="p-field mt-3">
 									<p:outputLabel for="txtContrasena">Contraseña</p:outputLabel>
-									<p:password toggleMask="true" id="txtContrasena" required="true" value="#{usuarioController.password}" style="width:100%" />
+									<p:password toggleMask="true" id="txtContrasena" maxlength="50" required="true" value="#{usuarioController.password}" style="width:100%" />
 								</div>
 								<p:commandButton value="Ingresar"
 									action="#{usuarioController.login()}"
