@@ -18,7 +18,6 @@ public class ValoracionDaoImpl implements Serializable {
 	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-
 	public List<Valoracion> listar() {
 		List<Valoracion> lista = new ArrayList<Valoracion>();
 		Query q = em.createQuery("select v from Valoracion v");

@@ -35,13 +35,11 @@ public class ClienteController implements Serializable {
 		} catch (Exception e) {
 			Message.messageError("Error al crear:  " + e.getMessage());
 		}
-		
 		return "/cliente";
 	}
 	
 	public Cliente obtenerCliente (int idUsuario) throws Exception {
 		return cService.obtenerCliente(idUsuario);
-		
 	}
 	
 	public String modificarCliente () {
@@ -68,7 +66,4 @@ public class ClienteController implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-	
-	
 }

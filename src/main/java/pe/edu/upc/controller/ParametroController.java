@@ -5,12 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-
-import org.primefaces.event.SelectEvent;
 
 import pe.edu.upc.util.Message;
 import pe.edu.upc.entity.Parametro;
@@ -43,19 +40,16 @@ public class ParametroController implements Serializable {
 	}
 
 	public String listadoParametros() {
-
 		return "/parameters/listParameters";
 	}
 
 	public String editParameter(Parametro parameter) {
 		String view = "";
 		try {
-
 			this.parameter = parameter;
 			view = "/parameters/modifyParameter?faces-redirect=true";
 
 			Message.messageError("Debe seleccionar un parametro");
-
 		} catch (Exception e) {
 			Message.messageError("Error en parametro " + e.getMessage());
 		}
@@ -86,7 +80,6 @@ public class ParametroController implements Serializable {
 			resetForm();
 			view = "/parameters/listParameters?faces-redirect=true";
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return view;
 	}
@@ -106,5 +99,4 @@ public class ParametroController implements Serializable {
 	public void setParametro(Parametro parameter) {
 		this.parameter = parameter;
 	}
-
 }

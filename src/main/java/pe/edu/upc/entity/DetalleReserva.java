@@ -34,7 +34,6 @@ public class DetalleReserva implements Serializable  {
 
 	public DetalleReserva() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public DetalleReserva(int id, int cantidad, Ambiente ambiente, Reserva reserva) {

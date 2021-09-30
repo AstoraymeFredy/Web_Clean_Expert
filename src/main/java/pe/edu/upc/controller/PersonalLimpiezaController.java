@@ -54,7 +54,6 @@ public class PersonalLimpiezaController extends UsuarioController implements Ser
 		try {
 			sesion.setPersonalLimpieza(psService.actualizar(personalLimpieza));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		return "/perfil/viewPerfilPS?faces-redirect=true";
 	}

@@ -5,19 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.event.SelectEvent;
-
-import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.Reserva;
 import pe.edu.upc.entity.Valoracion;
 import pe.edu.upc.serviceimpl.ValoracionServiceImpl;
 import pe.edu.upc.util.Message;
-
 
 @Named
 @SessionScoped
@@ -49,7 +44,6 @@ public class ValoracionController implements Serializable {
 	}
 	
 	public String listadoReservas() {
-
 		return "/reservation/list";
 	}
 
@@ -59,8 +53,6 @@ public class ValoracionController implements Serializable {
 		limpiar();
 	}
 	
-	 
-	
 	public void limpiar() {
 		this.init();
 	}
@@ -68,8 +60,6 @@ public class ValoracionController implements Serializable {
 	public String guardarValoracion() {
 		String view="";
 		try{
-			System.out.println(valoracion.getCalificacion());
-			System.out.println(valoracion.getComentario());
     		vService.insertar(valoracion);
     		this.getListaValoraciones();
     		view = "/service/list?faces-redirect=true";
@@ -95,7 +85,5 @@ public class ValoracionController implements Serializable {
 
 	public void setListaValoraciones(List<Valoracion> listaValoraciones) {
 		this.listaValoraciones = listaValoraciones;
-	}
-	
-	
+	}	
 }

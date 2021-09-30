@@ -4,12 +4,10 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entity.Horario;
-import pe.edu.upc.entity.Usuario;
 import pe.edu.upc.serviceimpl.HorarioServiceImpl;
 import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
@@ -33,7 +31,6 @@ public class HorarioController implements Serializable {
         this.horario = new Horario();
        this.obtenerHorarioLimpieza();
     }
-
    
     public void obtenerHorarioLimpieza () 
     {
@@ -45,12 +42,10 @@ public class HorarioController implements Serializable {
     	}
     }
     
-    public String registrarHorario () {
-        
+    public String registrarHorario () {  
     	try{
     		hService.registrar(horario);
-            limpiarHorario();
-           
+            limpiarHorario();   
     	}
     	catch(Exception e) {
 			Message.messageError("Error en horario " + e.getMessage());
@@ -62,7 +57,6 @@ public class HorarioController implements Serializable {
     	try {
     		hService.actualizar(horario);
             limpiarHorario();
-   
     	}
     	catch(Exception e) {
 			Message.messageError("Error en parametro " + e.getMessage());
@@ -81,7 +75,4 @@ public class HorarioController implements Serializable {
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
-
-
-
 }
