@@ -29,39 +29,29 @@ public class HorarioController implements Serializable {
     @PostConstruct
     public void init() {
         this.horario = new Horario();
-       this.obtenerHorarioLimpieza();
+        obtenerHorarioLimpieza();
     }
    
     public void obtenerHorarioLimpieza () 
     {
     	try {
-    		this.setHorario(hService.obtener(sesion.getPersonalLimpieza().getId_personal_limpieza()));
+    		Horario h = hService.obtener(sesion.getPersonalLimpieza().getId_personal_limpieza());
+    		this.setHorario(h);
     	}
     	catch (Exception e) {
 			Message.messageError("Error en horario " + e.getMessage());
     	}
     }
-    
-    public String registrarHorario () {  
-    	try{
-    		hService.registrar(horario);
-            limpiarHorario();   
-    	}
-    	catch(Exception e) {
-			Message.messageError("Error en horario " + e.getMessage());
-    	}
-    	 return "personal.xhtml";
-    }
 
-    public String actualizar () {
+    public void actualizar () {
     	try {
+    		System.out.println(horario.getPersonalLimpieza().getApellidos());
     		hService.actualizar(horario);
             limpiarHorario();
     	}
     	catch(Exception e) {
 			Message.messageError("Error en parametro " + e.getMessage());
     	}
-    	 return "personal.xhtml";
     }
 
     public void limpiarHorario() {

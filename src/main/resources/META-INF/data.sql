@@ -17,6 +17,7 @@ INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usua
 
 
 INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,2);
+INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,1);
 
 INSERT INTO ambiente (nombre) VALUES ('Dormitorio');
 INSERT INTO ambiente (nombre) VALUES ('Comedor');
