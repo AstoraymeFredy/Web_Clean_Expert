@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,14 +25,14 @@ public class Reserva implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_reserva;
 	
-	@Temporal(TemporalType.DATE)
 	private Date fecha;
-	
+		
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
+	@Temporal(TemporalType.TIME)
 	@Column(name="hora_inicio", nullable=false)
-	private String hora_inicio;
+	private Date hora_inicio;
 	
 	@Column(name="duracion", nullable=false)
 	private int duracion;
@@ -55,7 +56,7 @@ public class Reserva implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reserva(Long id_reserva, Date fecha, float precio, String hora_inicio, int duracion, boolean kit_limpieza_extra,
+	public Reserva(Long id_reserva, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
 			String estado, PersonalLimpieza personalLimpieza, Propiedad propiedad) {
 		super();
 		this.id_reserva = id_reserva;
@@ -93,11 +94,11 @@ public class Reserva implements Serializable {
 		this.precio = precio;
 	}
 
-	public String getHora_inicio() {
+	public Date getHora_inicio() {
 		return hora_inicio;
 	}
 
-	public void setHora_inicio(String hora_inicio) {
+	public void setHora_inicio(Date hora_inicio) {
 		this.hora_inicio = hora_inicio;
 	}
 
@@ -140,5 +141,27 @@ public class Reserva implements Serializable {
 	public void setPropiedad(Propiedad propiedad) {
 		this.propiedad = propiedad;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(duracion, estado, fecha, hora_inicio, id_reserva, kit_limpieza_extra, precio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		return duracion == other.duracion && Objects.equals(estado, other.estado) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(hora_inicio, other.hora_inicio) && Objects.equals(id_reserva, other.id_reserva)
+				&& kit_limpieza_extra == other.kit_limpieza_extra
+				&& Float.floatToIntBits(precio) == Float.floatToIntBits(other.precio);
+	}
 	
+
+		
 }

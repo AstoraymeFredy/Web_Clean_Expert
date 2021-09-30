@@ -34,8 +34,9 @@
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-6">
 									<p:outputLabel value="Fecha" />
-									<p:outputLabel value="0" styleClass="text-dark d-block" />
-								</div>
+									<p:outputLabel value="#{reservaController.reserva.fecha}" styleClass="text-dark d-block" >
+										<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+									</p:outputLabel>								</div>
 								<div class="field col-6">
 									<p:outputLabel value="Hora" />
 									<p:outputLabel value="#{reservaController.reserva.hora_inicio}"
