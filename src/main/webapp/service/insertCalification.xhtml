@@ -23,8 +23,8 @@
 						</div>
 						<p:growl id="men" />
 						
-						<div class="ui-fluid p-formgrid p-grid">
-			            	
+						<div class="ui-fluid formgrid grid">
+			            	<div class="field col-6">
 			                	<p:outputLabel value="Puntuación (1 - 5)" for="cboPuntaje"/>
 			                	<p:selectOneMenu id="cboPuntaje" value="#{valoracionController.valoracion.calificacion}" required="true"
 			                					effect="drop">
@@ -35,14 +35,17 @@
 				                    <f:selectItem itemLabel="4" itemValue="4"/>
 				                    <f:selectItem itemLabel="5" itemValue="5"/>
 				                </p:selectOneMenu>
+			            	</div>
+			           
+			           <div class="field col-6"></div>
+			           
+					 		<div class="field col-6">
 			            	
-			            </div>
-					 	<div class="ui-fluid p-formgrid p-grid">
-			            	
-						<p:outputLabel for="txtComentario" value="Comentario"/>
-				        <p:inputTextarea  id="txtComentario"
-				        value="#{valoracionController.valoracion.comentario}"/>
-				        
+								<p:outputLabel for="txtComentario" value="Comentario"/>
+						        <p:inputTextarea  id="txtComentario"
+						        value="#{valoracionController.valoracion.comentario}"/>
+				        </div>
+				       
 				        </div>
 				        
 				       <p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
