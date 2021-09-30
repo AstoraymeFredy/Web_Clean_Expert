@@ -54,7 +54,6 @@ public class Reserva implements Serializable {
 
 	public Reserva() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reserva(Long id_reserva, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
@@ -162,7 +161,4 @@ public class Reserva implements Serializable {
 				&& kit_limpieza_extra == other.kit_limpieza_extra
 				&& Float.floatToIntBits(precio) == Float.floatToIntBits(other.precio);
 	}
-	
-
-		
 }
