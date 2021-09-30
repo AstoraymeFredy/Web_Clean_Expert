@@ -2,6 +2,7 @@ package pe.edu.upc.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -126,7 +127,12 @@ public class ReservaController implements Serializable {
 	
 	public void listarPersonal () {
 		try {
-		
+			System.out.println("entrar a controla");
+			System.out.println(reserva.getFecha());
+			Calendar calendar = Calendar.getInstance();
+
+			calendar.setTime(reserva.getFecha());
+			hService.findHorariobyDate(calendar.get(calendar.DAY_OF_WEEK));
 
 		}
 		catch (Exception e) {
@@ -147,8 +153,8 @@ public class ReservaController implements Serializable {
 	}
 	
 	public String registrar () {
-	
-        System.out.println(propiedad.getDireccion());
+		System.out.println(reserva.getHora_inicio());
+        System.out.println(reserva.getFecha());
 		String view = "";
 		try {
 			if(reserva.getId_reserva() != null) {

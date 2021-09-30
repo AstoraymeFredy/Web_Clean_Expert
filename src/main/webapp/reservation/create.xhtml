@@ -33,6 +33,7 @@
 							</div>
 							
 							<p class="text-primary fw-bold">Horario y lugar</p>
+				
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-12">
 									<p:outputLabel for="cboDirección">Dirección</p:outputLabel>
@@ -53,6 +54,7 @@
 										value="#{reservaController.reserva.fecha}" showOn="button"
 										timeZone="UTC" required="true">
 									</p:calendar>
+									
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtHora">Hora</p:outputLabel>
@@ -61,7 +63,7 @@
 								</div>
 							</div>
 							<p class="text-primary fw-bold">Selecciona tu Clean Expert</p>
-								<p:commandButton value="Mostrar personal dispnible" styleClass="bg-primary" action="#{reservaController.registrar()}"
+								<p:button value="Mostrar personal dispnible" styleClass="bg-primary" onclick="#{reservaController.listarPersonal()}"
 								ajax="false" />
 							<p class="text-primary fw-bold">Opciones</p>
 							<p:selectBooleanCheckbox value="#{reservaController.reserva.kit_limpieza_extra}"

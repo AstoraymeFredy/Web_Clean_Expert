@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Reserva implements Serializable {
 	private Long id_reserva;
 	
 	private Date fecha;
-	
+		
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
@@ -140,5 +141,27 @@ public class Reserva implements Serializable {
 	public void setPropiedad(Propiedad propiedad) {
 		this.propiedad = propiedad;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(duracion, estado, fecha, hora_inicio, id_reserva, kit_limpieza_extra, precio);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		return duracion == other.duracion && Objects.equals(estado, other.estado) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(hora_inicio, other.hora_inicio) && Objects.equals(id_reserva, other.id_reserva)
+				&& kit_limpieza_extra == other.kit_limpieza_extra
+				&& Float.floatToIntBits(precio) == Float.floatToIntBits(other.precio);
+	}
 	
+
+		
 }
