@@ -23,7 +23,13 @@ public class UsuarioController implements Serializable {
 	
 	private Cliente cliente;
 	@Inject
+	private ReservaController controllerRE;
+
+	
+	@Inject
 	private ClienteController controllerCliente;
+	@Inject
+	private PropiedadController controllerPR;
 	
 	private PersonalLimpieza personalLimpieza;
 	@Inject
@@ -89,10 +95,14 @@ public class UsuarioController implements Serializable {
 			if(this.usuario.getTipoUsuario().getId() == 1) {
 				setCliente(controllerCliente.obtenerCliente(usuario.getId_usuario()));
 				sesion.setCliente(cliente);
+				controllerRE.init();
+				controllerPR.init();
 				view = "/reservation/list?faces-redirect=true";
+				
 			} else {
 				setPersonalLimpieza(controllerPL.obtenerPersonalLimpieza(usuario.getId_usuario()));
 				sesion.setPersonalLimpieza(personalLimpieza);
+				controllerRE.init();
 				view = "/service/list?faces-redirect=true";
 			}
 		} catch (Exception e) {

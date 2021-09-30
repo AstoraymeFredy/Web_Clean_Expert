@@ -78,7 +78,9 @@ body h1,h2,h3,h4,h5,h6{
     background-size: cover;
     min-height:100vh;
  }
- 
+.ui-paginator-page{
+	color:white !important;
+}
 .ui-state-active{
 	background:#004AAD !important;
 }

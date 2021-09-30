@@ -62,7 +62,7 @@ public class ValoracionController implements Serializable {
 		try{
     		vService.insertar(valoracion);
     		this.getListaValoraciones();
-    		view = "/service/list?faces-redirect=true";
+    		view = "/reservation/list?faces-redirect=true";
             limpiar();
     	}
     	catch(Exception e) {
