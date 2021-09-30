@@ -36,7 +36,4 @@ public class Sesion implements Serializable {
 	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
 		this.personalLimpieza = personalLimpieza;
 	}
-	
-	
-	
 }
