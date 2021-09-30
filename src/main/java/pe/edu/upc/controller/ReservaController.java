@@ -3,6 +3,7 @@ package pe.edu.upc.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,7 @@ import javax.inject.Named;
 import pe.edu.upc.entity.Ambiente;
 import pe.edu.upc.entity.DetalleReserva;
 import pe.edu.upc.entity.Horario;
+import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.entity.Reserva;
 import pe.edu.upc.serviceimpl.AmbienteServiceImpl;
@@ -52,7 +54,7 @@ public class ReservaController implements Serializable {
 	
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
-	private List<Reserva> listaPorFechaHorario;
+	private List<PersonalLimpieza> listaPersonalDisponible;
 	private List<Horario> listaHorarios;	
 	private List<DetalleReserva> listaDetalleReserva;
 	private List<Propiedad> listaDirecciones;	
@@ -67,6 +69,7 @@ public class ReservaController implements Serializable {
 		this.listaPorPersonal = new ArrayList<Reserva>();
 		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
 		this.listaDirecciones = new ArrayList<Propiedad>();
+		this.listaPersonalDisponible = new ArrayList<PersonalLimpieza>();
 				
 		this.obtenerReservasPorCliente();	
 	}
@@ -127,14 +130,32 @@ public class ReservaController implements Serializable {
 	
 	public void listarPersonal () {
 		try {
-			List<Horario> horarios = new ArrayList<Horario>();
-			System.out.println(reserva.getFecha());
+			List<Horario> horariosFiltrados = new ArrayList<Horario>();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(reserva.getFecha());
-			horarios = hService.findHorariobyDate(calendar.get(calendar.DAY_OF_WEEK));
-			List<Reserva> reservas = new ArrayList<Reserva>();
-			reservas = rService.listarPorFecha(reserva.getFecha());
-			System.out.println("paso");
+			horariosFiltrados = hService.findHorariobyDate(calendar.get(calendar.DAY_OF_WEEK));	
+			
+			List<Reserva> reservasFiltradas = new ArrayList<Reserva>();
+			reservasFiltradas = rService.listarPorFecha(reserva.getFecha());
+			
+			List<PersonalLimpieza> personalLimpiezaporHorario = new ArrayList<PersonalLimpieza>();
+			
+			for (int i = 0; i< horariosFiltrados.size(); i++) {
+				personalLimpiezaporHorario.add(horariosFiltrados.get(i).getPersonalLimpieza());
+			}
+			
+			for (int i = 0; i< personalLimpiezaporHorario.size(); i++) {
+				boolean notFinded = true;
+				for (int j = 0; j<reservasFiltradas.size(); j++) {
+					if(reservasFiltradas.get(i).getPersonalLimpieza().getId_personal_limpieza() == personalLimpiezaporHorario.get(j).getId_personal_limpieza()) {
+						notFinded = false;
+					}
+				}
+				if (notFinded) {
+					listaPersonalDisponible.add(personalLimpiezaporHorario.get(i));
+				}
+			}
+			
 
 		}
 		catch (Exception e) {

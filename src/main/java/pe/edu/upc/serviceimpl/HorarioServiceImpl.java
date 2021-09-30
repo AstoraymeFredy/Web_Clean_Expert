@@ -22,7 +22,6 @@ public class HorarioServiceImpl implements Serializable {
 	
 	
 	public Horario obtener(int idUsuario) throws Exception{
-		System.out.println("entrando service");
 		return horariodaoimpl.obtener(idUsuario);
 	}
 	

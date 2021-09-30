@@ -13,7 +13,7 @@ INSERT INTO cliente (apellidos,celular,email,nombre,id_usuario) VALUES ('Castill
 
 
 INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Paz Jara',918173446,'especialista en limpieza de suelo laminado','12345MP@gmail.com','Marta',4);
-INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Muñoz Acosta',912433412,'10 años de experiencia en limpieza','pedro123@gmail.com','Pedro',3);
+INSERT INTO personallimpieza (apellidos,celular,descripcion,email,nombre,id_usuario) VALUES ('Galvez Acosta',912433412,'10 años de experiencia en limpieza','pedro123@gmail.com','Pedro',3);
 
 
 INSERT INTO horario (lunes,martes,miercoles,jueves,viernes,sabado,domingo,idpersonallimpieza) VALUES (true,true,true,true,true,true,true,2);
