@@ -23,7 +23,6 @@ public class DetalleReservaDaoImpl implements Serializable{
 		TypedQuery<DetalleReserva> query =em.createQuery("select d from DetalleReserva d where d.reserva.id = ?1", DetalleReserva.class);
 		query.setParameter(1, idReserva);
 		lista=query.getResultList();
-		System.out.println(lista);
 		return lista;
 	}
 }
