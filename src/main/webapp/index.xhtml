@@ -20,16 +20,12 @@
 							 <h1 class="principal-title text-dark fs-2">
 	                            Iniciar sesión                          
 	                        </h1>
-	                        <!-- <p:selectOneButton value="" class="my-4">
-					            <f:selectItem itemLabel="Cliente" itemValue="1"/>
-					            <f:selectItem itemLabel="Soy un Clean Expert" itemValue="2"/>
-					         </p:selectOneButton> -->
 							<div class="ui-fluid">
-								<div class="p-field">
+								<div class="p-field mt-2">
 									<p:outputLabel for="txtUsuario">Usuario</p:outputLabel>
 									<p:inputText id="txtUsuario" required="true" value="#{usuarioController.username}" />
 								</div>
-								<div class="p-field">
+								<div class="p-field mt-3">
 									<p:outputLabel for="txtContrasena">Contraseña</p:outputLabel>
 									<p:password toggleMask="true" id="txtContrasena" required="true" value="#{usuarioController.password}" style="width:100%" />
 								</div>

@@ -32,7 +32,6 @@ public class HorarioController implements Serializable {
     public void init() {
         this.horario = new Horario();
        this.obtenerHorarioLimpieza();
-        
     }
 
    
@@ -45,7 +44,6 @@ public class HorarioController implements Serializable {
 			Message.messageError("Error en horario " + e.getMessage());
     	}
     }
-
     
     public String registrarHorario () {
         

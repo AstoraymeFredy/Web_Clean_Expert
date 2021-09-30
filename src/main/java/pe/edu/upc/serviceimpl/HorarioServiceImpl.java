@@ -19,8 +19,6 @@ public class HorarioServiceImpl implements Serializable {
 	@Inject
 	private HorarioDaoImpl horariodaoimpl;
 	
-	
-	
 	public Horario obtener(int idUsuario) throws Exception{
 		return horariodaoimpl.obtener(idUsuario);
 	}

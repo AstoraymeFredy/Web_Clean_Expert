@@ -22,8 +22,6 @@ public class HorarioDaoImpl implements Serializable {
 
 	
 	public Horario obtener(int idUsuario) throws Exception{
-		System.out.println("entrando dao");
-
 		Query query = em.createQuery("select h from Horario h where h.personalLimpieza.id_personal_limpieza = " + idUsuario, Horario.class);
         Horario h= (Horario) query.getSingleResult();
 		

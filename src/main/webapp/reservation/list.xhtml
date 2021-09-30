@@ -21,10 +21,9 @@
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Listado de
 								reservas</h3>
-							<p:button value="Reservar" styleClass="bg-primary" action=""
-								ajax="false" />
-									<p:commandButton value="Reservar" styleClass="bg-primary" action="#{reservaController.nuevoReserva()}"
-								ajax="false" />
+							<p:commandButton value="Reservar" styleClass="bg-primary" action="#{reservaController.nuevoReserva()}"
+									ajax="false" />
+							
 						</div>
 						<p:growl id="men" />
 						<p:dataTable id="datTabReservations"
@@ -53,10 +52,14 @@
 								<p:outputLabel value="#{res.precio}" />
 							</p:column>
 							<p:column headerText="Acciones">
+							<div class="flex">
 								<p:commandButton value="Ver" styleClass="ui-button-info me-2"
-									action="#{reservaController.obtenerReserva(res)}" />
+									action="#{reservaController.obtenerReserva(res, 1)}" />
 								<p:commandButton value="Calificar"
+								action="#{valoracionController.nuevaValoracion(res)}"
 									styleClass="ui-button-success" />
+							</div>
+								
 							</p:column>
 						</p:dataTable>
 					</h:form>

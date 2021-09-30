@@ -29,7 +29,6 @@ public class ValoracionController implements Serializable {
 	private ValoracionServiceImpl vService;
 	private Valoracion valoracion;
 	List<Valoracion> listaValoraciones;
-	//private Valoracion valoracionSelect;
 	
 	@PostConstruct
 	public void init() {
@@ -73,6 +72,7 @@ public class ValoracionController implements Serializable {
 			System.out.println(valoracion.getComentario());
     		vService.insertar(valoracion);
     		this.getListaValoraciones();
+    		view = "/service/list?faces-redirect=true";
             limpiar();
     	}
     	catch(Exception e) {

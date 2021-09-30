@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import pe.edu.upc.entity.Horario;
 import pe.edu.upc.entity.PersonalLimpieza;
 
 public class PersonalLimpiezaDaoImpl implements Serializable {
@@ -23,8 +24,10 @@ public class PersonalLimpiezaDaoImpl implements Serializable {
 	}
 
 	@Transactional
-	public void registrar(PersonalLimpieza personalLimpieza) throws Exception {
+	public void registrar(PersonalLimpieza personalLimpieza, Horario horario) throws Exception {
 		em.persist(personalLimpieza);
+		horario.setPersonalLimpieza(personalLimpieza);
+		em.persist(horario);
 	}
 	
 	@Transactional
