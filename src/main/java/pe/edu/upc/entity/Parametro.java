@@ -71,8 +71,4 @@ public class Parametro implements Serializable{
 	public void setUnidad(String unidad) {
 		this.unidad = unidad;
 	}
-
-
-	
-	
 }

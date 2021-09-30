@@ -87,7 +87,4 @@ public class Valoracion implements Serializable {
 	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
 		this.personalLimpieza = personalLimpieza;
 	}
-	
-	
-	
 }

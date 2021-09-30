@@ -41,7 +41,6 @@ public class PersonalLimpieza implements Serializable  {
 
 	public PersonalLimpieza() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public PersonalLimpieza(int id_personal_limpieza, String nombre, String apellidos, String descripcion, String email,
@@ -111,8 +110,4 @@ public class PersonalLimpieza implements Serializable  {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-	
-	
-	
 }

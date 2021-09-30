@@ -3,7 +3,6 @@ package pe.edu.upc.controller;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
@@ -39,8 +38,8 @@ public class ReservaController implements Serializable {
 
 	@Inject
 	private HorarioServiceImpl hService;
-	private Horario horario;
 
+	private Horario horario;
 
 	@Inject
 	private ParametroServiceImpl paService;
@@ -62,7 +61,9 @@ public class ReservaController implements Serializable {
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
 	private List<PersonalLimpieza> listaPersonalDisponible;
+
 	private List<Horario> listaHorarios;
+
 	private List<DetalleReserva> listaDetalleReserva;
 	private List<Propiedad> listaDirecciones;
 	private List<Parametro> listaParametros;
@@ -81,12 +82,11 @@ public class ReservaController implements Serializable {
 		this.listaPersonalDisponible = new ArrayList<PersonalLimpieza>();
 		this.listaParametros = new ArrayList<Parametro>();
 
-
 		if (sesion.getUsuario().getTipoUsuario().getId()==1) {
 			this.obtenerReservasPorCliente();
 		} else {
 			this.obtenerReservasPorPersonal();
-		}
+		}	
 
 	}
 
@@ -303,7 +303,6 @@ public class ReservaController implements Serializable {
 
 	public void setPersonalLimpieza(PersonalLimpieza personalLimpieza) {
 		this.personalLimpieza = personalLimpieza;
-	}
-
+	}	
 
 }

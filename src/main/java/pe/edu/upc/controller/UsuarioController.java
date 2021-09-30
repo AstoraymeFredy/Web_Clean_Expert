@@ -3,7 +3,6 @@ package pe.edu.upc.controller;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -12,7 +11,6 @@ import pe.edu.upc.entity.Cliente;
 import pe.edu.upc.entity.PersonalLimpieza;
 import pe.edu.upc.entity.TipoUsuario;
 import pe.edu.upc.entity.Usuario;
-import pe.edu.upc.serviceimpl.ClienteServiceImpl;
 import pe.edu.upc.serviceimpl.UsuarioServiceImpl;
 import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
@@ -192,7 +190,4 @@ public class UsuarioController implements Serializable {
 	public void setSesion(Sesion sesion) {
 		this.sesion = sesion;
 	}
-	
-	
-	
 }

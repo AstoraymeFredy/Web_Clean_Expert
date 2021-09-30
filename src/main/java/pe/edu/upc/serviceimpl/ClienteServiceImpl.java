@@ -28,5 +28,4 @@ public class ClienteServiceImpl implements  Serializable {
 	public Cliente actualizar (Cliente cliente) throws Exception {
 		return cD.actualizar(cliente);
 	}
-
 }

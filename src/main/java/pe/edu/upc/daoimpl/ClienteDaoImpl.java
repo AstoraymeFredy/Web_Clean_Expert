@@ -19,7 +19,6 @@ public class ClienteDaoImpl implements Serializable  {
 		Query query = em.createQuery("select c from Cliente c where c.usuario.id_usuario = " + idUsuario, Cliente.class);
 		Cliente cliente = (Cliente) query.getSingleResult();
 		return cliente;
-		
 	}
 
 	@Transactional
@@ -32,5 +31,4 @@ public class ClienteDaoImpl implements Serializable  {
 		em.merge(cliente);
 		return cliente;
 	}
-	
 }

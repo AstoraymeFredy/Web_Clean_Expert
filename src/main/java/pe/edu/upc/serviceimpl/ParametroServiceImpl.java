@@ -35,7 +35,4 @@ public class ParametroServiceImpl implements Serializable {
 	public List<Parametro> listarParametros() throws Exception{
 		return parametroDaoImpl.findAll();
 	}
-
-	
-
 }
