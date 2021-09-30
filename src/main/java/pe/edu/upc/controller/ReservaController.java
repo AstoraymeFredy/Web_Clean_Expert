@@ -129,6 +129,7 @@ public class ReservaController implements Serializable {
 		try {
 			System.out.println("entrar a controla");
 			System.out.println(reserva.getFecha());
+			System.out.println(propiedad.getDireccion());
 			Calendar calendar = Calendar.getInstance();
 
 			calendar.setTime(reserva.getFecha());
@@ -153,7 +154,7 @@ public class ReservaController implements Serializable {
 	}
 	
 	public String registrar () {
-		System.out.println(reserva.getHora_inicio());
+        System.out.println("dntrando");
         System.out.println(reserva.getFecha());
 		String view = "";
 		try {
@@ -165,7 +166,7 @@ public class ReservaController implements Serializable {
 				//Message.messageInfo("Registro actualizado correctamente");
 			}
 			//llamar productos
-			resetForm();
+			//resetForm();
 			//view = "reservation/list";
 		} catch (Exception e) {
 			// TODO: handle exception
