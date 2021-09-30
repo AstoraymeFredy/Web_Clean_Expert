@@ -79,7 +79,13 @@ public class ReservaController implements Serializable {
 		this.listaPersonalDisponible = new ArrayList<PersonalLimpieza>();
 		this.listaParametros = new ArrayList<Parametro>();
 		
-		this.obtenerReservasPorCliente();	
+	
+		if (sesion.getUsuario().getTipoUsuario().getId()==1) {
+			this.obtenerReservasPorCliente();
+		} else {
+			this.obtenerReservasPorPersonal();
+		}
+			
 	}
 	
 	public void obtenerReservasPorCliente() {
@@ -89,7 +95,7 @@ public class ReservaController implements Serializable {
 			Message.messageError("Error :" + e.getMessage());
 		}
 	}
-	
+
 	public void obtenerReserva2(int idReserva) {
 		try {
 			reserva = rService.obtenerReserva(idReserva);
@@ -98,12 +104,17 @@ public class ReservaController implements Serializable {
 		}
 	}
 	
-	public String obtenerReserva(Reserva reserva) {
+	public String obtenerReserva(Reserva reserva, int idtipoUsuario) {
 		String view = "";
 		try {
 			this.reserva = reserva;
 			listaDetalleReserva = dService.listarDetalleReserva(reserva.getId_reserva());
-			view = "/reservation/view?faces-redirect=true";
+			if(idtipoUsuario==1) {
+				view = "/reservation/view?faces-redirect=true";
+			} else {
+				view = "/service/view?faces-redirect=true";
+			}
+			
 		} catch(Exception e) {
 			Message.messageError("Error en reserva:" + e.getMessage());
 		}
