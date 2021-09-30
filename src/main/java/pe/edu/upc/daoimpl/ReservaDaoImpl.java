@@ -2,6 +2,7 @@ package pe.edu.upc.daoimpl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -44,6 +45,14 @@ public class ReservaDaoImpl implements Serializable {
 		List<Reserva> lista = new ArrayList<Reserva>();
 		TypedQuery<Reserva> query =em.createQuery("select r from Reserva r where r.propiedad.cliente.id_cliente = ?1", Reserva.class);
 		query.setParameter(1, idCliente);
+		lista = query.getResultList();
+		return lista;
+	}
+	
+	public List<Reserva> listarPorFecha(Date fecha) throws Exception{
+		List<Reserva> lista = new ArrayList<Reserva>();
+		TypedQuery<Reserva> query =em.createQuery("select r from Reserva r where r.fecha = ?1", Reserva.class);
+		query.setParameter(1, fecha);
 		lista = query.getResultList();
 		return lista;
 	}

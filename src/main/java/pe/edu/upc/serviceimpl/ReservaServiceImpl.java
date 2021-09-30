@@ -1,6 +1,7 @@
 package pe.edu.upc.serviceimpl;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -35,6 +36,10 @@ public class ReservaServiceImpl implements Serializable {
 	public List<Reserva> listarPorCliente(int idCliente) throws Exception {
 		// TODO Auto-generated method stub
 		return rD.listarPorCliente(idCliente);
+	}
+	
+	public List<Reserva> listarPorFecha(Date fecha) throws Exception{
+		return rD.listarPorFecha(fecha);
 	}
 	
 }
