@@ -98,9 +98,8 @@ public class UsuarioController implements Serializable {
 				view = "/service/list?faces-redirect=true";
 			}
 		} catch (Exception e) {
-			Message.messageError("Error al iniciar sesion" + e.getMessage());
+			Message.messageError("Error al iniciar sesion: " + e.getMessage());
 		}
-		Message.messageInfo("Bienvenido");
 		this.username = "";
 		this.password = "";
 		return view;
@@ -119,6 +118,9 @@ public class UsuarioController implements Serializable {
 	}
 	
 	public String logout() {
+		this.setPersonalLimpieza(new PersonalLimpieza());
+		this.setCliente(new Cliente());
+		this.setUsuario(new Usuario());
 		sesion.setUsuario(new Usuario());
 		sesion.setCliente(new Cliente());
 		sesion.setPersonalLimpieza(new PersonalLimpieza());

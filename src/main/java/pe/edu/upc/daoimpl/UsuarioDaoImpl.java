@@ -20,9 +20,13 @@ public class UsuarioDaoImpl implements  Serializable {
 
 
 	public Usuario login(String username, String password) throws Exception {
-		Query query = em.createQuery("select u from Usuario u WHERE u.username=:name AND u.password=:pass", Usuario.class);
+		TypedQuery<Usuario> query = em.createQuery("select u from Usuario u WHERE u.username=:name AND u.password=:pass", Usuario.class);
 		query.setParameter("name", username);
 		query.setParameter("pass", password);
+		
+		if(query.getResultList().isEmpty()) {
+			throw new RuntimeException("El usuario no se encuentra registrado");
+		}
 		Usuario usuario = (Usuario) query.getSingleResult();
 		return usuario;
 	}

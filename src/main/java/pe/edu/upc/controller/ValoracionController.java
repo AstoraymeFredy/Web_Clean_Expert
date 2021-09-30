@@ -72,6 +72,7 @@ public class ValoracionController implements Serializable {
 			System.out.println(valoracion.getComentario());
     		vService.insertar(valoracion);
     		this.getListaValoraciones();
+    		view = "/service/list?faces-redirect=true";
             limpiar();
     	}
     	catch(Exception e) {
