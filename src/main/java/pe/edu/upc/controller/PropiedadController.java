@@ -76,7 +76,6 @@ public class PropiedadController implements Serializable {
 				propiedad.setCliente(sesion.getCliente());
 				propiedad.setDistrito(distrito);
 				pService.insertar(propiedad);
-				Message.messageInfo("Ingresado");
 			}
 			this.listar();
 			this.propiedad = new Propiedad ();

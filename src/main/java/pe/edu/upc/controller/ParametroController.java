@@ -64,7 +64,7 @@ public class ParametroController implements Serializable {
 
 	public void getAllParameters() {
 		try {
-			listaParametro = parameterService.findAll();
+			listaParametro = parameterService.listarParametros();
 		} catch (Exception e) {
 			Message.messageError("Error");
 		}
