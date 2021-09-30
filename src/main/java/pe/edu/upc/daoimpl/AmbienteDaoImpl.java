@@ -16,7 +16,7 @@ public class AmbienteDaoImpl implements Serializable {
 	@PersistenceContext(unitName="pu")
 	private EntityManager em;
 
-
+	@SuppressWarnings("unchecked")
 	public List<Ambiente> listar() {
 		List<Ambiente> lista = new ArrayList<Ambiente>();
 		Query q = em.createQuery("select a from Ambiente a");

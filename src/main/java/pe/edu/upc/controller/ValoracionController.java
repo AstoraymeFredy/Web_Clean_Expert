@@ -6,18 +6,21 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 
+import pe.edu.upc.entity.PersonalLimpieza;
+import pe.edu.upc.entity.Reserva;
 import pe.edu.upc.entity.Valoracion;
 import pe.edu.upc.serviceimpl.ValoracionServiceImpl;
 import pe.edu.upc.util.Message;
 
 
 @Named
-@RequestScoped
+@SessionScoped
 public class ValoracionController implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -39,9 +42,11 @@ public class ValoracionController implements Serializable {
 		listaValoraciones = vService.listar();
 	}
 	
-	public String nuevaValoracion() {
+	public String nuevaValoracion(Reserva reserva) {
 		this.setValoracion (new Valoracion());
-		return "nuevaValoracion.xhtml";
+		this.valoracion.setCliente(reserva.getPropiedad().getCliente());
+		this.valoracion.setPersonalLimpieza(reserva.getPersonalLimpieza());
+		return "/service/insertCalification?faces-redirect=true";
 	}
 	
 	public String listadoReservas() {
@@ -63,7 +68,7 @@ public class ValoracionController implements Serializable {
 
 	public String guardarValoracion() {
 		try{
-
+			System.out.println(valoracion.getCalificacion());
     		vService.insertar(valoracion);
             limpiar();
            

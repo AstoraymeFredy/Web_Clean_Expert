@@ -25,23 +25,27 @@
 							<div class="ui-fluid">
 								<div class="p-field">
 									<p:outputLabel for="txtNombre">Nombres</p:outputLabel>
-									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{usuarioController.cliente.nombre}" />
+									<p:inputText id="txtNombre" placeholder="Ingresar nombres" required="true" value="#{personalLimpiezaController.personalLimpieza.nombre}" />
 								</div>
 								<div class="p-field">
 									<p:outputLabel for="txtApellido">Apellidos</p:outputLabel>
-									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{usuarioController.cliente.apellidos}" style="width:100%" />
+									<p:inputText id="txtApellido" placeholder="Ingresar nombres" required="true" value="#{personalLimpiezaController.personalLimpieza.apellidos}" style="width:100%" />
 								</div>
 								<div class="p-field">
 									<p:outputLabel for="txtCelular">Celular</p:outputLabel>
-									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{usuarioController.cliente.celular}" />
+									<p:inputText id="txtCelular" placeholder="Ingresar número de celular" required="true" value="#{personalLimpiezaController.personalLimpieza.celular}" />
 								</div>
 								<div class="p-field">
 									<p:outputLabel for="txtEmail">Correo electrónico</p:outputLabel>
-									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{usuarioController.cliente.email}" style="width:100%" />
+									<p:inputText id="txtEmail" placeholder="Ingresar correo electronico" required="true" value="#{personalLimpiezaController.personalLimpieza.email}" style="width:100%" />
+								</div>
+								<div class="p-field">
+									<p:outputLabel for="txtDescription">Descripción</p:outputLabel>
+									<p:inputText id="txtDescription" placeholder="Ingresar descripción" required="true" value="#{personalLimpiezaController.personalLimpieza.descripcion}" style="width:100%" />
 								</div>
 
 								<p:commandButton value="Guardar"
-									action="#{usuarioController.actualizar(2)}"
+									action="#{personalLimpiezaController.actualizar()}"
 									ajax="false"
 									
 									styleClass="bg-primary my-4"/>

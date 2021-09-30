@@ -6,10 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-
 </h:head>
-<body>
 
+<body>
 	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
 		<ui:define name="pageTitle">
 	        Listado de direcciones - Clean Expert
@@ -25,7 +24,6 @@
 								direcciones</h3>
 							<p:commandButton value="Nuevo" styleClass="bg-primary"
 								action="#{propiedadController.nuevaPropiedad()}" ajax="false" />
-
 						</div>
 
 						<p:dataTable id="datTabAddresses"
@@ -42,12 +40,12 @@
 								<p:outputLabel value="#{propi.direccion}" />
 							</p:column>
 							<p:column headerText="Acciones">
+
+								<p:commandButton value="Eliminar" styleClass="ui-button-danger"
+									action="#{propiedadController.eliminar(propi)}" />
 								<p:commandButton value="Modificar"
 									styleClass="ui-button-success"
 									action="#{propiedadController.editProperty(propi)}" />
-								<p:commandButton value="Eliminar"
-									styleClass="ui-button-danger"
-									action="#{propiedadController.eliminar(propi)}" />
 							</p:column>
 						</p:dataTable>
 					</h:form>
@@ -55,6 +53,5 @@
 			</p:panel>
 		</ui:define>
 	</ui:composition>
-
 </body>
 </html>
