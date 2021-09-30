@@ -29,7 +29,6 @@ public class ValoracionController implements Serializable {
 	private ValoracionServiceImpl vService;
 	private Valoracion valoracion;
 	List<Valoracion> listaValoraciones;
-	//private Valoracion valoracionSelect;
 	
 	@PostConstruct
 	public void init() {

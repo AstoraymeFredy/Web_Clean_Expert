@@ -20,10 +20,14 @@
 					<h:form id="frm">
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Mi perfil</h3>
-							<p:commandButton value="Ver direcciones" styleClass="bg-primary" action="#{clienteController.accederDirecciones()}"
-								ajax="false" />
-							<p:commandButton value="Modificar" styleClass="bg-primary" action="#{clienteController.modificarCliente()}"
-								ajax="false" />
+							<div>
+							
+								<p:commandButton value="Ver direcciones" styleClass="ui-button-success" action="#{clienteController.accederDirecciones()}"
+									ajax="false" />
+								<p:commandButton value="Modificar" styleClass="bg-primary" action="#{clienteController.modificarCliente()}"
+									ajax="false" />
+							</div>
+							
 						</div>
 						<p:growl id="men" />
 
