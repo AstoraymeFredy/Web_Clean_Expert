@@ -51,7 +51,7 @@ public class ValoracionController implements Serializable {
 	
 	public String listadoReservas() {
 
-		return "/service/list";
+		return "/reservation/list";
 	}
 
 	
@@ -67,17 +67,18 @@ public class ValoracionController implements Serializable {
 	}
 
 	public String guardarValoracion() {
+		String view="";
 		try{
 			System.out.println(valoracion.getCalificacion());
+			System.out.println(valoracion.getComentario());
     		vService.insertar(valoracion);
+    		this.getListaValoraciones();
             limpiar();
-           
     	}
     	catch(Exception e) {
 			Message.messageError("Error en valoracion " + e.getMessage());
     	}
-    	 return "cliente.xhtml";
-		
+	 return view;
 	}
 	
 	public Valoracion getValoracion() {

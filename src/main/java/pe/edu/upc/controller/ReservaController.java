@@ -127,13 +127,14 @@ public class ReservaController implements Serializable {
 	
 	public void listarPersonal () {
 		try {
-			System.out.println("entrar a controla");
+			List<Horario> horarios = new ArrayList<Horario>();
 			System.out.println(reserva.getFecha());
-			System.out.println(propiedad.getDireccion());
 			Calendar calendar = Calendar.getInstance();
-
 			calendar.setTime(reserva.getFecha());
-			hService.findHorariobyDate(calendar.get(calendar.DAY_OF_WEEK));
+			horarios = hService.findHorariobyDate(calendar.get(calendar.DAY_OF_WEEK));
+			List<Reserva> reservas = new ArrayList<Reserva>();
+			reservas = rService.listarPorFecha(reserva.getFecha());
+			System.out.println("paso");
 
 		}
 		catch (Exception e) {
