@@ -139,8 +139,8 @@
 									listener="#{reservaController.simularPrecio}" />
 							</p:selectBooleanCheckbox>
 							<div class="d-flex mt-4">
-								<p:button value="Cancelar" styleClass="bg-secondary me-2"
-									action="" ajax="false" />
+								<p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
+									action="#{reservaController.listarReservasPorCliente()}" immediate="true" ajax="false" />
 								<p:commandButton value="Pagar" styleClass="bg-primary"
 									action="#{reservaController.pagar()}" ajax="false" />
 							</div>
@@ -159,8 +159,6 @@
 								<div class="field mb-2">
 									<p class="text-dark d-block">Monto total a Pagar</p>
 									<p:outputLabel value="s/. #{reservaController.reserva.precio} " />
-									<p class="text-dark d-block">#{reservaController.reserva.duracion}
-										hora(s)</p>
 								</div>
 							</div>
 						</p:panel>
