@@ -22,27 +22,28 @@
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-12">
 									<p:outputLabel for="txtDormitorio">Nombre Completo</p:outputLabel>
-									<p:inputText id="txtDormitorio"  required="true" />
+									<p:inputText id="txtDormitorio"  required="true" value="#{reservaController.reserva.propietario_tarjeta}" />
 								</div>
 								<div class="field col-12">
 									<p:outputLabel for="txtCard">Número de tarjeta</p:outputLabel>
-									<p:inputNumber id="txtCard" minValue="111111111111" thousandSeparator="" required="true" decimalPlaces="0" emptyValue="zero"/>
+									<p:inputNumber id="txtCard" value="#{reservaController.reserva.numero_tarjeta}" maxValue="9999999999999999" thousandSeparator="" required="true" decimalPlaces="0" />
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtFechaV">Fecha</p:outputLabel>
 										<p:calendar id="txtFechaV" pattern="MM/yyyy"
+										value="#{reservaController.reserva.fecha}"
 											showOn="button"
 											required="true">
 										</p:calendar>
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtCVV">CVV</p:outputLabel>
-									<p:inputText id="txtCVV"  required="true"/>
+									<p:inputText id="txtCVV" value="#{reservaController.reserva.cvv_tarjeta}"  required="true"/>
 								</div>								
 							</div>
 							<div class="d-flex mt-4">
-								<p:button value="Cancelar" styleClass="bg-secondary me-2"
-									action="" ajax="false" />
+								<p:commandButton value="Cancelar" styleClass="bg-secondary me-2"
+									action="#{reservaController.listarReservasPorCliente()}" ajax="false" immediate="true" />
 								<p:commandButton value="Confirmar pago" styleClass="bg-primary"
 									action="#{reservaController.registrar()}" ajax="false" />
 							</div>
