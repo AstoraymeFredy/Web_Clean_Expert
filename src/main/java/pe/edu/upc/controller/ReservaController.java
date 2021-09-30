@@ -9,9 +9,13 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import pe.edu.upc.entity.Ambiente;
 import pe.edu.upc.entity.DetalleReserva;
+import pe.edu.upc.entity.Propiedad;
 import pe.edu.upc.entity.Reserva;
+import pe.edu.upc.serviceimpl.AmbienteServiceImpl;
 import pe.edu.upc.serviceimpl.DetalleReservaServiceImpl;
+import pe.edu.upc.serviceimpl.PropiedadServiceImpl;
 import pe.edu.upc.serviceimpl.ReservaServiceImpl;
 import pe.edu.upc.util.Message;
 import pe.edu.upc.util.Sesion;
@@ -30,12 +34,20 @@ public class ReservaController implements Serializable {
 	private DetalleReservaServiceImpl dService;
 	
 	@Inject
+	private AmbienteServiceImpl aService;
+	
+	@Inject
+	private PropiedadServiceImpl pService;
+	private Propiedad propiedad;
+	
+	@Inject
 	private Sesion sesion;
 	
 	private List<Reserva> listaPorCliente;
 	private List<Reserva> listaPorPersonal;
 	private List<DetalleReserva> listaDetalleReserva;
-	
+	private List<Propiedad> listaDirecciones;
+
 	@PostConstruct
 	public void init() {
 		this.reserva = new Reserva();
@@ -44,7 +56,8 @@ public class ReservaController implements Serializable {
 		this.listaPorCliente = new ArrayList<Reserva>();
 		this.listaPorPersonal = new ArrayList<Reserva>();
 		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
-		
+		this.listaDirecciones = new ArrayList<Propiedad>();
+				
 		this.obtenerReservasPorCliente();	
 	}
 	
@@ -86,23 +99,21 @@ public class ReservaController implements Serializable {
 	
 	public String nuevoReserva () {
 		try {
-			//Aquí llamo todos los datos para el select
-			resetForm();
-		} catch (Exception e) {
+			listaDetalleReserva.clear();
+			List<Ambiente> listaDeAmbientes =aService.listarAmbientes();
+			 for (int i = 0; i < listaDeAmbientes.size(); i++) {
+		         DetalleReserva detalle = new DetalleReserva();
+		         detalle.setAmbiente(listaDeAmbientes.get(i));
+		         listaDetalleReserva.add(detalle);
+		     }
+			listaDirecciones = pService.listar(sesion.getCliente().getId());
+
 		}
-		return "reservation/create";
-	}
-	
-	public String editarReserva() {
-		String view = "";
-		try {
-		
-		} catch (Exception e) {
-			   //Message.messageError("Error en producto " + e.getMessage());
+		catch (Exception e) {
+			Message.messageError("Error :" + e.getMessage());
 		}
-		return view;
+		return "/reservation/create?faces-redirect=true";
 	}
-	
 	
 	public String listarReservasPorPersonal() {
 		return "/service/list";
@@ -117,6 +128,8 @@ public class ReservaController implements Serializable {
 	}
 	
 	public String registrar () {
+	
+        System.out.println(propiedad.getDireccion());
 		String view = "";
 		try {
 			if(reserva.getId_reserva() != null) {
@@ -128,7 +141,7 @@ public class ReservaController implements Serializable {
 			}
 			//llamar productos
 			resetForm();
-			view = "reservation/list";
+			//view = "reservation/list";
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -143,6 +156,14 @@ public class ReservaController implements Serializable {
 
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
+	}
+	
+	public Propiedad getPropiedad() {
+		return propiedad;
+	}
+
+	public void setPropiedad(Propiedad propiedad) {
+		this.propiedad = propiedad;
 	}
 
 	public List<Reserva> getListaPorCliente() {
@@ -167,6 +188,14 @@ public class ReservaController implements Serializable {
 
 	public void setListaDetalleReserva(List<DetalleReserva> listaDetalleReserva) {
 		this.listaDetalleReserva = listaDetalleReserva;
+	}
+
+	public List<Propiedad> getListaDirecciones() {
+		return listaDirecciones;
+	}
+
+	public void setListaDirecciones(List<Propiedad> listaDirecciones) {
+		this.listaDirecciones = listaDirecciones;
 	}	
 	
 	

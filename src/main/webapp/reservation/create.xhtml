@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+
 </h:head>
 <body>
 	<ui:composition template="/WEB-INF/templates/master_client.xhtml">
@@ -21,66 +22,53 @@
 								servicio</h3>
 							<p class="text-primary fw-bold">Habitaciones</p>
 							<div class="ui-fluid formgrid grid">
-								<div class="field col-6">
-									<p:outputLabel for="txtDormitorio">Dormitorio</p:outputLabel>
-									<p:inputNumber id="txtDormitorio" minValue="0" maxValue="6"
-										value="" decimalPlaces="0" emptyValue="zero" />
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtBaño">Baño</p:outputLabel>
-									<p:inputNumber id="txtBaño" minValue="0" maxValue="6" value=""
-										decimalPlaces="0" emptyValue="zero" />
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtCocina">Cocina</p:outputLabel>
-									<p:inputNumber id="txtCocina" minValue="0" maxValue="6"
-										value="" decimalPlaces="0" emptyValue="zero" />
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtSala">Sala</p:outputLabel>
-									<p:inputNumber id="txtSala" minValue="0" maxValue="6" value=""
-										decimalPlaces="0" emptyValue="zero" />
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtBiblioteca">Biblioteca</p:outputLabel>
-									<p:inputNumber id="txtBiblioteca" minValue="0" maxValue="6"
-										value="" decimalPlaces="0" emptyValue="zero" />
-								</div>
-								<div class="field col-6">
-									<p:outputLabel for="txtComedor">Comedor</p:outputLabel>
-									<p:inputNumber id="txtComedor" minValue="0" maxValue="6"
-										value="" decimalPlaces="0" emptyValue="zero" />
-								</div>
+								<p:repeat value="#{reservaController.listaDetalleReserva}"
+									var="detalle">
+									<div class="field col-4">
+										<p:outputLabel>#{detalle.ambiente.nombre}</p:outputLabel>
+										<p:inputNumber id="txt#{detalle.ambiente.nombre}" minValue="0" maxValue="6"
+										value="#{detalle.cantidad}" decimalPlaces="0" emptyValue="zero" />
+									</div>
+								</p:repeat>
 							</div>
+							
 							<p class="text-primary fw-bold">Horario y lugar</p>
 							<div class="ui-fluid formgrid grid">
 								<div class="field col-12">
-									<p:outputLabel for="txtDireccion">Dirección</p:outputLabel>
-									<p:selectOneMenu id="txtDireccion" required="true">
-										<f:selectItem
-											itemLabel="Selecciona la dirección correspondiente"
+									<p:outputLabel for="cboDirección">Dirección</p:outputLabel>
+									<p:selectOneMenu id="cboDirección" required="true" effect="drop"
+										value="#{reservaController.propiedad}"
+										converter="omnifaces.SelectItemsConverter">
+										<f:selectItem itemLabel="Seleccione una opción"
 											noSelectionOption="true" itemValue="" />
+										<f:selectItems value="#{reservaController.listaDirecciones}"
+											var="propiedad" itemLabel="#{propiedad.distrito.nombre} - #{propiedad.direccion}"
+											itemValue="#{propiedad}" />
+											<p:ajax event="change" update="@this"/>
 									</p:selectOneMenu>
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtFecha">Fecha</p:outputLabel>
-									<p:datePicker id="txtFecha" value="" />
+									<p:calendar id="txtFecha" pattern="dd/MM/yyyy"
+										value="#{reservaController.reserva.fecha}" showOn="button"
+										timeZone="UTC" required="true">
+									</p:calendar>
 								</div>
 								<div class="field col-6">
 									<p:outputLabel for="txtHora">Hora</p:outputLabel>
-									<p:datePicker id="txtHora" value="" timeOnly="true"
+									<p:datePicker id="txtHora" value="#{reservaController.reserva.hora_inicio}" timeOnly="true"
 										stepMinute="60" mindate="08:00" maxdate="16:00" />
 								</div>
 							</div>
 							<p class="text-primary fw-bold">Selecciona tu Clean Expert</p>
 							<p class="text-primary fw-bold">Opciones</p>
-							<p:selectBooleanCheckbox value="False"
+							<p:selectBooleanCheckbox value="#{reservaController.reserva.kit_limpieza_extra}"
 								itemLabel="Agregar kit de limpieza" />
 							<div class="d-flex mt-4">
 								<p:button value="Cancelar" styleClass="bg-secondary me-2"
 									action="" ajax="false" />
-								<p:button value="Pagar" styleClass="bg-primary" action=""
-									ajax="false" />
+								<p:commandButton value="Pagar" styleClass="bg-primary" action="#{reservaController.registrar()}"
+								ajax="false" />
 							</div>
 						</p:panel>
 					</div>

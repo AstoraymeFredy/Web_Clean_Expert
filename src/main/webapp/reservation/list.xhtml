@@ -23,6 +23,8 @@
 								reservas</h3>
 							<p:button value="Reservar" styleClass="bg-primary" action=""
 								ajax="false" />
+									<p:commandButton value="Reservar" styleClass="bg-primary" action="#{reservaController.nuevoReserva()}"
+								ajax="false" />
 						</div>
 						<p:growl id="men" />
 						<p:dataTable id="datTabReservations"

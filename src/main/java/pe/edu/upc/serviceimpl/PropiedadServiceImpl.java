@@ -20,9 +20,7 @@ public class PropiedadServiceImpl implements Serializable {
 	public List<Propiedad> listar(int idCliente)throws Exception {
 		return prop.listarPorCliente(idCliente);
 	}
-	
-	
-	
+		
 	public void eliminar(int idPropiedad)throws Exception {
 		prop.eliminar(idPropiedad);
 	}

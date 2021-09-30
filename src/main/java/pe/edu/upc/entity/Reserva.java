@@ -24,14 +24,14 @@ public class Reserva implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_reserva;
 	
-	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
 	@Column(name="precio", nullable=false)
 	private float precio;
 	
+	@Temporal(TemporalType.TIME)
 	@Column(name="hora_inicio", nullable=false)
-	private String hora_inicio;
+	private Date hora_inicio;
 	
 	@Column(name="duracion", nullable=false)
 	private int duracion;
@@ -55,7 +55,7 @@ public class Reserva implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reserva(Long id_reserva, Date fecha, float precio, String hora_inicio, int duracion, boolean kit_limpieza_extra,
+	public Reserva(Long id_reserva, Date fecha, float precio, Date hora_inicio, int duracion, boolean kit_limpieza_extra,
 			String estado, PersonalLimpieza personalLimpieza, Propiedad propiedad) {
 		super();
 		this.id_reserva = id_reserva;
@@ -93,11 +93,11 @@ public class Reserva implements Serializable {
 		this.precio = precio;
 	}
 
-	public String getHora_inicio() {
+	public Date getHora_inicio() {
 		return hora_inicio;
 	}
 
-	public void setHora_inicio(String hora_inicio) {
+	public void setHora_inicio(Date hora_inicio) {
 		this.hora_inicio = hora_inicio;
 	}
 
