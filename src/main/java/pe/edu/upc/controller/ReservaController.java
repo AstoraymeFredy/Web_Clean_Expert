@@ -71,7 +71,9 @@ public class ReservaController implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.reserva = new Reserva();
-
+		this.propiedad = new Propiedad();
+		this.personalLimpieza = new PersonalLimpieza();
+			
 		this.listaPorCliente = new ArrayList<Reserva>();
 		this.listaPorPersonal = new ArrayList<Reserva>();
 		this.listaDetalleReserva = new ArrayList<DetalleReserva>();
@@ -85,14 +87,6 @@ public class ReservaController implements Serializable {
 	public void obtenerReservasPorCliente() {
 		try {
 			listaPorCliente = rService.listarPorCliente(sesion.getCliente().getId());
-		} catch(Exception e) {
-			Message.messageError("Error :" + e.getMessage());
-		}
-	}
-	
-	public void obtenerReserva2(int idReserva) {
-		try {
-			reserva = rService.obtenerReserva(idReserva);
 		} catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
 		}
@@ -119,6 +113,7 @@ public class ReservaController implements Serializable {
 	}
 	
 	public String nuevoReserva () {
+		resetForm();
 		try {
 			listaDetalleReserva.clear();
 			List<Ambiente> listaDeAmbientes =aService.listarAmbientes();
@@ -138,6 +133,7 @@ public class ReservaController implements Serializable {
 	
 	public void listarPersonal () {
 		try {
+			listaPersonalDisponible.clear();
 			List<Horario> horariosFiltrados = new ArrayList<Horario>();
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(reserva.getFecha());
@@ -186,11 +182,12 @@ public class ReservaController implements Serializable {
 		         detalle_reserva.setReserva(reserva);
 		         dService.insertar(detalle_reserva);
 		     }
+			this.obtenerReservasPorCliente();
+			resetForm();
+			view="/reservation/list";
 		} catch (Exception e) {
 			Message.messageError("Error en parametro " + e.getMessage());
 		}
-		this.obtenerReservasPorCliente();
-		this.propiedad = new Propiedad();
 		return view;
 	}
 	
@@ -203,7 +200,6 @@ public class ReservaController implements Serializable {
 	}	
 	
 	public void simularPrecio(AjaxBehaviorEvent e) {
-
 		float precio_total = 0;
 		float duracion_total = 0;
 		int duracion_aproximada = 0;
@@ -221,16 +217,17 @@ public class ReservaController implements Serializable {
 			if(reserva.isKit_limpieza_extra()) {
 				precio_total=precio_total+costo_kit;
 			}
-
 		}
-	
 		this.reserva.setDuracion(duracion_aproximada);
 		this.reserva.setPrecio(precio_total);
-	
 	}
 	
 	public void resetForm() {
 		this.reserva = new Reserva();
+		this.propiedad = new Propiedad();
+		this.personalLimpieza = new PersonalLimpieza();
+		listaDetalleReserva.clear();
+		listaPersonalDisponible.clear();
 	}
 	
 	public Reserva getReserva() {

@@ -14,6 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="Reserva")
@@ -43,6 +47,22 @@ public class Reserva implements Serializable {
 	
 	@Column(name="estado", nullable=false)
 	private String estado;
+	
+	@Transient
+	private String propietario_tarjeta;
+		
+	@Transient
+	@Min(1111111111111L)
+	@Max(9999999999999999L)
+	private Long numero_tarjeta;
+	
+	@Transient
+	@Temporal(TemporalType.DATE)
+	private Date fecha_expiracion;
+	
+	@Transient
+	@Size(min=3, max=3)
+	private String cvv_tarjeta;
 	
 	@ManyToOne
 	@JoinColumn(name="id_personal_limpieza", nullable=false)
@@ -146,6 +166,38 @@ public class Reserva implements Serializable {
 	@Override
 	public int hashCode() {
 		return Objects.hash(duracion, estado, fecha, hora_inicio, id_reserva, kit_limpieza_extra, precio);
+	}
+
+	public String getPropietario_tarjeta() {
+		return propietario_tarjeta;
+	}
+
+	public void setPropietario_tarjeta(String propietario_tarjeta) {
+		this.propietario_tarjeta = propietario_tarjeta;
+	}
+
+	public Long getNumero_tarjeta() {
+		return numero_tarjeta;
+	}
+
+	public void setNumero_tarjeta(Long numero_tarjeta) {
+		this.numero_tarjeta = numero_tarjeta;
+	}
+
+	public Date getFecha_expiracion() {
+		return fecha_expiracion;
+	}
+
+	public void setFecha_expiracion(Date fecha_expiracion) {
+		this.fecha_expiracion = fecha_expiracion;
+	}
+
+	public String getCvv_tarjeta() {
+		return cvv_tarjeta;
+	}
+
+	public void setCvv_tarjeta(String cvv_tarjeta) {
+		this.cvv_tarjeta = cvv_tarjeta;
 	}
 
 	@Override
