@@ -26,7 +26,8 @@
                                     <h:outputLabel for="txtNombre" value="Nombre*"/>
                                     <p:inputText id="txtNombre" required="true"
                                     value="#{parametroController.parametro.nombre}" />
-                                </div>
+                                    <p:message for="txtNombre" display="text" />							
+                                 </div>
                                 
                                 <div class="field col-6">
                                     
@@ -35,12 +36,14 @@
                                     <p:outputLabel for="txtValor" value="Valor"/>
                                     <p:inputNumber id="txtValor" required="true"
                                         value="#{parametroController.parametro.valor}"/>
+                                     <p:message for="txtValor" display="text" />	
                                 </div>
                                 
                                 <div class="field col-6">
                                     <p:outputLabel for="txtUnidad" value="Unidad"/>
                                     <p:inputText id="txtUnidad" required="true"
                                         value="#{parametroController.parametro.unidad}"/>
+                                   <p:message for="txtUnidad" display="text" />
                                 </div>
                                 
                             </div>

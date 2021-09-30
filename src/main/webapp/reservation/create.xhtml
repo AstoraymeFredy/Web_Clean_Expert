@@ -14,6 +14,7 @@
 	    </ui:define>
 		<ui:define name="content-body">
 			<h:form id="frm" class="container">
+				<p:growl id="men" />
 				<div class="ui-g">
 					<div class="ui-g-7  p-0">
 						<p:panel styleClass="ui-panel">
@@ -25,16 +26,19 @@
 									<p:outputLabel for="txtDormitorio">Dormitorio</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(0).cantidad}"
-										id="txtDormitorio">
+										id="txtDormitorio" minValue="0" maxValue="6"
+										 decimalPlaces="0" emptyValue="zero"  >
 										<f:ajax event="keyup" render="output-test" execute="test2"
 											listener="#{reservaController.simularPrecio}" />
 									</p:inputNumber>
+									
 								</div>
 								<div class="field col-4">
 									<p:outputLabel for="txtDormitorio">Comedor</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(1).cantidad}"
-										id="txtComedor">
+										id="txtComedor" minValue="0" maxValue="6"
+										decimalPlaces="0" emptyValue="zero" >
 										<f:ajax event="keyup" render="output-test"
 											execute="txtComedor"
 											listener="#{reservaController.simularPrecio}" />
@@ -44,7 +48,8 @@
 									<p:outputLabel for="txtDormitorio">Cocina</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(2).cantidad}"
-										id="txtCocina">
+										id="txtCocina" minValue="0" maxValue="6"
+										decimalPlaces="0" emptyValue="zero" >
 										<f:ajax event="keyup" render="output-test" execute="txtCocina"
 											listener="#{reservaController.simularPrecio}" />
 									</p:inputNumber>
@@ -53,7 +58,8 @@
 									<p:outputLabel for="txtDormitorio">Biblioteca</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(3).cantidad}"
-										id="txtBiblioteca">
+										id="txtBiblioteca" minValue="0" maxValue="6"
+										 decimalPlaces="0" emptyValue="zero" >
 										<f:ajax event="keyup" render="output-test"
 											execute="txtBiblioteca"
 											listener="#{reservaController.simularPrecio}" />
@@ -63,7 +69,8 @@
 									<p:outputLabel for="txtDormitorio">Baño</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(4).cantidad}"
-										id="txtBanio">
+										id="txtBanio" minValue="0" maxValue="6"
+										decimalPlaces="0" emptyValue="zero" >
 										<f:ajax event="keyup" render="output-test" execute="txtBanio"
 											listener="#{reservaController.simularPrecio}" />
 									</p:inputNumber>
@@ -72,7 +79,8 @@
 									<p:outputLabel for="txtDormitorio">Sala</p:outputLabel>
 									<p:inputNumber
 										value="#{reservaController.listaDetalleReserva.get(5).cantidad}"
-										id="txtSala">
+										id="txtSala" minValue="0" maxValue="6"
+										 decimalPlaces="0" emptyValue="zero" >
 										<f:ajax event="keyup" render="output-test" execute="txtSala"
 											listener="#{reservaController.simularPrecio}" />
 									</p:inputNumber>
@@ -94,21 +102,27 @@
 												itemLabel="#{propiedad.distrito.nombre} - #{propiedad.direccion}"
 												itemValue="#{propiedad}" />
 										</p:selectOneMenu>
+										  <p:message for="cboDirección" display="text" />	
 									</div>
 									<div class="field col-6">
 										<p:outputLabel for="txtFecha">Fecha</p:outputLabel>
 										<p:calendar id="txtFecha" pattern="dd/MM/yyyy"
 											value="#{reservaController.reserva.fecha}" showOn="button"
-											timeZone="UTC" required="true">
+											timeZone="UTC" required="true"
+											autocomplete="off" 
+											>
 										</p:calendar>
-
+										 <p:message for="txtFecha" display="text" />
 									</div>
 									<div class="field col-6">
 										<p:outputLabel for="txtHora">Hora</p:outputLabel>
 										<p:datePicker id="txtHora"
 											value="#{reservaController.reserva.hora_inicio}"
-											timeOnly="true" stepMinute="60" mindate="08:00"
-											maxdate="16:00" />
+											timeOnly="true" stepMinute="60" mindate="08:00" required="true"
+											maxdate="16:00"
+											autocomplete="off"  
+											/>
+										<p:message for="txtHora" display="text" />											
 									</div>
 								</div>
 
@@ -129,6 +143,7 @@
 											var="personal" itemLabel="#{personal.nombre}"
 											itemValue="#{personal}" />
 									</p:selectOneMenu>
+									<p:message for="cboPersonal" display="text" />				
 								</div>
 							</div>
 							<p class="text-primary fw-bold">Opciones</p>

@@ -50,7 +50,7 @@ public class PropiedadController implements Serializable {
 
 	public String listaProp()
 	{
-			return  "/addresses/listAddresses?faces-redirect=true";
+		return  "/addresses/listAddresses?faces-redirect=true";
 	}
 
 	public String nuevaPropiedad() {
@@ -70,16 +70,17 @@ public class PropiedadController implements Serializable {
 			if(propiedad.getId() != 0) {
 				propiedad.setDistrito(distrito);
 				pService.actualizar(propiedad);
-				Message.messageInfo("Actualizado");
+				Message.messageInfo("Actualizado correctamente");
 			}
 			else {
 				propiedad.setCliente(sesion.getCliente());
 				propiedad.setDistrito(distrito);
 				pService.insertar(propiedad);
+				Message.messageInfo("Registrado correctamente");
 			}
 			this.listar();
 			this.propiedad = new Propiedad ();
-			view = "/addresses/listAddresses?faces-redirect=true";
+			view = "/addresses/listAddresses";
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());
@@ -92,7 +93,6 @@ public class PropiedadController implements Serializable {
 		try {
 			this.propiedad = p;
 			view = "/addresses/addModifyProperty?faces-redirect=true";
-			Message.messageError("Debe seleccionar un parametro");
 		}
 		catch (Exception e) {
 			Message.messageError("Error en parametro " + e.getMessage());
@@ -122,10 +122,10 @@ public class PropiedadController implements Serializable {
 		String view = "";
 		try {
 			this.propiedad=p;
-			pService.eliminar(propiedad.getId());
+			pService.eliminar(propiedad);
 			Message.messageInfo("Eliminado correctamente");
 			this.listar();
-			view = "/addresses/listAddresses?faces-redirect=true";
+			view = "/addresses/listAddresses";
 		}
 		catch(Exception e) {
 			Message.messageError("Error :" + e.getMessage());

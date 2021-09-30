@@ -27,10 +27,13 @@ public class PropiedadDaoImpl implements Serializable {
 		}
 	
 	@Transactional
-	public void eliminar(int idPropiedad) {
-		Propiedad propiedad = new Propiedad();
-		propiedad = em.getReference(Propiedad.class, idPropiedad);
-		em.remove(propiedad);
+	public void eliminar(Propiedad propiedad)throws Exception {
+		if (em.contains(propiedad)) {
+			em.remove(propiedad);
+		} else {
+			Propiedad p = em.getReference(propiedad.getClass(), propiedad.getId());
+			em.remove(p);
+		}
 	}
 	
 	@Transactional

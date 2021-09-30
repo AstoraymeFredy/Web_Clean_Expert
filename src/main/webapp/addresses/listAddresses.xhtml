@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+<!DOCTYPE html>
+<html lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
 </h:head>
 
@@ -18,7 +17,6 @@
 				<div class="p-2">
 					<h:form id="frm">
 						<p:growl id="men" />
-
 						<div class="d-flex justify-content-between mb-5">
 							<h3 class="principal-title text-dark fw-bold">Listado de
 								direcciones</h3>
@@ -30,6 +28,7 @@
 							emptyMessage="No existen direcciones registradas"
 							paginatorPosition="bottom" paginator="true" rows="10"
 							value="#{propiedadController.listaPropiedades}" var="propi">
+							
 							<p:column headerText="#">
 								<p:outputLabel value="#{propi.id}" />
 							</p:column>
@@ -41,8 +40,8 @@
 							</p:column>
 							<p:column headerText="Acciones">
 
-								<p:commandButton value="Eliminar" styleClass="ui-button-danger"
-									action="#{propiedadController.eliminar(propi)}" />
+								<p:commandButton value="Eliminar" styleClass="ui-button-danger" 
+									action="#{propiedadController.eliminar(propi)}" ajax="false"/>
 								<p:commandButton value="Modificar"
 									styleClass="ui-button-success"
 									action="#{propiedadController.editProperty(propi)}" />
