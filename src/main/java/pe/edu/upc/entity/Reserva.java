@@ -25,6 +25,7 @@ public class Reserva implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_reserva;
 	
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 		
 	@Column(name="precio", nullable=false)
