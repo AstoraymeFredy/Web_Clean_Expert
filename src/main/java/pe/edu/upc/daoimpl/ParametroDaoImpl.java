@@ -29,7 +29,7 @@ public class ParametroDaoImpl implements Serializable  {
 	
 	public List<Parametro> findAll() throws Exception{
 		List<Parametro> parametros = new ArrayList<>();
-		TypedQuery<Parametro> query = em.createQuery("SELECT pa FROM Parametro pa", Parametro.class);
+		TypedQuery<Parametro> query = em.createQuery("SELECT pa FROM Parametro pa order by pa.id", Parametro.class);
 		parametros = query.getResultList();
 		return parametros;
 	}
